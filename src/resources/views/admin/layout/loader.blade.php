@@ -1,5 +1,5 @@
 <div id="preloader">
     <div>
-        <img src="admin/images/pre.gif" alt="">
+        <img src="{{ asset('admin/images/pre.gif') }}" alt="">
     </div>
 </div>

@@ -11,7 +11,7 @@
 
     <!-- FAVICONS ICON -->
     <link rel="shortcut icon" type="image/png" href="images/favicon.png">
-    <link href="{{ asset('admin/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}." rel="stylesheet">
+    <link href="{{ asset('admin/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/css/style.css') }}" rel="stylesheet">
 </head>
 
@@ -35,43 +35,27 @@
 
                                     <nav>
                                         <div class="nav nav-tabs border-bottom-0" id="nav-tab" role="tablist">
-
                                             <div class="tab-content w-100" id="nav-tabContent">
                                                 <div class="tab-pane fade show active" id="nav-personal" role="tabpanel" aria-labelledby="nav-personal-tab">
-                                                    <form action="index.html" class=" dz-form pb-3">
-                                                        <h3 class="form-title m-t0">Personal Information</h3>
+                                                    <form action="{{ route('admin.auth.postLogin') }}" class="dz-form pb-3" method="post">
+                                                        @csrf
+                                                        <center>
+                                                            <h3 class="form-title m-t0 mb-4">Personal Information</h3>
+                                                        </center>
                                                         <div class="dz-separator-outer m-b5">
                                                             <div class="dz-separator bg-primary style-liner"></div>
                                                         </div>
-                                                        <p>Enter your e-mail address and your password. </p>
                                                         <div class="form-group mb-3">
-                                                            <input type="email" class="form-control" value="hello@example.com">
+                                                            <input name="name" type="text" class="form-control" placeholder="username">
                                                         </div>
-                                                        <div class="form-group mb-3">
-                                                            <input type="password" class="form-control" value="Password">
+                                                        <div class="form-group mb-5">
+                                                            <input name="password" type="password" class="form-control" placeholder="Password">
                                                         </div>
-                                                        <div class="form-group text-left mb-5 forget-main">
-                                                            <button type="submit" class="btn btn-primary">Sign Me In</button>
-                                                            <span class="form-check d-inline-block">
-															<input type="checkbox" class="form-check-input" id="check1" name="example1">
-															<label class="form-check-label" for="check1">Remember me</label>
-														</span>
-                                                            <button class="nav-link m-auto btn tp-btn-light btn-primary forget-tab " id="nav-forget-tab" data-bs-toggle="tab" data-bs-target="#nav-forget" type="button" role="tab" aria-controls="nav-forget" aria-selected="false">Forget Password ?</button>
-                                                        </div>
-                                                        <div class="dz-social ">
-                                                            <h5 class="form-title fs-20">Sign In With</h5>
-                                                            <ul class="dz-social-icon dz-border dz-social-icon-lg text-white">
-                                                                <li><a target="_blank" href="https://www.facebook.com/" class="fab fa-facebook-f btn-facebook"></a></li>
-                                                                <li><a target="_blank" href="https://www.google.com/" class="fab fa-google-plus-g btn-google-plus"></a></li>
-                                                                <li><a target="_blank" href="https://www.linkedin.com/" class="fab fa-linkedin-in btn-linkedin"></a></li>
-                                                                <li><a target="_blank" href="https://twitter.com/" class="fab fa-twitter btn-twitter"></a></li>
-                                                            </ul>
+                                                        <div class="text-center bottom">
+                                                            <button type="submit" class="btn btn-primary button-md btn-block">Send</button>
                                                         </div>
                                                     </form>
-                                                    <div class="text-center bottom">
-                                                        <button class="btn btn-primary button-md btn-block" id="nav-sign-tab" data-bs-toggle="tab" data-bs-target="#nav-sign" type="button" role="tab" aria-controls="nav-sign" aria-selected="false">Create an account</button>
 
-                                                    </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="nav-forget" role="tabpanel" aria-labelledby="nav-forget-tab">
                                                     <form class="dz-form">
@@ -126,7 +110,6 @@
                                                     </form>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </nav>
                                 </div>

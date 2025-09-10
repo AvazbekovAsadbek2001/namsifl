@@ -14,15 +14,15 @@
     @yield('css')
 </head>
 <body>
-    @include('loader')
+    @include('admin.layout.loader')
 
     <div id="main-wrapper">
 
-        @include('navHeader')
+        @include('admin.layout.navHeader')
 
-        @include('header')
+        @include('admin.layout.header')
 
-        @include('sidebar')
+        @include('admin.layout.sidebar')
 
         <div class="content-body">
             <div class="container-fluid">
@@ -30,12 +30,12 @@
             </div>
         </div>
 
-        @include('footer')
+        @include('admin.layout.footer')
     </div>
 
     <script src="{{ asset('admin/vendor/global/global.min.js') }}"></script>
     <script src="{{ asset('admin/vendor/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
-    <script src="{{ asset('admin/js/custom.js') }}."></script>
+    <script src="{{ asset('admin/js/custom.js') }}"></script>
     <script src="{{ asset('admin/js/deznav-init.js') }}"></script>
     <script src="{{ asset('admin/js/demo.js') }}"></script>
     <script src="{{ asset('admin/js/styleSwitcher.js') }}"></script>
