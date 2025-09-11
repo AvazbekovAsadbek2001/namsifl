@@ -3,6 +3,7 @@
     Create page
 @endsection
 @section('css')
+    <script src="https://cdn.ckeditor.com/4.16.2/full/ckeditor.js"></script>
 @endsection
 @section('section')
     <div class="row">
@@ -30,10 +31,10 @@
                                 <textarea class="form-textarea form-control" rows="8" ></textarea>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Description</label>
-                                <div class="card-body custom-ekeditor">
-                                    <div id="ckeditor"></div>
-                                </div>
+                                <label class="form-label">Content</label>
+                                <textarea name="editor1" id="editor1" rows="10" cols="80">
+                                    This is my textarea with image upload capability.
+                                </textarea>
                             </div>
                         </form>
                     </div>
@@ -43,5 +44,11 @@
     </div>
 @endsection
 @section('script')
-    <script src="{{ asset('admin/vendor/ckeditor/ckeditor.js') }}"></script>
+    <script>
+        CKEDITOR.replace('editor1', {
+            extraPlugins: 'uploadimage',
+            filebrowserUploadUrl: '/upload', // Backend URL for image upload (to be implemented)
+            imageUploadUrl: '/upload' // Backend URL for image upload (to be implemented)
+        });
+    </script>
 @endsection
