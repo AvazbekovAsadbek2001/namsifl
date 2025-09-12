@@ -20,4 +20,13 @@ Route::group(['middleware' => ['check-admin']], function () {
         Route::get('/create', [\App\Http\Controllers\Admin\PageController::class, 'create'])->name('create');
         Route::post('/store', [\App\Http\Controllers\Admin\PageController::class, 'store'])->name('store');
     });
+
+    Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
+        Route::get('/', [\App\Http\Controllers\Admin\PageController::class, 'index'])->name('index');
+        Route::get('/create', [\App\Http\Controllers\Admin\PageController::class, 'create'])->name('create');
+        Route::post('/store', [\App\Http\Controllers\Admin\PageController::class, 'store'])->name('store');
+    });
+
+    Route::post('/file-upload', [\App\Http\Controllers\Admin\FileController::class, 'uploadFile'])->name('file-upload');
+
 });

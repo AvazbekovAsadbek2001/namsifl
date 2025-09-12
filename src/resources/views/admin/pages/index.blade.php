@@ -36,26 +36,28 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td >
-                                        <strong>title</strong>
-                                    </td>
-                                    <td><a href="#">link</a></td>
-                                    <td>01 August 2020</td>
-                                    <td>
-                                        <div class="form-check custom-checkbox checkbox-primary check-lg me-3">
-                                            <input type="checkbox" class="form-check-input" id="checkAll" required="">
-                                            <label class="form-check-label" for="checkAll"></label>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="d-flex">
-                                            <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa fa-pencil"></i></a>
-                                            <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                    @foreach($pages as $page)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td >
+                                                <strong>{{ $page->title }}</strong>
+                                            </td>
+                                            <td><a href="{{ config('app.url').'/'.$page->url }}">{{ config('app.url').'/'.$page->url }}</a></td>
+                                            <td>{{ $page->created_at }}</td>
+                                            <td>
+                                                <div class="form-check custom-checkbox checkbox-primary check-lg me-3">
+                                                    <input type="checkbox" class="form-check-input" id="checkAll" @if($page->is_active) checked @endif>
+                                                    <label class="form-check-label" for="checkAll"></label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex">
+                                                    <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa fa-pencil"></i></a>
+                                                    <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
