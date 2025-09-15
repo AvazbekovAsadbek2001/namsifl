@@ -34,6 +34,7 @@
         @include('admin.layout.footer')
     </div>
 
+    @yield('script')
     <script src="{{ asset('admin/vendor/global/global.min.js') }}"></script>
     <script src="{{ asset('admin/vendor/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
     <script src="{{ asset('admin/js/custom.js') }}"></script>
@@ -41,6 +42,5 @@
     <script src="{{ asset('admin/js/demo.js') }}"></script>
     <script src="{{ asset('admin/js/styleSwitcher.js') }}"></script>
 
-    @yield('script')
 </body>
 </html>

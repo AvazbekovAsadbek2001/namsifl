@@ -33,9 +33,9 @@
                 </a>
 
                 <ul aria-expanded="false">
-                    <li><a href="index.html">Posts</a></li>
-                    <li><a href="index-2.html">Categories</a></li>
-                    <li><a href="index-3.html">Tags</a></li>
+                    <li><a href="{{ route('admin.blog.posts.index') }}">Posts</a></li>
+                    <li><a href="{{ route('admin.blog.category.index') }}">Categories</a></li>
+                    <li><a href="{{ route('admin.blog.tag.index')}}">Tags</a></li>
                 </ul>
             </li>
             <li>

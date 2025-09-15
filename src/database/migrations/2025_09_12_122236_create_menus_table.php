@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('menus', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->unsigned();
             $table->string('title');
             $table->string('url')->nullable();
-            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->unsignedInteger('parent_id')->nullable();
             $table->integer('order')->default(0);
             $table->timestamps();
 

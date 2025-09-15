@@ -22,9 +22,21 @@ Route::group(['middleware' => ['check-admin']], function () {
     });
 
     Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
-        Route::get('/', [\App\Http\Controllers\Admin\PageController::class, 'index'])->name('index');
-        Route::get('/create', [\App\Http\Controllers\Admin\PageController::class, 'create'])->name('create');
-        Route::post('/store', [\App\Http\Controllers\Admin\PageController::class, 'store'])->name('store');
+        Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
+            Route::get('/', [\App\Http\Controllers\Admin\Blog\CategoryController::class, 'index'])->name('index');
+            Route::post('/store', [\App\Http\Controllers\Admin\Blog\CategoryController::class, 'store'])->name('store');
+        });
+
+        Route::group(['prefix' => 'tag', 'as' => 'tag.'], function () {
+            Route::get('/', [\App\Http\Controllers\Admin\Blog\TagController::class, 'index'])->name('index');
+            Route::post('/store', [\App\Http\Controllers\Admin\Blog\TagController::class, 'store'])->name('store');
+        });
+
+        Route::group(['prefix' => 'posts', 'as' => 'posts.'], function () {
+            Route::get('/', [\App\Http\Controllers\Admin\Blog\PostController::class, 'index'])->name('index');
+            Route::get('/create', [\App\Http\Controllers\Admin\Blog\PostController::class, 'create'])->name('create');
+            Route::post('/store', [\App\Http\Controllers\Admin\Blog\PostController::class, 'store'])->name('store');
+        });
     });
 
     Route::post('/file-upload', [\App\Http\Controllers\Admin\FileController::class, 'uploadFile'])->name('file-upload');
