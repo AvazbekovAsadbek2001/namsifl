@@ -16,6 +16,11 @@ RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 # Composer o‘rnatish
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
+# PHP sozlamalarini o'zgartirish (fayl yuklash hajmini oshirish)
+RUN echo "upload_max_filesize = 500M" > /usr/local/etc/php/conf.d/uploads.ini && \
+    echo "post_max_size = 500M" >> /usr/local/etc/php/conf.d/uploads.ini && \
+    echo "memory_limit = 1000M" >> /usr/local/etc/php/conf.d/uploads.ini
+
 # Ishchi papka
 WORKDIR /var/www/src
 

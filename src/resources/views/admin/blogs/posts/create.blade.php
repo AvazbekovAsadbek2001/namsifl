@@ -20,23 +20,24 @@
             font-weight: 500;
             color: #6c757d;
         }
-        
-        
+
+
     </style>
 @endsection
 @section('section')
-<form action="{{ route('admin.blog.posts.store') }}" method="post" enctype="multipart/form-data" class="row">    
-    <div class="col-12 col-lg-8 col-xxl-8">
+<form action="{{ route('admin.blog.posts.store') }}" method="post" enctype="multipart/form-data" class="row" id="postForm">
+    @csrf
+    <div class="col-12 col-lg-9 col-xxl-8">
         <div class="card">
         @csrf
             <div class="card-header">
                 <h4 class="card-title">Create Post</h4>
             </div>
             <div class="card-body">
-                <div class="basic-form">    
+                <div class="basic-form">
                     <div class="mb-3">
                         <label class="form-label">Title</label>
-                        <input type="text" name="title" class="form-control input-default" placeholder="Page title" required>
+                        <input type="text" name="title" class="form-control input-default" placeholder="Post title" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Description</label>
@@ -45,7 +46,6 @@
                     <div class="mb-3">
                         <label class="form-label">Content</label>
                         <textarea name="content" id="editor1" rows="10" cols="80" required>
-                            
                         </textarea>
                     </div>
                     <div class="mb-3">
@@ -56,7 +56,7 @@
             </div>
         </div>
     </div>
-    <div class="col-12 col-lg-4 col-xxl-4">
+    <div class="col-12 col-lg-3 col-xxl-4">
         <div class="row">
             <div class="col-12">
                 <div class="card" style="max-height: 500px;">
@@ -65,7 +65,16 @@
                     </div>
                     <div class="card-body">
                         <div class="basic-form">
-                            
+                            <table>
+                                @foreach($categories as $category)
+                                    <tr>
+                                        <td width="30px">
+                                            <input type="checkbox" name="categories[]" id="category-{{ $category->id }}" value="{{ $category->id }}">
+                                        </td>
+                                        <td>{{ $category->name }}</td>
+                                    </tr>
+                                @endforeach
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -77,24 +86,31 @@
                 </div>
                 <div class="card-body">
                     <div class="basic-form">
-                        
+                        <table>
+                            @foreach($tags as $tag)
+                                <tr>
+                                    <td width="30px">
+                                        <input type="checkbox" name="tags[]" id="tag-{{ $tag->id }}" value="{{ $tag->id }}">
+                                    </td>
+                                    <td>{{ $tag->name }}</td>
+                                </tr>
+                            @endforeach
+                        </table>
                     </div>
                 </div>
             </div>
             </div>
             <div class="col-12">
                 <div class="card" style="max-height: 500px;">
-                <div class="card-header">
-                    <h4 class="card-title">Image</h4>
-                </div>
-                <div class="card-body">
-                    <div style="width: 200px; margin: auto;">
-                        <div id="singleDropzone" class="dropzone">
-
+                    <div class="card-header">
+                        <h4 class="card-title">Image</h4>
+                    </div>
+                    <div class="card-body">
+                        <div style="width: 200px; margin: auto;">
+                            <div id="singleDropzone" class="dropzone"></div>
                         </div>
                     </div>
                 </div>
-            </div>
             </div>
         </div>
     </div>
@@ -133,18 +149,20 @@
             removeButtons: 'Subscript,Superscript,Save,NewPage,Preview,Print,Templates,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Flash,Smiley,PageBreak,Iframe,Anchor,Language,BidiLtr,BidiRtl',
         });
 
-        // Dropzone’ni avtomatik form qidirishini o‘chirib qo‘yamiz
         Dropzone.autoDiscover = false;
 
-        // Bitta rasm uchun
-        new Dropzone("#singleDropzone", {
-            url: "/upload-single",
-            paramName: "file",
-            maxFilesize: 5,
+        const singleDropzone = new Dropzone("#singleDropzone", {
+            url: "{{ route('admin.file-upload') }}?type=image",
+            autoProcessQueue: false,
+            paramName: "featured_image",
+            maxFilesize: 50,
             maxFiles: 1,
             acceptedFiles: "image/*",
             addRemoveLinks: true,
             dictDefaultMessage: "Profil rasmini bu yerga tashlang yoki tanlang",
+            dictFileTooBig: "Fayl hajmi juda katta (50 MB maksimal)",
+            dictInvalidFileType: "Faqat rasm fayllari qabul qilinadi",
+            dictRemoveFile: "O'chirish",
             init: function () {
                 this.on("maxfilesexceeded", function (file) {
                     this.removeAllFiles(this.files[0]);
@@ -153,14 +171,57 @@
             }
         });
 
-        // Ko‘p rasm uchun
-        new Dropzone("#multiDropzone", {
-            url: "/upload-multiple",
-            paramName: "files",
-            maxFilesize: 10,
+        const multiDropzone = new Dropzone("#multiDropzone", {
+            url: "{{ route('admin.file-upload') }}?type=image",
+            autoProcessQueue: false,
+            paramName: "images",
+            maxFilesize: 300,
             acceptedFiles: "image/*",
             addRemoveLinks: true,
-            dictDefaultMessage: "Bir nechta rasmlarni bu yerga tashlang yoki tanlang"
+            dictDefaultMessage: "Bir nechta rasmlarni bu yerga tashlang yoki tanlang",
+            dictFileTooBig: "Fayl hajmi juda katta (300 MB maksimal)",
+            dictInvalidFileType: "Faqat rasm fayllari qabul qilinadi",
+            dictRemoveFile: "O'chirish"
+        });
+
+        document.querySelector("#postForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const form = this;
+            const formData = new FormData(form);
+
+            // CKEditor qiymatini olish
+            formData.set('content', CKEDITOR.instances.editor1.getData());
+
+            // MultiDropzone fayllarini qo'shish
+            multiDropzone.files.forEach(function (file) {
+                formData.append("images[]", file);
+            });
+
+            // SingleDropzone faylini qo'shish
+            if (singleDropzone.files.length > 0) {
+                formData.append("featured_image", singleDropzone.files[0]);
+            }
+
+            // Fetch orqali yuborish
+            fetch(form.action, {
+                method: form.method,
+                body: formData,
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken
+                }
+            }).then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        window.location.href = "{{ route('admin.blog.posts.index') }}";
+                    } else {
+                        alert("Xato yuz berdi: " + data.message);
+                    }
+                }).catch(error => {
+                console.error('Xato:', error);
+                alert("Server xatosi yuz berdi.");
+            });
         });
     </script>
 @endsection
