@@ -209,7 +209,8 @@
                 method: form.method,
                 body: formData,
                 headers: {
-                    'X-CSRF-TOKEN': csrfToken
+                    'X-CSRF-TOKEN': csrfToken,
+                    'Accept': 'application/json',
                 }
             }).then(response => response.json())
                 .then(data => {

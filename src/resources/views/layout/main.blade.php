@@ -12,12 +12,12 @@
     </head>
 
     <body>
-        @include('layout.header');
+        @include('layout.header')
 
         <main class="main">
             @yield('page-title')
 
-            @yield('section')            
+            @yield('section')
         </main>
 
         @include('layout.footer')
@@ -28,6 +28,7 @@
         <!-- Preloader -->
         <div id="preloader"></div>
 
+        @yield('script')
         @include('layout.scripts')
     </body>
 </html>
