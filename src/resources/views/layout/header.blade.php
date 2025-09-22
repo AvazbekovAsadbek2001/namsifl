@@ -7,6 +7,6 @@
             <h1 class="sitename">College</h1>
         </a>
 
-        @include('menu');
+        @include('layout.menu');
     </div>
 </header>

@@ -6,21 +6,21 @@
         <meta name="description" content="">
         <meta name="keywords" content="">
 
-        @include('css')
+        @include('layout.css')
+
+        @yield('css')
     </head>
 
     <body>
-        @include('header');
+        @include('layout.header');
 
         <main class="main">
             @yield('page-title')
 
-            <section id="starter-section" class="starter-section section">
-                @yield('section')
-            </section>
+            @yield('section')            
         </main>
 
-        @include('footer')
+        @include('layout.footer')
 
         <!-- Scroll Top -->
         <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -28,6 +28,6 @@
         <!-- Preloader -->
         <div id="preloader"></div>
 
-        @include('scripts')
+        @include('layout.scripts')
     </body>
 </html>
