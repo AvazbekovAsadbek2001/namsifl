@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class PostTranslation extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['post_id', 'title', 'description', 'lang_code','content'];
 }

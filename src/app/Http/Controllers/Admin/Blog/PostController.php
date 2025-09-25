@@ -14,7 +14,32 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
+        $data = Post::all();
+//        $translations = PostTranslation::all();
+//        dd($translations);
+//        $post = Post::first();
+//        dd($post->translations->firstWhere('code', 'en'));
+        $posts = $data->map(function ($post) {
+           return [
+               'id' => $post->id,
+               'title' => $post->translations->firstWhere('lang_code', 'en')?->title,
+               'image' => $post->image,
+               'categories' => $post->categories->map(function ($category) {
+                   return [
+                       'id' => $category->id,
+                       'title' => $category->name,
+                   ];
+               }),
+               'tags' => $post->tags->map(function ($tag) {
+                   return [
+                       'id' => $tag->id,
+                       'title' => $tag->name,
+                   ];
+               }),
+               'editor' => $post->user->name,
+               'status' => 'active'
+           ];
+        });
         return view('admin.blogs.posts.index', compact('posts'));
     }
 
@@ -43,13 +68,13 @@ class PostController extends Controller
         $image = $request->file('featured_image')->store('images/posts', 'public');
 
         $images = [];
-        foreach ($request->images as $image) {
-            $images[] = $image->store('images/posts', 'public');
+        foreach ($request->images as $item) {
+            $images[] = $item->store('images/posts', 'public');
         }
 
         $post = Post::create([
             'image' => $image,
-            'images' => $images,
+            'images' => json_encode($images),
             'editor_id' => Auth::user()->id,
         ]);
 
@@ -62,11 +87,10 @@ class PostController extends Controller
             'description' => $data['description'],
             'content' => $data['content'],
             'lang_code' => 'en',
-
         ]);
 
         return response()->json([
-            'status' => 'success',
+            'success' => true,
         ]);
     }
 }

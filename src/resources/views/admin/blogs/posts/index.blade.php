@@ -1,6 +1,6 @@
 @extends('admin.layout.main')
 @section('title')
-    Pages
+    Posts
 @endsection
 @section('css')
 @endsection
@@ -10,7 +10,7 @@
             <div class="card-header flex-wrap d-flex justify-content-between  border-0">
                 <div style="width: 100%">
                     <h2 class="card-title">
-                        Pages
+                        Posts
                         <a href="{{ route('admin.blog.posts.create') }}" class="btn btn-info shadow sharp me-1 float-end w-auto"> Add</a>
                     </h2>
                 </div>
@@ -24,36 +24,51 @@
                             <table class="table table-responsive-md">
                                 <thead>
                                 <tr>
-                                    <th>
-                                        #
-                                    </th>
+                                    <th> # </th>
                                     <th style="width: 30%"><strong>Title</strong></th>
-                                    <th><strong>Url</strong></th>
-                                    <th><strong>Date</strong></th>
+                                    <th><strong>Image</strong></th>
+                                    <th><strong>Categories</strong></th>
+                                    <th><strong>Editor</strong></th>
                                     <th><strong>Status</strong></th>
+                                    <th><strong>Langs</strong></th>
                                     <th><strong></strong></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                     @foreach($posts as $post)
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td >
-                                                <strong>{{ $page->title }}</strong>
-                                            </td>
-                                            <td><a href="{{ config('app.url').'/'.$page->url }}">{{ config('app.url').'/'.$page->url }}</a></td>
-                                            <td>{{ $page->created_at }}</td>
+                                            <td> {{ $loop->iteration }} </td>
+                                            <td> {{ $post['title'] }} </td>
                                             <td>
-                                                <div class="form-check custom-checkbox checkbox-primary check-lg me-3">
-                                                    <input type="checkbox" class="form-check-input" id="checkAll" @if($page->is_active) checked @endif>
-                                                    <label class="form-check-label" for="checkAll"></label>
-                                                </div>
+                                                <img src="{{ asset('storage/'.$post['image']) }}" width="100px">
                                             </td>
                                             <td>
-                                                <div class="d-flex">
-                                                    <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa fa-pencil"></i></a>
-                                                    <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                                </div>
+                                                <ul>
+                                                    @foreach($post['categories'] as $category)
+                                                        <li>
+                                                            {{ $category['title'] }}
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            </td>
+                                            <td>
+                                                <ul>
+                                                    @foreach($post['tags'] as $tag)
+                                                        <li>
+                                                            {{ $tag['title'] }}
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            </td>
+                                            <td>
+                                                {{ $post['editor'] }}
+                                            </td>
+                                            <td>
+                                                {{ $post['status'] }}
+                                            </td>
+                                            <td>
+                                                <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa fa-pencil"></i></a>
+                                                <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach

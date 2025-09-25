@@ -16,16 +16,17 @@ class Post extends Model
         return $this->belongsTo(User::class, 'editor_id');
     }
 
-    public function categories(){
-        return $this->belongsToMany(Category::class);
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'post_categories', 'post_id', 'category_id');
     }
 
     public function tags(){
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Tag::class, 'post_tags', 'post_id', 'tag_id');
     }
 
     public function translations(){
-        $this->hasMany(PostTranslation::class);
+        return $this->hasMany(PostTranslation::class, 'post_id');
     }
 
     public function translation($lang_code){

@@ -39,6 +39,10 @@ Route::group(['middleware' => ['check-admin']], function () {
         });
     });
 
+    Route::group(['prefix' => 'menu', 'as' => 'menu.'], function () {
+        Route::get('/', [\App\Http\Controllers\Admin\MenuController::class, 'index'])->name('index');
+    });
+
     Route::post('/file-upload', [\App\Http\Controllers\Admin\FileController::class, 'uploadFile'])->name('file-upload');
 
 });
