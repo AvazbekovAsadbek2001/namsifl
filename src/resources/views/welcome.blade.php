@@ -4,7 +4,7 @@
 @endsection
 @section('css') @endsection
 @section('section')
-<section id="hero" class="hero section">
+    <section id="hero" class="hero section">
       <div class="hero-wrapper">
         <div class="container">
           <div class="row align-items-center">
@@ -311,7 +311,6 @@
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row g-4">
-
           <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
             <div class="event-item">
               <div class="event-image">
@@ -528,29 +527,70 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
+    <!-- /Events Section -->
 
-        <div class="events-navigation" data-aos="fade-up" data-aos-delay="500">
-          <div class="row align-items-center">
-            <div class="col-md-8">
-              <div class="filter-tabs">
-                <button class="filter-tab active" data-filter="all">All Events</button>
-                <button class="filter-tab" data-filter="academic">Academic</button>
-                <button class="filter-tab" data-filter="sports">Sports</button>
-                <button class="filter-tab" data-filter="arts">Arts</button>
-                <button class="filter-tab" data-filter="community">Community</button>
+      <!-- Alumni Section -->
+    <section id="alumni" class="alumni section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row get-involved-section">
+          <div class="col-12 text-center mb-4" data-aos="fade-up" data-aos-delay="200">
+            <h2>Davlat ramzlari</h3>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="involvement-card">
+              <div class="involvement-icon">
+                <i class="bi bi-hand-thumbs-up"></i>
               </div>
+              <h4>Mentor a Student</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed nec justo ac magna auctor, vel volutpat nisl mollis.</p>
+              <a href="#" class="btn btn-sm btn-outline-primary mt-2">Learn More</a>
             </div>
-            <div class="col-md-4 text-end">
-              <a href="#" class="view-calendar-btn">
-                <i class="bi bi-calendar3"></i>
-                View Calendar
-              </a>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+            <div class="involvement-card">
+              <div class="involvement-icon">
+                <i class="bi bi-award"></i>
+              </div>
+              <h4>Scholarship Fund</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed nec justo ac magna auctor, vel volutpat nisl mollis.</p>
+              <a href="#" class="btn btn-sm btn-outline-primary mt-2">Donate Now</a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
+            <div class="involvement-card">
+              <div class="involvement-icon">
+                <i class="bi bi-people"></i>
+              </div>
+              <h4>Alumni Association</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed nec justo ac magna auctor, vel volutpat nisl mollis.</p>
+              <a href="#" class="btn btn-sm btn-outline-primary mt-2">Join Today</a>
+            </div>
+          </div>
+
+          <div class="col-12 mt-4" data-aos="fade-up" data-aos-delay="600">
+            <div class="donation-banner">
+              <div class="row align-items-center">
+                <div class="col-lg-8 mb-3 mb-lg-0">
+                  <h3>Support the Future Generation</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Aenean sollicitudin, lorem quis bibendum auctor.</p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                  <a href="#" class="btn btn-primary btn-lg">Make a Donation</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
     </section>
-    <!-- /Events Section -->
+    <!-- /Alumni Section -->
 @endsection
 @section('script')
     <script>

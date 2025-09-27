@@ -8,17 +8,33 @@
 @endsection
 @section('section')
     <div class="row">
-        <div class="col-12">
+        <div class="col-4">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Nestable</h4>
+                    <h4 class="card-title">Create Menu</h4>
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12s">
+                            <div class="card-content">
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Menu</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12s">
                             <div class="card-content">
                                 <div class="nestable">
-                                    <div class="dd" id="nestable">
+                                    <div class="dd" id="nestable" style="max-width: 100%;">
                                         <ol class="dd-list">
                                             <li class="dd-item" data-id="1">
                                                 <div class="dd-handle">Item 1</div>
@@ -51,48 +67,6 @@
                                                     </li>
                                                     <li class="dd-item" data-id="10">
                                                         <div class="dd-handle">Item 10</div>
-                                                    </li>
-                                                </ol>
-                                            </li>
-                                        </ol>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card-content">
-                                <div class="nestable">
-                                    <div class="dd" id="nestable2">
-                                        <ol class="dd-list">
-                                            <li class="dd-item" data-id="13">
-                                                <div class="dd-handle">Item 13</div>
-                                            </li>
-                                            <li class="dd-item" data-id="13">
-                                                <div class="dd-handle">Item 13</div>
-                                            </li>
-                                            <li class="dd-item" data-id="14">
-                                                <div class="dd-handle">Item 14</div>
-                                            </li>
-                                            <li class="dd-item" data-id="15">
-                                                <div class="dd-handle">Item 15</div>
-                                                <ol class="dd-list">
-                                                    <li class="dd-item" data-id="16">
-                                                        <div class="dd-handle">Item 16</div>
-                                                    </li>
-                                                    <li class="dd-item" data-id="17">
-                                                        <div class="dd-handle">Item 17</div>
-                                                    </li>
-                                                    <li class="dd-item" data-id="18">
-                                                        <div class="dd-handle">Item 18</div>
-                                                    </li>
-                                                    <li class="dd-item" data-id="18">
-                                                        <div class="dd-handle">Item 19</div>
-                                                    </li>
-                                                    <li class="dd-item" data-id="18">
-                                                        <div class="dd-handle">Item 20</div>
-                                                    </li>
-                                                    <li class="dd-item" data-id="18">
-                                                        <div class="dd-handle">Item 21</div>
                                                     </li>
                                                 </ol>
                                             </li>
