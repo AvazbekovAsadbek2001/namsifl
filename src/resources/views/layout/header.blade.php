@@ -1,7 +1,7 @@
 <nav class="py-2" style="background: #04415f; color: white;">
     <div class="container">
         <div class="row ">
-            <div class="col-md-auto mb-2 mb-md-0">
+            <div class="col-md-auto mb-2 mb-md-0" style="border-right: 1px solid white; padding: 0 15px;">
                 <i class="bi bi-telephone-fill me-2"></i>
                 <strong>Call:</strong> <a href="tel:+998694421167" class="text-white text-decoration-none"> +998 (69) 442 11 67</a>
             </div>
@@ -10,9 +10,27 @@
                 <strong>Email:</strong> <a href="mailto:info@namsifl.uz" class="text-white text-decoration-none">info@namsifl.uz</a>
             </div>
 
-            <div class="col-md-auto ms-auto">
+            <div class="col-md-auto ms-auto" style="border-right: 1px solid white; padding: 0 15px;">
                 <a href="#" style="color: white"><u>Korrupsiyaga qarshi kurash</u></a>
             </div>
+                <div class="col-md-auto">
+                    <div class="dropdown">
+                        <button class="btn btn-sm btn-light dropdown-toggle" type="button" id="langDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="{{ asset(app()->getLocale() == 'uz' ? 'langs/uz.png' : 'langs/us.png') }}" width="20" class="me-1">
+                            {{ strtoupper(app()->getLocale()) }}
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="langDropdown">
+                            @foreach(getLangs() as $item)
+                                <li>
+                                    <a class="dropdown-item d-flex align-items-center" href="#">
+                                        <img src="{{ asset($item->flag) }}" width="20" class="me-2">
+                                        {{ $item->name }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
         </div>
     </div>
 </nav>
