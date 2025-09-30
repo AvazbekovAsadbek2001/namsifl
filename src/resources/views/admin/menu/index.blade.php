@@ -17,7 +17,19 @@
                     <div class="row">
                         <div class="col-md-12s">
                             <div class="card-content">
-                               
+                                @foreach(getLangs() as $lang)
+                                    <div class="mb-2">
+                                        <label class="form-label">Title ( {{ $lang->code }} )</label>
+                                        <input type="text" name="name[{{ $lang->code }}]" class="form-control" required>
+                                    </div>
+                                @endforeach
+                                <div class="mb-3">
+                                    <label class="form-label">Url</label>
+                                    <input type="url" name="url" class="form-control" required>
+                                </div>
+                                <div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
                             </div>
                         </div>
                     </div>

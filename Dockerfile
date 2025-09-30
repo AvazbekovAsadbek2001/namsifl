@@ -24,8 +24,8 @@ RUN echo "upload_max_filesize = 500M" > /usr/local/etc/php/conf.d/uploads.ini &&
 # Ishchi papka
 WORKDIR /var/www/src
 
-# Ruxsatlarni sozlash
+# Ruxsatlarni sozlash (storage va cache yoziladigan papkalar uchun)
 RUN chown -R www-data:www-data /var/www/src
-RUN chmod -R 755 /var/www/src
+RUN chmod -R 775 /var/www/src/storage /var/www/src/bootstrap/cache
 
 CMD ["php-fpm"]

@@ -13,10 +13,7 @@ return new class extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title')->unique();
-            $table->string('url')->unique();
-            $table->longText('content');
-            $table->string('description');
+            $table->string('url')->unique();;
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

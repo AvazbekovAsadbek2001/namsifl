@@ -40,6 +40,21 @@ services:
     networks:
       - laravel-network
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: laravel_phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_USER: laravel
+      PMA_PASSWORD: secret
+      UPLOAD_LIMIT: 300M
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    networks:
+      - laravel-network
+
 networks:
   laravel-network:
     driver: bridge

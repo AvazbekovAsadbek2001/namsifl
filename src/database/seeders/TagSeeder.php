@@ -14,13 +14,27 @@ class TagSeeder extends Seeder
     public function run(): void
     {
         $data = [
-            ['name' => 'sport'],
-            ['name' => 'cultural'],
-            ['name' => 'scientific'],
+            [
+                'en' => 'sport',
+                'uz' => 'sport',
+                'ru' => 'спорт',
+            ],
+            [
+                'en' => 'cultural',
+                'uz' => 'madaniy',
+                'ru' => 'культурный',
+            ],
+            [
+                'en' => 'scientific',
+                'uz' => 'ilmiy',
+                'ru' => 'научный'
+            ]
         ];
 
         foreach ($data as $tag) {
-            Tag::create($tag);
+            Tag::create([
+                'name' => json_encode($tag),
+            ]);
         }
     }
 }

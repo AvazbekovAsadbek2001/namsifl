@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('options', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->integer('lang_id')->unsigned()->nullable();
+            $table->foreign('lang_id')->references('id')->on('langs')->onDelete('cascade');
             $table->string('value');
             $table->timestamps();
         });
