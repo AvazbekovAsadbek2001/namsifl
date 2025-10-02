@@ -8,7 +8,7 @@
                 <li><a href="about.html">Institut haqida</a></li>
                 <li><a href="about.html">Institut tuzilmasi</a></li>
                 <li><a href="about.html">Institut rekvizitlari</a></li>
-                <li><a href="about.html">Rahbariyat</a></li>
+                <li><a href="{{ route('rectorate') }}">Rahbariyat</a></li>
                 <li><a href="about.html">Fakultitetlar</a></li>
                 <li><a href="about.html">Kafedralar</a></li>
                 <li><a href="about.html">Markaz va bo'limlar</a></li>

@@ -2,7 +2,9 @@
 @section('title')
     Namangan davlat chet tillari instituti
 @endsection
-@section('css') @endsection
+@section('css')
+
+@endsection
 @section('section')
     <section id="hero" class="hero section">
       <div class="hero-wrapper">
@@ -531,66 +533,56 @@
     </section>
     <!-- /Events Section -->
 
-      <!-- Alumni Section -->
-    <section id="alumni" class="alumni section">
+    <!-- Campus Facilities Section -->
+    <section id="campus-facilities" class="campus-facilities section">
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row get-involved-section">
-          <div class="col-12 text-center mb-4" data-aos="fade-up" data-aos-delay="200">
-            <h2>Davlat ramzlari</h3>
-          </div>
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-          <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
-            <div class="involvement-card">
-              <div class="involvement-icon">
-                <i class="bi bi-hand-thumbs-up"></i>
-              </div>
-              <h4>Mentor a Student</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed nec justo ac magna auctor, vel volutpat nisl mollis.</p>
-              <a href="#" class="btn btn-sm btn-outline-primary mt-2">Learn More</a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
-            <div class="involvement-card">
-              <div class="involvement-icon">
-                <i class="bi bi-award"></i>
-              </div>
-              <h4>Scholarship Fund</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed nec justo ac magna auctor, vel volutpat nisl mollis.</p>
-              <a href="#" class="btn btn-sm btn-outline-primary mt-2">Donate Now</a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
-            <div class="involvement-card">
-              <div class="involvement-icon">
-                <i class="bi bi-people"></i>
-              </div>
-              <h4>Alumni Association</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed nec justo ac magna auctor, vel volutpat nisl mollis.</p>
-              <a href="#" class="btn btn-sm btn-outline-primary mt-2">Join Today</a>
-            </div>
-          </div>
-
-          <div class="col-12 mt-4" data-aos="fade-up" data-aos-delay="600">
-            <div class="donation-banner">
-              <div class="row align-items-center">
-                <div class="col-lg-8 mb-3 mb-lg-0">
-                  <h3>Support the Future Generation</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Aenean sollicitudin, lorem quis bibendum auctor.</p>
+            <!-- Facilities Categories Grid -->
+            <div class="highlights-carousel">
+                <div class="section-header">
+                    <h2>Davlat ramzlari</h2>
+                    <p>Donec rutrum congue leo eget malesuada. Pellentesque habitant morbi tristique senectus et netus et malesuada fames.</p>
                 </div>
-                <div class="col-lg-4 text-lg-end">
-                  <a href="#" class="btn btn-primary btn-lg">Make a Donation</a>
-                </div>
-              </div>
             </div>
-          </div>
+            <div class="facilities-grid" data-aos="fade-up" data-aos-delay="200">
+
+                <div class="category-card academic" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="card-content mt-3">
+                        <div class="facility-image">
+                            <img src="{{ asset('assets/img/Symbols/bayroq.jpg') }}" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="card-header p-1">
+                        <h3>Davlat bayrog'i</h3>
+                    </div>
+                </div>
+
+                <div class="category-card academic" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="card-content mt-3">
+                        <div class="facility-image">
+                            <img src="{{ asset('assets/img/Symbols/madhiya.jpg') }}" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="card-header p-1">
+                        <h3>Davlat madhiyasi</h3>
+                    </div>
+                </div>
+
+                <div class="category-card academic" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="card-content mt-3">
+                        <div class="facility-image">
+                            <img src="{{ asset('assets/img/Symbols/gerb.jpg') }}" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="card-header p-1 mb-3">
+                        <h3>Davlat gerbi</h3>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
 
-    </section>
-    <!-- /Alumni Section -->
+    </section><!-- /Campus Facilities Section -->
 @endsection
 @section('script')
     <script>

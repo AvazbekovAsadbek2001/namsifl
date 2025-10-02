@@ -15,10 +15,9 @@
             </div>
                 <div class="col-md-auto">
                     <div class="dropdown">
-                        <button class="btn btn-sm btn-light dropdown-toggle" type="button" id="langDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="{{ asset(app()->getLocale() == 'uz' ? 'langs/uz.png' : 'langs/us.png') }}" width="20" class="me-1">
-                            {{ strtoupper(app()->getLocale()) }}
-                        </button>
+                        <a href="#" class="btn btn-sm dropdown-toggle text-white" type="button" id="langDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-globe"></i> {{ currentLang()->name }}
+                        </a>
                         <ul class="dropdown-menu" aria-labelledby="langDropdown">
                             @foreach(getLangs() as $item)
                                 <li>
