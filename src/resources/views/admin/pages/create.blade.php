@@ -15,12 +15,22 @@
         <div class="col-xl-12 col-lg-6">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Create Page</h4>
+                    <h4 class="card-title">Create Page <img src="{{ $lang->flag }}" width="20px" style="margin-left: 10px"></h4>
                 </div>
                 <div class="card-body">
                     <div class="basic-form">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <form action="{{ route('admin.pages.store') }}" method="post">
                             @csrf
+                            <input type="hidden" name="lang" value="{{ $lang->code }}">
                             <div class="mb-3">
                                 <label class="form-label">Title</label>
                                 <input type="text" name="title" class="form-control input-default" placeholder="Page title" required>
@@ -39,7 +49,7 @@
                             <div class="mb-3">
                                 <label class="form-label">Content</label>
                                 <textarea name="content" id="editor1" rows="10" cols="80" required>
-                                    This is my textarea with image upload capability.
+
                                 </textarea>
                             </div>
                             <div class="mb-3">

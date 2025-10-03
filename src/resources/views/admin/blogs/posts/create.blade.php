@@ -71,7 +71,7 @@
                                         <td width="30px">
                                             <input type="checkbox" name="categories[]" id="category-{{ $category->id }}" value="{{ $category->id }}">
                                         </td>
-                                        <td>{{ $category->name }}</td>
+                                        <td>{{json_decode($category->name)->en }}</td>
                                     </tr>
                                 @endforeach
                             </table>
@@ -92,7 +92,7 @@
                                     <td width="30px">
                                         <input type="checkbox" name="tags[]" id="tag-{{ $tag->id }}" value="{{ $tag->id }}">
                                     </td>
-                                    <td>{{ $tag->name }}</td>
+                                    <td>{{ json_decode($tag->name)->en }}</td>
                                 </tr>
                             @endforeach
                         </table>

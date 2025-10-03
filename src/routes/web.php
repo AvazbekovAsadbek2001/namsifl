@@ -18,3 +18,5 @@ Route::get('/', function () {
 });
 
 Route::get('/rectorate', [\App\Http\Controllers\IndexController::class, 'rectorate'])->name('rectorate');
+
+Route::get('/{any}', [\App\Http\Controllers\IndexController::class, 'showPage'])->name('showPage');
