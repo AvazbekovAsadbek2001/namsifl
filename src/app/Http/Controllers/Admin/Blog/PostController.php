@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Blog;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Lang;
 use App\Models\Post;
 use App\Models\PostTranslation;
 use App\Models\Tag;
@@ -36,6 +37,12 @@ class PostController extends Controller
                        'title' => $tag->name,
                    ];
                }),
+               'langs' =>  getLangs()->map(function ($lang) use ($post) {
+                   return [
+                       'img' => $lang->flag,
+                       'check' => $post->checklang($lang->code),
+                   ];
+               }),
                'editor' => $post->user->name,
                'status' => 'active'
            ];
@@ -43,11 +50,12 @@ class PostController extends Controller
         return view('admin.blogs.posts.index', compact('posts'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
         $categories = Category::all();
         $tags = Tag::all();
-        return view('admin.blogs.posts.create', compact('categories', 'tags'));
+        $lang = ($request->lang) ? Lang::where('code', $request->lang)->first() : Lang::where('code', 'en')->first();
+        return view('admin.blogs.posts.create', compact('categories', 'tags', 'lang'));
     }
 
     public function store(Request $request)
@@ -63,6 +71,7 @@ class PostController extends Controller
             'featured_image' => 'image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
             'images' => 'required|array',
             'images.*' => 'mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+            'lang' => 'string|exists:langs,code',
         ]);
 
         $image = $request->file('featured_image')->store('images/posts', 'public');
@@ -86,7 +95,7 @@ class PostController extends Controller
             'title' => $data['title'],
             'description' => $data['description'],
             'content' => $data['content'],
-            'lang_code' => 'en',
+            'lang_code' => $data['lang'],
         ]);
 
         return response()->json([

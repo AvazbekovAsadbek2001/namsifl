@@ -3,11 +3,33 @@
 namespace App\Http\Controllers;
 
 use App\Models\Page;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
 class IndexController extends Controller
 {
+    public function index(){
+        $lang = App::getLocale();
+        $news = Post::whereHas('categories', function ($query) {
+            $query->where('categories.id', 1);
+        })->whereHas('translations', function ($query) use ($lang) {
+            $query->where('lang_code', $lang);
+        })->with(['translations' => function ($query) use ($lang) {
+            $query->where('lang_code', $lang);
+        }])->limit(6)
+        ->get();
+
+        $announcement = Post::whereHas('categories', function ($query) {
+            $query->where('categories.id', 2);
+        })->whereHas('translations', function ($query) use ($lang) {
+            $query->where('lang_code', $lang);
+        })->with(['translations' => function ($query) use ($lang) {
+            $query->where('lang_code', $lang);
+        }])->limit(4)->get();
+
+        return view('welcome', compact('news', 'announcement'));
+    }
     public function rectorate(){
         return view('rectorate');
     }
@@ -20,5 +42,10 @@ class IndexController extends Controller
         } else {
             abort(404);
         }
+    }
+
+    public function showPost(Request $request){
+        Post::find($request->id);
+        return view('post', compact('request'));
     }
 }

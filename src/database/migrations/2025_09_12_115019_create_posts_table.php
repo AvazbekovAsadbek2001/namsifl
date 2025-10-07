@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('image');
-            $table->string('images');
+            $table->json('images');
 
             $table->integer('editor_id')->unsigned();
             $table->foreign('editor_id')->references('id')->on('users');

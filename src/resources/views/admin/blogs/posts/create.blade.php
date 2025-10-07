@@ -35,6 +35,7 @@
             </div>
             <div class="card-body">
                 <div class="basic-form">
+                    <input type="hidden" name="lang" value="{{ $lang->code }}" }}>
                     <div class="mb-3">
                         <label class="form-label">Title</label>
                         <input type="text" name="title" class="form-control input-default" placeholder="Post title" required>

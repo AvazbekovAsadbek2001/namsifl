@@ -30,6 +30,15 @@ class Post extends Model
     }
 
     public function translation($lang_code){
-        $this->hasOne(PostTranslation::class,'lang_code',$lang_code);
+        return PostTranslation::where('lang_code', $lang_code)
+            ->where('post_id', $this->id)
+            ->first();
+    }
+
+    public function checklang($lang_code){
+        if (PostTranslation::where('post_id', $this->id)->where('lang_code', $lang_code)->first()){
+            return true;
+        }
+        return false;
     }
 }

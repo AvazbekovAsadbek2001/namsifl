@@ -176,125 +176,45 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Recent News</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <h2>E'lonlar </h2>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row gy-4">
 
-          <div class="col-xl-6" data-aos="fade-up" data-aos-delay="100">
-            <article class="post-item d-flex">
-              <div class="post-img">
-                <img src="assets/img/blog/blog-post-1.webp" alt="" class="img-fluid" loading="lazy">
-              </div>
+          @foreach($announcement as $item)
+                <div class="col-xl-6" data-aos="fade-up" data-aos-delay="100">
+                    <article class="post-item d-flex">
+                        <div class="post-img">
+                            <img src="{{ asset('storage/'.$item->image) }}" alt="" class="img-fluid" loading="lazy">
+                        </div>
 
-              <div class="post-content flex-grow-1">
-                <a href="#" class="category">Design</a>
+                        <div class="post-content flex-grow-1">
+                            @foreach($item->tags as $tag)
+                                <a href="#" class="category">{{ json_decode($tag->name,true)[App::getLocale()] }}</a>
+                            @endforeach
 
-                <h2 class="post-title">
-                  <a href="#">Sed ut perspiciatis unde omnis</a>
-                </h2>
+                            <div style="min-height: 130px">
+                                <h2 class="post-title">
+                                    <a href="#">{{ $item->translation(App::getLocale())->title }}</a>
+                                </h2>
 
-                <p class="post-description">
-                  Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.
-                </p>
-
-                <div class="post-meta">
-                  <div class="post-author">
-                    <img src="assets/img/person/person-f-12.webp" alt="" class="img-fluid">
-                    <span class="author-name">Lina Chen</span>
-                  </div>
-                  <span class="post-date">Mar 15, 2025</span>
+                                <p class="post-description">
+                                    {{ $item->translation(App::getLocale())->description }}
+                                </p>
+                            </div>
+                            <div class="post-meta">
+                                <div class="post-author">
+                                    <img src="assets/img/person/person-f-12.webp" alt="" class="img-fluid">
+                                    <span class="author-name">{{ $item->user->name }}</span>
+                                </div>
+                                <span class="post-date">{{ \Carbon\Carbon::parse($item->created_at)->format('M d, Y') }}</span>
+                            </div>
+                        </div>
+                    </article>
                 </div>
-              </div>
-            </article>
-          </div><!-- End post item -->
-
-          <div class="col-xl-6" data-aos="fade-up" data-aos-delay="200">
-            <article class="post-item d-flex">
-              <div class="post-img">
-                <img src="assets/img/blog/blog-post-2.webp" alt="" class="img-fluid" loading="lazy">
-              </div>
-
-              <div class="post-content flex-grow-1">
-                <a href="#" class="category">Product</a>
-
-                <h2 class="post-title">
-                  <a href="#">At vero eos et accusamus</a>
-                </h2>
-
-                <p class="post-description">
-                  Et harum quidem rerum facilis est et expedita distinctio nam libero tempore, cum soluta nobis est eligendi.
-                </p>
-
-                <div class="post-meta">
-                  <div class="post-author">
-                    <img src="assets/img/person/person-f-13.webp" alt="" class="img-fluid">
-                    <span class="author-name">Sofia Rodriguez</span>
-                  </div>
-                  <span class="post-date">Apr 22, 2025</span>
-                </div>
-              </div>
-            </article>
-          </div><!-- End post item -->
-
-          <div class="col-xl-6" data-aos="fade-up" data-aos-delay="300">
-            <article class="post-item d-flex">
-              <div class="post-img">
-                <img src="assets/img/blog/blog-post-3.webp" alt="" class="img-fluid" loading="lazy">
-              </div>
-
-              <div class="post-content flex-grow-1">
-                <a href="#" class="category">Software Engineering</a>
-
-                <h2 class="post-title">
-                  <a href="#">Temporibus autem quibusdam</a>
-                </h2>
-
-                <p class="post-description">
-                  Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur.
-                </p>
-
-                <div class="post-meta">
-                  <div class="post-author">
-                    <img src="assets/img/person/person-m-10.webp" alt="" class="img-fluid">
-                    <span class="author-name">Lucas Thompson</span>
-                  </div>
-                  <span class="post-date">May 8, 2025</span>
-                </div>
-              </div>
-            </article>
-          </div><!-- End post item -->
-
-          <div class="col-xl-6" data-aos="fade-up" data-aos-delay="400">
-            <article class="post-item d-flex">
-              <div class="post-img">
-                <img src="assets/img/blog/blog-post-4.webp" alt="" class="img-fluid" loading="lazy">
-              </div>
-
-              <div class="post-content flex-grow-1">
-                <a href="#" class="category">Creative</a>
-
-                <h2 class="post-title">
-                  <a href="#">Nam libero tempore soluta</a>
-                </h2>
-
-                <p class="post-description">
-                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-
-                <div class="post-meta">
-                  <div class="post-author">
-                    <img src="assets/img/person/person-f-14.webp" alt="" class="img-fluid">
-                    <span class="author-name">Emma Patel</span>
-                  </div>
-                  <span class="post-date">Jun 30, 2025</span>
-                </div>
-              </div>
-            </article>
-          </div><!-- End post item -->
+          @endforeach
 
         </div>
 
@@ -306,228 +226,41 @@
     <section id="events" class="events section">
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Events</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <h2>So'ngi yangililar</h2>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row g-4">
-          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
-            <div class="event-item">
-              <div class="event-image">
-                <img src="assets/img/education/events-3.webp" alt="Workshop" class="img-fluid">
-                <div class="event-date-overlay">
-                  <span class="date">MAR<br>18</span>
+            @foreach($news as $item)
+                <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="event-item">
+                        <div class="event-image">
+                            <img src="{{ asset('storage/'.$item->image) }}" alt="Workshop" class="img-fluid">
+                            <div class="event-date-overlay">
+                                <span class="date">{{  \Carbon\Carbon::parse($item->created_at)->format('M d') }}</span>
+                            </div>
+                        </div>
+                        <div class="event-details">
+                            <div class="event-category">
+                                @foreach($item->tags as $tag)
+                                    <span class="badge academic">{{ json_decode($tag->name,true)[App::getLocale()] }}</span>
+                                @endforeach
+                                <span class="event-time">{{ \Carbon\Carbon::parse($item->created_at)->format('g:i A') }}</span>
+                            </div>
+                            <h3>{{ $item->translation(App::getLocale())->title }}</h3>
+                            <p>{{ $item->translation(App::getLocale())->description }}
+                            <div class="event-footer">
+                                <a href="#" class="register-btn">Batafsil</a>
+                                <div class="event-share">
+                                    <i class="bi bi-share"></i>
+                                    <i class="bi bi-heart"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="event-details">
-                <div class="event-category">
-                  <span class="badge academic">Academic</span>
-                  <span class="event-time">2:00 PM</span>
-                </div>
-                <h3>Advanced Mathematics Workshop</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <div class="event-info">
-                  <div class="info-row">
-                    <i class="bi bi-geo-alt"></i>
-                    <span>Room 205, Science Building</span>
-                  </div>
-                  <div class="info-row">
-                    <i class="bi bi-people"></i>
-                    <span>25 Participants</span>
-                  </div>
-                </div>
-                <div class="event-footer">
-                  <a href="#" class="register-btn">Register Now</a>
-                  <div class="event-share">
-                    <i class="bi bi-share"></i>
-                    <i class="bi bi-heart"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
-            <div class="event-item">
-              <div class="event-image">
-                <img src="assets/img/education/events-5.webp" alt="Tournament" class="img-fluid">
-                <div class="event-date-overlay">
-                  <span class="date">APR<br>05</span>
-                </div>
-              </div>
-              <div class="event-details">
-                <div class="event-category">
-                  <span class="badge sports">Sports</span>
-                  <span class="event-time">9:00 AM</span>
-                </div>
-                <h3>Inter-School Basketball Championship</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed eiusmod tempor incididunt ut labore et dolore magna.</p>
-                <div class="event-info">
-                  <div class="info-row">
-                    <i class="bi bi-geo-alt"></i>
-                    <span>Sports Complex Gym</span>
-                  </div>
-                  <div class="info-row">
-                    <i class="bi bi-people"></i>
-                    <span>8 Teams</span>
-                  </div>
-                </div>
-                <div class="event-footer">
-                  <a href="#" class="register-btn">Register Now</a>
-                  <div class="event-share">
-                    <i class="bi bi-share"></i>
-                    <i class="bi bi-heart"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="400">
-            <div class="event-item">
-              <div class="event-image">
-                <img src="assets/img/education/events-7.webp" alt="Art Exhibition" class="img-fluid">
-                <div class="event-date-overlay">
-                  <span class="date">APR<br>12</span>
-                </div>
-              </div>
-              <div class="event-details">
-                <div class="event-category">
-                  <span class="badge arts">Arts</span>
-                  <span class="event-time">6:00 PM</span>
-                </div>
-                <h3>Student Art Exhibition Opening</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                <div class="event-info">
-                  <div class="info-row">
-                    <i class="bi bi-geo-alt"></i>
-                    <span>Art Gallery, First Floor</span>
-                  </div>
-                  <div class="info-row">
-                    <i class="bi bi-people"></i>
-                    <span>Open to All</span>
-                  </div>
-                </div>
-                <div class="event-footer">
-                  <a href="#" class="register-btn">Register Now</a>
-                  <div class="event-share">
-                    <i class="bi bi-share"></i>
-                    <i class="bi bi-heart"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
-            <div class="event-item">
-              <div class="event-image">
-                <img src="assets/img/education/events-2.webp" alt="Science Fair" class="img-fluid">
-                <div class="event-date-overlay">
-                  <span class="date">MAY<br>03</span>
-                </div>
-              </div>
-              <div class="event-details">
-                <div class="event-category">
-                  <span class="badge academic">Academic</span>
-                  <span class="event-time">10:00 AM</span>
-                </div>
-                <h3>Annual Science Fair Competition</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <div class="event-info">
-                  <div class="info-row">
-                    <i class="bi bi-geo-alt"></i>
-                    <span>Main Auditorium Hall</span>
-                  </div>
-                  <div class="info-row">
-                    <i class="bi bi-people"></i>
-                    <span>45 Projects</span>
-                  </div>
-                </div>
-                <div class="event-footer">
-                  <a href="#" class="register-btn">Register Now</a>
-                  <div class="event-share">
-                    <i class="bi bi-share"></i>
-                    <i class="bi bi-heart"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
-            <div class="event-item">
-              <div class="event-image">
-                <img src="assets/img/education/events-8.webp" alt="Community Event" class="img-fluid">
-                <div class="event-date-overlay">
-                  <span class="date">MAY<br>15</span>
-                </div>
-              </div>
-              <div class="event-details">
-                <div class="event-category">
-                  <span class="badge community">Community</span>
-                  <span class="event-time">3:00 PM</span>
-                </div>
-                <h3>Family Fun Day Celebration</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                <div class="event-info">
-                  <div class="info-row">
-                    <i class="bi bi-geo-alt"></i>
-                    <span>School Playground Area</span>
-                  </div>
-                  <div class="info-row">
-                    <i class="bi bi-people"></i>
-                    <span>All Families</span>
-                  </div>
-                </div>
-                <div class="event-footer">
-                  <a href="#" class="register-btn">Register Now</a>
-                  <div class="event-share">
-                    <i class="bi bi-share"></i>
-                    <i class="bi bi-heart"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="400">
-            <div class="event-item">
-              <div class="event-image">
-                <img src="assets/img/education/events-6.webp" alt="Music Concert" class="img-fluid">
-                <div class="event-date-overlay">
-                  <span class="date">JUN<br>02</span>
-                </div>
-              </div>
-              <div class="event-details">
-                <div class="event-category">
-                  <span class="badge arts">Arts</span>
-                  <span class="event-time">7:30 PM</span>
-                </div>
-                <h3>Summer Music Concert Finale</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                <div class="event-info">
-                  <div class="info-row">
-                    <i class="bi bi-geo-alt"></i>
-                    <span>Music Hall Theater</span>
-                  </div>
-                  <div class="info-row">
-                    <i class="bi bi-people"></i>
-                    <span>300 Seats</span>
-                  </div>
-                </div>
-                <div class="event-footer">
-                  <a href="#" class="register-btn">Register Now</a>
-                  <div class="event-share">
-                    <i class="bi bi-share"></i>
-                    <i class="bi bi-heart"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+            @endforeach
         </div>
       </div>
     </section>

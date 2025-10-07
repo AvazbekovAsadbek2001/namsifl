@@ -28,6 +28,7 @@
                                     <th style="width: 30%"><strong>Title</strong></th>
                                     <th><strong>Image</strong></th>
                                     <th><strong>Categories</strong></th>
+                                    <th><strong>Tags</strong></th>
                                     <th><strong>Editor</strong></th>
                                     <th><strong>Status</strong></th>
                                     <th><strong>Langs</strong></th>
@@ -65,6 +66,24 @@
                                             </td>
                                             <td>
                                                 {{ $post['status'] }}
+                                            </td>
+                                            <td>
+                                            <td>
+                                                <ul>
+                                                    @foreach($post['langs'] as $lang)
+                                                        <li>
+                                                            <img src="{{ $lang['img'] }}" width="20px">
+                                                            @if ($lang['check'])
+                                                                <svg class="me-1" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M15 4.5L6.75 12.75L3 9" stroke="#3AC977" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                </svg>
+                                                            @else
+                                                                <i class="fa-solid fa-xmark text-danger"></i>
+                                                            @endif
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            </td>
                                             </td>
                                             <td>
                                                 <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa fa-pencil"></i></a>
