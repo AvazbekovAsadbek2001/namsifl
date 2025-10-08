@@ -6,6 +6,7 @@ use App\Models\Page;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
 
 class IndexController extends Controller
 {
@@ -30,9 +31,11 @@ class IndexController extends Controller
 
         return view('welcome', compact('news', 'announcement'));
     }
+
     public function rectorate(){
         return view('rectorate');
     }
+
 
     public function showPage(Request $request){
         $page = Page::where('url', $request->any)->first();
@@ -44,8 +47,24 @@ class IndexController extends Controller
         }
     }
 
+
     public function showPost(Request $request){
-        Post::find($request->id);
-        return view('post', compact('request'));
+        $post = Post::find($request->id);
+        return view('post', compact('post'));
+    }
+
+    public function changeLanguage(Request $request){
+
+        $locale = $request->input('locale');
+
+        if (in_array($locale, ['uz', 'en', 'ru'])) {
+            App::setLocale($locale);
+            Session::put('locale', $locale);
+        } else {
+            App::setLocale(config('app.fallback_locale'));
+            Session::put('locale', config('app.fallback_locale'));
+        }
+
+        return redirect()->back();
     }
 }

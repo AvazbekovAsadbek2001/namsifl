@@ -14,8 +14,8 @@
               <h1>Is'hoqxon Ibrat nomidagi Namangan davlat chet tillari instituti</h1>
 
               <div class="action-buttons">
-                <a href="#" class="btn-primary">Aloqa markazi</a>
-                <a href="#" class="btn-secondary">Virtual sayohat</a>
+                    <a href="#" class="btn-primary"> @lang('welcome.call_center')</a>
+                <a href="#" class="btn-secondary"> @lang('welcome.virtual_travel') </a>
               </div>
             </div>
             <div class="col-lg-6 hero-media" data-aos="zoom-in" data-aos-delay="200">
@@ -23,7 +23,7 @@
               <div class="image-overlay">
                 <div class="badge-accredited">
                   <i class="bi bi-patch-check-fill"></i>
-                  <span>Asosiy bino</span>
+                  <span> @lang('welcome.main_building') </span>
                 </div>
               </div>
             </div>
@@ -40,8 +40,8 @@
                   <i class="bi bi-book-fill"></i>
                 </div>
                 <div class="feature-content">
-                  <h3>Hemis OTM</h3>
-                  <p>O'qituvch va hodimlar uchun</p>
+                  <h3> @lang('welcome.hemis_otm') </h3>
+                  <p> @lang('welcome.hemis_otm_desc') </p>
                 </div>
               </div>
             </div>
@@ -52,8 +52,8 @@
                   <i class="bi bi-laptop-fill"></i>
                 </div>
                 <div class="feature-content">
-                  <h3>Talaba Hemis</h3>
-                  <p>Institut talabalari uchun </p>
+                  <h3> @lang('welcome.hemis_student') </h3>
+                  <p> @lang('welcome.hemis_student_desc') </p>
                 </div>
               </div>
             </div>
@@ -64,8 +64,8 @@
                   <i class="bi bi-people-fill"></i>
                 </div>
                 <div class="feature-content">
-                  <h3>Unilibrary</h3>
-                  <p>Elektron kutubxona tizimi</p>
+                  <h3> @lang('welcome.unilibrary') </h3>
+                  <p> @lang('welcome.unilibrary_desc')</p>
                 </div>
               </div>
             </div>
@@ -77,7 +77,7 @@
         <div class="container">
           <div class="event-content">
             <div class="event-info">
-              <h3>Institut hayotini ijtimoiy tarmoqlar orqali kuzating? </h3>
+              <h3> @lang('welcome.upcoming-event-title') </h3>
             </div>
             <div class="event-action" style="margin-right: 20px">
               <a href="http://www.youtube.com/@NamSIFL" class="btn-event"><i class="bi bi-youtube"></i></a>
@@ -101,12 +101,9 @@
         <div class="row align-items-center g-5">
           <div class="col-lg-6">
             <div class="about-content" data-aos="fade-up" data-aos-delay="200">
-              <h2>Institut tashkil etilishi</h2>
-              <p>Ma’rifatparvar olim, sharq va g‘arb tillarining bilimdoni Is’hoqxon Ibratning yorqin xotirasi hamda nomini abadiylashtirish, Namangan viloyatida xorijiy tillarni mukammal egallagan, chuqur bilimga ega bo‘lgan raqobatbardosh kadrlarni tayyorlash maqsadida, shuningdek, 2022 — 2026-yillarga mo‘ljallangan Yangi O‘zbekistonning taraqqiyot strategiyasini “Inson qadrini ulug‘lash va faol mahalla yili”da amalga oshirishga oid Davlat dasturiga muvofiq:<br>
-
-                  Oliy va o‘rta maxsus ta’lim vazirligi, Xorijiy tillarni o‘rganishni ommalashtirish agentligi, Prezident ta’lim muassasalari agentligi hamda Namangan viloyati hokimligining Namangan shahrida Is’hoqxon Ibrat nomidagi Namangan davlat chet tillari institutini (keyingi o‘rinlarda — Institut) tashkil etish to‘g‘risidagi taklifi ma’qullansin.<br>
-                  Belgilansinki, Institut yuridik shaxs maqomiga ega bo‘lgan davlat oliy ta’lim muassasasi hisoblanadi hamda Oliy va o‘rta maxsus ta’lim vazirligi tizimida faoliyat yuritadi.</p>
-                <a href="#" class="service-link">Ko'proq  <i class="bi bi-arrow-right"></i></a>
+              <h2> @lang('welcome.about-title') </h2>
+              <p> @lang('welcome.about-desc')</p>
+                <a href="#" class="service-link">@lang('welcome.more') <i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
 
@@ -120,7 +117,9 @@
         <div class="row mt-5">
           <div class="col-lg-12">
             <div class="core-values" data-aos="fade-up" data-aos-delay="500">
-              <h3 class="text-center mb-4">Interaktiv xizmatlar</h3>
+              <div class="container section-title" data-aos="fade-up">
+                <h2> @lang('welcome.interactive_services') </h2>
+              </div>
               <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
                 <div class="col">
                   <div class="value-card">
@@ -176,43 +175,44 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>E'lonlar </h2>
-      </div><!-- End Section Title -->
+        <h2>@lang('welcome.announcements')</h2>
+      </div>
+        <!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row gy-4">
 
           @foreach($announcement as $item)
-                <div class="col-xl-6" data-aos="fade-up" data-aos-delay="100">
+                <div onclick="location.href='{{ route('showPost', ['id' => $item->id]) }}'" class="col-xl-6 cursor-pointer" data-aos="fade-up" data-aos-delay="100">
                     <article class="post-item d-flex">
-                        <div class="post-img">
-                            <img src="{{ asset('storage/'.$item->image) }}" alt="" class="img-fluid" loading="lazy">
-                        </div>
-
-                        <div class="post-content flex-grow-1">
-                            @foreach($item->tags as $tag)
-                                <a href="#" class="category">{{ json_decode($tag->name,true)[App::getLocale()] }}</a>
-                            @endforeach
-
-                            <div style="min-height: 130px">
-                                <h2 class="post-title">
-                                    <a href="#">{{ $item->translation(App::getLocale())->title }}</a>
-                                </h2>
-
-                                <p class="post-description">
-                                    {{ $item->translation(App::getLocale())->description }}
-                                </p>
+                            <div class="post-img">
+                                <img src="{{ asset('storage/'.$item->image) }}" alt="" class="img-fluid" loading="lazy">
                             </div>
-                            <div class="post-meta">
-                                <div class="post-author">
-                                    <img src="assets/img/person/person-f-12.webp" alt="" class="img-fluid">
-                                    <span class="author-name">{{ $item->user->name }}</span>
+
+                            <div class="post-content flex-grow-1">
+                                @foreach($item->tags as $tag)
+                                    <a href="#" class="category">{{ json_decode($tag->name,true)[App::getLocale()] }}</a>
+                                @endforeach
+
+                                <div style="min-height: 130px">
+                                    <h2 class="post-title">
+                                        <a href="#">{{ $item->translation(App::getLocale())->title }}</a>
+                                    </h2>
+
+                                    <p class="post-description">
+                                        {{ $item->translation(App::getLocale())->description }}
+                                    </p>
                                 </div>
-                                <span class="post-date">{{ \Carbon\Carbon::parse($item->created_at)->format('M d, Y') }}</span>
+                                <div class="post-meta">
+                                    <div class="post-author">
+                                        <img src="assets/img/person/person-f-12.webp" alt="" class="img-fluid">
+                                        <span class="author-name">{{ $item->user->name }}</span>
+                                    </div>
+                                    <span class="post-date">{{ \Carbon\Carbon::parse($item->created_at)->format('M d, Y') }}</span>
+                                </div>
                             </div>
-                        </div>
-                    </article>
+                        </article>
                 </div>
           @endforeach
 
@@ -226,14 +226,14 @@
     <section id="events" class="events section">
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>So'ngi yangililar</h2>
+        <h2>@lang('welcome.news')</h2>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row g-4">
             @foreach($news as $item)
-                <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200" >
                     <div class="event-item">
                         <div class="event-image">
                             <img src="{{ asset('storage/'.$item->image) }}" alt="Workshop" class="img-fluid">
@@ -251,7 +251,7 @@
                             <h3>{{ $item->translation(App::getLocale())->title }}</h3>
                             <p>{{ $item->translation(App::getLocale())->description }}
                             <div class="event-footer">
-                                <a href="#" class="register-btn">Batafsil</a>
+                                <a href="{{ route('showPost', ['id' => $item->id]) }}" class="register-btn">Batafsil</a>
                                 <div class="event-share">
                                     <i class="bi bi-share"></i>
                                     <i class="bi bi-heart"></i>
@@ -274,7 +274,7 @@
             <!-- Facilities Categories Grid -->
             <div class="highlights-carousel">
                 <div class="section-header">
-                    <h2>Davlat ramzlari</h2>
+                    <h2>@lang('welcome.symbols')</h2>
                     <p>Donec rutrum congue leo eget malesuada. Pellentesque habitant morbi tristique senectus et netus et malesuada fames.</p>
                 </div>
             </div>
@@ -287,7 +287,7 @@
                         </div>
                     </div>
                     <div class="card-header p-1">
-                        <h3>Davlat bayrog'i</h3>
+                        <h3>@lang('welcome.flag')</h3>
                     </div>
                 </div>
 
@@ -298,7 +298,7 @@
                         </div>
                     </div>
                     <div class="card-header p-1">
-                        <h3>Davlat madhiyasi</h3>
+                        <h3>@lang('welcome.anthem')</h3>
                     </div>
                 </div>
 
@@ -309,13 +309,14 @@
                         </div>
                     </div>
                     <div class="card-header p-1 mb-3">
-                        <h3>Davlat gerbi</h3>
+                        <h3>@lang('welcome.emblem')</h3>
                     </div>
                 </div>
             </div>
         </div>
 
-    </section><!-- /Campus Facilities Section -->
+    </section>
+    <!-- /Campus Facilities Section -->
 @endsection
 @section('script')
     <script>

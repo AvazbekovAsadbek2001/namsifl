@@ -13,9 +13,9 @@ class LangSeeder extends Seeder
     public function run(): void
     {
         $data = [
-            ['name' => 'Uzbek', 'code' => 'uz','flag' => asset('langs/uz.png')],
-            ['name' => 'Russian', 'code' => 'ru','flag' => asset('langs/ru.png')],
-            ['name' => 'English', 'code' => 'en','flag' => asset('langs/us.png')]
+            ['name' => 'Uzbek', 'code' => 'uz','flag' => 'langs/uz.png'],
+            ['name' => 'Russian', 'code' => 'ru','flag' => 'langs/ru.png'],
+            ['name' => 'English', 'code' => 'en','flag' => 'langs/us.png']
         ];
 
         foreach ($data as $item) {
