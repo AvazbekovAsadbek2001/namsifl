@@ -17,8 +17,8 @@ Route::get('/', [\App\Http\Controllers\IndexController::class, 'index']);
 
 Route::get('/rectorate', [\App\Http\Controllers\IndexController::class, 'rectorate'])->name('rectorate');
 
-Route::get('/{any}', [\App\Http\Controllers\IndexController::class, 'showPage'])->name('showPage');
-
 Route::get('/post/{id}', [\App\Http\Controllers\IndexController::class, 'showPost'])->name('showPost');
 
 Route::get('/language/change', [\App\Http\Controllers\IndexController::class, 'changeLanguage'])->name('changeLanguage');
+
+Route::get('contact', [\App\Http\Controllers\IndexController::class, 'contact'])->name('contact');

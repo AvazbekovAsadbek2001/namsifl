@@ -36,7 +36,6 @@ class IndexController extends Controller
         return view('rectorate');
     }
 
-
     public function showPage(Request $request){
         $page = Page::where('url', $request->any)->first();
         if ($page){
@@ -66,5 +65,9 @@ class IndexController extends Controller
         }
 
         return redirect()->back();
+    }
+
+    public function contact(){
+        return view('contact');
     }
 }
