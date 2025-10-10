@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'otm_name' => 'Namangan State Institute of Foreign Languages',
     'call_center' => 'Cell center',
     'virtual_travel' => 'Virtual travel',
     'main_building' => 'Main building',

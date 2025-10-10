@@ -11,7 +11,7 @@
         <div class="container">
           <div class="row align-items-center">
             <div class="col-lg-6 hero-content" data-aos="fade-right" data-aos-delay="100">
-              <h1>Is'hoqxon Ibrat nomidagi Namangan davlat chet tillari instituti</h1>
+              <h1> @lang('welcome.otm_name')</h1>
 
               <div class="action-buttons">
                     <a href="#" class="btn-primary"> @lang('welcome.call_center')</a>
@@ -275,7 +275,6 @@
             <div class="highlights-carousel">
                 <div class="section-header">
                     <h2>@lang('welcome.symbols')</h2>
-                    <p>Donec rutrum congue leo eget malesuada. Pellentesque habitant morbi tristique senectus et netus et malesuada fames.</p>
                 </div>
             </div>
             <div class="facilities-grid" data-aos="fade-up" data-aos-delay="200">

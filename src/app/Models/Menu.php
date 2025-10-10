@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Menu extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['title', 'url', 'parent_id', 'order'];
+    protected $casts = ['title' => 'array'];
+
+    public function children()
+    {
+        return $this->hasMany(Menu::class, 'parent_id')->with('children')->orderBy('order');
+    }
 }

@@ -2,79 +2,62 @@
 
     <div class="container footer-top">
         <div class="row gy-4">
-            <div class="col-lg-4 col-md-6 footer-about">
-                <a href="index.html" class="logo d-flex align-items-center">
-                    <span class="sitename">College</span>
+
+            <!-- 1. Institut logosi va ijtimoiy tarmoqlar -->
+            <div class="col-lg-3">
+                <a href="/" class="logo d-flex align-items-center">
+                    <img src="https://old.namsifl.uz/images/logo/logo1.png" alt="Logo" width="100" height="100">
                 </a>
                 <div class="footer-contact pt-3">
-                    <p>A108 Adam Street</p>
-                    <p>New York, NY 535022</p>
-                    <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-                    <p><strong>Email:</strong> <span>info@example.com</span></p>
+                    <p>@lang('loyout.note')</p>
                 </div>
                 <div class="social-links d-flex mt-4">
-                    <a href=""><i class="bi bi-twitter-x"></i></a>
-                    <a href=""><i class="bi bi-facebook"></i></a>
-                    <a href=""><i class="bi bi-instagram"></i></a>
-                    <a href=""><i class="bi bi-linkedin"></i></a>
+                    <a href="https://t.me/ibratnamdchti" title="Telegram"><i class="bi bi-telegram"></i></a>
+                    <a href="https://www.facebook.com/NSIFL?mibextid=ZbWKwL" title="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="https://www.instagram.com/namsifl.uz/" title="Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="http://www.youtube.com/@NamSIFL" title="YouTube"><i class="bi bi-youtube"></i></a>
+                    <a href="https://t.me/murojaatrektorgabot" title="Bot"><i class="bi bi-robot"></i></a>
                 </div>
             </div>
 
-            <div class="col-lg-2 col-md-3 footer-links">
-                <h4>Useful Links</h4>
+            <!-- 2. Axborot xizmatlari -->
+            <div class="col-lg-3">
+                <h4>@lang('loyout.info_services')</h4>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Terms of service</a></li>
-                    <li><a href="#">Privacy policy</a></li>
+                    <li class="mb-2"><a href="https://hemis.namsifl.uz" target="_blank">@lang('loyout.links.hemis')</a></li>
+                    <li class="mb-2"><a href="https://mt.namdchti.uz" target="_blank">@lang('loyout.links.moodle')</a></li>
+                    <li class="mb-2"><a href="https://e-library.namsifl.uz" target="_blank">@lang('loyout.links.library')</a></li>
+                    <li class="mb-2"><a href="https://edu.uz" target="_blank">@lang('loyout.links.edu')</a></li>
+                    <li class="mb-2"><a href="https://dtm.uz" target="_blank">@lang('loyout.links.dtm')</a></li>
                 </ul>
             </div>
 
-            <div class="col-lg-2 col-md-3 footer-links">
-                <h4>Our Services</h4>
-                <ul>
-                    <li><a href="#">Web Design</a></li>
-                    <li><a href="#">Web Development</a></li>
-                    <li><a href="#">Product Management</a></li>
-                    <li><a href="#">Marketing</a></li>
-                    <li><a href="#">Graphic Design</a></li>
-                </ul>
+            <!-- 3. Manzil -->
+            <div class="col-lg-3">
+                <h4>@lang('loyout.contact_title')</h4>
+                <p class="mt-3"><strong>@lang('loyout.address'):</strong> @lang('loyout.address')</p>
+                <p><strong>@lang('loyout.phone'):</strong> <a href="tel:+998694421167">+998 (69) 442-11-67</a></p>
+                <p><strong>@lang('loyout.email'):</strong> <a href="mailto:info@namsifl.uz">info@namsifl.uz</a></p>
             </div>
 
-            <div class="col-lg-2 col-md-3 footer-links">
-                <h4>Hic solutasetp</h4>
-                <ul>
-                    <li><a href="#">Molestiae accusamus iure</a></li>
-                    <li><a href="#">Excepturi dignissimos</a></li>
-                    <li><a href="#">Suscipit distinctio</a></li>
-                    <li><a href="#">Dilecta</a></li>
-                    <li><a href="#">Sit quas consectetur</a></li>
-                </ul>
-            </div>
-
-            <div class="col-lg-2 col-md-3 footer-links">
-                <h4>Nobis illum</h4>
-                <ul>
-                    <li><a href="#">Ipsam</a></li>
-                    <li><a href="#">Laudantium dolorum</a></li>
-                    <li><a href="#">Dinera</a></li>
-                    <li><a href="#">Trodelas</a></li>
-                    <li><a href="#">Flexo</a></li>
-                </ul>
+            <!-- 4. Xarita -->
+            <div class="col-lg-3">
+                <h4>@lang('loyout.address_title')</h4>
+                <div class="footer-block-contant">
+                    <iframe style="border-radius: 15px; border:0; width:100%; height:190px;"
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1821.013137245764!2d71.509231!3d41.006738000000006!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x15fb92619a203113!2sNamangan%20State%20Institute%20of%20Foreign%20Languages!5e1!3m2!1suz!2sus!4v1670705393104!5m2!1suz!2sus"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
             </div>
 
         </div>
     </div>
 
     <div class="container copyright text-center mt-4">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">MyWebsite</strong> <span>All Rights Reserved</span></p>
+        <p><strong class="px-1 sitename">@lang('loyout.institute_name')</strong> <span>@lang('loyout.copyright')</span></p>
         <div class="credits">
-            <!-- All the links in the footer should remain intact. -->
-            <!-- You can delete the links only if you've purchased the pro version. -->
-            <!-- Licensing information: https://bootstrapmade.com/license/ -->
-            <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            @lang('loyout.developed_by')
         </div>
     </div>
 

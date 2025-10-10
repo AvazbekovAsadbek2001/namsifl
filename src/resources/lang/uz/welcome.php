@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'otm_name' => 'Is‘hoqxon Ibrat nomidagi Namangan davlat chet tillari instituti',
     'call_center' => 'Coll markazi',
     'virtual_travel' => 'Virtual sayohat',
     'main_building' => 'Asosiy bino',
