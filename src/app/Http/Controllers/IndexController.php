@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Page;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -46,7 +47,6 @@ class IndexController extends Controller
         }
     }
 
-
     public function showPost(Request $request){
         $post = Post::find($request->id);
         return view('post', compact('post'));
@@ -69,5 +69,21 @@ class IndexController extends Controller
 
     public function contact(){
         return view('contact');
+    }
+
+    public function post_category(Request $request){
+        $lang = App::getLocale();
+        $name = Category::find($request->id)->name;
+        $id = $request->id;
+
+        $posts = Post::whereHas('categories', function ($query) use ( $id ) {
+            $query->where('categories.id', $id);    
+        })->whereHas('translations', function ($query) use ($lang) {
+            $query->where('lang_code', $lang);
+        })->with(['translations' => function ($query) use ($lang) {
+            $query->where('lang_code', $lang);
+        }])->paginate(6);
+
+        return view('news', compact('posts', 'name'));
     }
 }

@@ -1,0 +1,47 @@
+INSERT INTO `menus` (`id`, `title`, `url`, `parent_id`, `order`, `created_at`, `updated_at`) VALUES
+(1, '{"uz":"Institut tuzilmasi","en":"Institute Structure","ru":"Структура института"}', '#', NULL, 1, NOW(), NOW()),
+(2, '{"uz":"Institut haqida","en":"About Institute","ru":"Об институте"}', 'about.html', 1, 1, NOW(), NOW()),
+(3, '{"uz":"Institut tuzilmasi","en":"Institute Structure","ru":"Структура института"}', 'about.html', 1, 2, NOW(), NOW()),
+(4, '{"uz":"Institut rekvizitlari","en":"Institute Requisites","ru":"Реквизиты института"}', 'about.html', 1, 3, NOW(), NOW()),
+(5, '{"uz":"Rahbariyat","en":"Rectorate","ru":"Руководство"}', '/rectorate', 1, 4, NOW(), NOW()),
+(6, '{"uz":"Fakultitetlar","en":"Faculties","ru":"Факультеты"}', 'about.html', 1, 5, NOW(), NOW()),
+(7, '{"uz":"Kafedralar","en":"Departments","ru":"Кафедры"}', 'about.html', 1, 6, NOW(), NOW()),
+(8, '{"uz":"Markaz va bo\'limlar","en":"Centers and Divisions","ru":"Центры и отделы"}', 'about.html', 1, 7, NOW(), NOW()),
+
+(9, '{"uz":"Faoliyat","en":"Activities","ru":"Деятельность"}', '#', NULL, 2, NOW(), NOW()),
+(10, '{"uz":"Ilmiy faoliyat","en":"Scientific Activity","ru":"Научная деятельность"}', 'about.html', 9, 1, NOW(), NOW()),
+(11, '{"uz":"Institut Kengashi faoliyati","en":"Institute Council Activities","ru":"Деятельность Совета Института"}', 'about.html', 9, 2, NOW(), NOW()),
+(12, '{"uz":"Ma\'daniy-ma\'rifiy","en":"Cultural Education","ru":"Культурно-просветительная"}', 'about.html', 9, 3, NOW(), NOW()),
+(13, '{"uz":"Moliyaviy faoliyat","en":"Financial Activities","ru":"Финансовая деятельность"}', 'about.html', 9, 4, NOW(), NOW()),
+(14, '{"uz":"Malaka oshirish","en":"Professional Development","ru":"Повышение квалификации"}', 'about.html', 9, 5, NOW(), NOW()),
+(15, '{"uz":"Ekologik ta\'lim","en":"Environmental Education","ru":"Экологическое образование"}', 'about.html', 9, 6, NOW(), NOW()),
+(16, '{"uz":"Institut gazetasi","en":"Institute Newspaper","ru":"Газета института"}', 'about.html', 9, 7, NOW(), NOW()),
+
+(17, '{"uz":"Abituriyent","en":"Applicant","ru":"Абитуриент"}', '#', NULL, 3, NOW(), NOW()),
+(18, '{"uz":"Bakalavriat","en":"Bachelor","ru":"Бакалавриат"}', 'about.html', 17, 1, NOW(), NOW()),
+(19, '{"uz":"Magistratura","en":"Master","ru":"Магистратура"}', 'about.html', 17, 2, NOW(), NOW()),
+(20, '{"uz":"Chet el fuqarolari","en":"Foreign Nationals","ru":"Иностранные граждане"}', 'about.html', 17, 3, NOW(), NOW()),
+(21, '{"uz":"Ikkinchi mutaxasislik","en":"Second Speciality","ru":"Вторая специальность"}', 'about.html', 17, 4, NOW(), NOW()),
+(22, '{"uz":"Qo\'shma ta\'lim dasturi","en":"Joint Education Program","ru":"Совместная образовательная программа"}', 'about.html', 17, 5, NOW(), NOW()),
+(23, '{"uz":"Qabul","en":"Admission","ru":"Прием"}', 'about.html', 17, 6, NOW(), NOW()),
+
+(24, '{"uz":"Talaba","en":"Student","ru":"Студент"}', '#', NULL, 4, NOW(), NOW()),
+(25, '{"uz":"Bakalavriat","en":"Bachelor","ru":"Бакалавриат"}', 'about.html', 24, 1, NOW(), NOW()),
+(26, '{"uz":"Magistratura","en":"Master","ru":"Магистратура"}', 'about.html', 24, 2, NOW(), NOW()),
+(27, '{"uz":"Sirtqi ta\'lim","en":"Part-time Education","ru":"Заочное обучение"}', 'about.html', 24, 3, NOW(), NOW()),
+(28, '{"uz":"Xorijiy ta\'lim","en":"Foreign Education","ru":"Иностранное обучение"}', 'about.html', 24, 4, NOW(), NOW()),
+(29, '{"uz":"O\'qishni ko\'chirish/tiklash","en":"Transfer/Restore","ru":"Перевод/Восстановление"}', 'about.html', 24, 5, NOW(), NOW()),
+
+(30, '{"uz":"Hujjatlar","en":"Documents","ru":"Документы"}', '#', NULL, 5, NOW(), NOW()),
+(31, '{"uz":"Prezident qaror va farmonlari","en":"Presidential Decisions","ru":"Указы Президента"}', 'news-details.html', 30, 1, NOW(), NOW()),
+(32, '{"uz":"Hukumat qaror va dasturlar","en":"Government Programs","ru":"Программы правительства"}', 'event-details.html', 30, 2, NOW(), NOW()),
+(33, '{"uz":"Vazirlik buyruq va qarorlariy","en":"Ministry Orders","ru":"Приказы министерства"}', 'privacy.html', 30, 3, NOW(), NOW()),
+(34, '{"uz":"Institut normativ-uslubiy va ijro hujjatlari","en":"Institute Norms and Regulations","ru":"Нормативно-правовые документы института"}', 'terms-of-service.html', 30, 4, NOW(), NOW()),
+(35, '{"uz":"Fan dasturlari","en":"Science Programs","ru":"Учебные программы"}', '404.html', 30, 5, NOW(), NOW()),
+(36, '{"uz":"Qonun hujjatlari","en":"Legal Documents","ru":"Юридические документы"}', 'starter-page.html', 30, 6, NOW(), NOW()),
+
+(37, '{"uz":"Axborot xizmati","en":"Information Service","ru":"Информационная служба"}', '#', NULL, 6, NOW(), NOW()),
+(38, '{"uz":"Yangiliklar","en":"News","ru":"Новости"}', '/category/1', 37, 1, NOW(), NOW()),
+(39, '{"uz":"E\'lonlar","en":"Announcements","ru":"Объявления"}', '/category/2', 37, 2, NOW(), NOW()),
+
+(40, '{"uz":"Bog\'lanish","en":"Contact","ru":"Контакты"}', '/contact', NULL, 7, NOW(), NOW());

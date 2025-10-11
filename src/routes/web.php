@@ -21,4 +21,8 @@ Route::get('/post/{id}', [\App\Http\Controllers\IndexController::class, 'showPos
 
 Route::get('/language/change', [\App\Http\Controllers\IndexController::class, 'changeLanguage'])->name('changeLanguage');
 
-Route::get('contact', [\App\Http\Controllers\IndexController::class, 'contact'])->name('contact');
+Route::get('/contact', [\App\Http\Controllers\IndexController::class, 'contact'])->name('contact');
+
+Route::get('/category/{id}', [\App\Http\Controllers\IndexController::class, 'post_category'])->name('post_category');
+
+Route::get('/{any}', [\App\Http\Controllers\IndexController::class, 'showPage'])->name('showPage');
