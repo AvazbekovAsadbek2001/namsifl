@@ -11,7 +11,7 @@
                 <div style="width: 100%">
                     <h2 class="card-title">
                         Pages
-                        <a href="{{ route('admin.pages.create', ['lang' => 'en']) }}" class="btn btn-info shadow sharp me-1 float-end w-auto"> Add</a>
+                        <a href="{{ route('admin.pages.create', ['lang' => 'uz']) }}" class="btn btn-info shadow sharp me-1 float-end w-auto"> Add</a>
                     </h2>
 
                 </div>
@@ -41,7 +41,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
-                                                <strong>{{ $page->translations()->where('lang_code', 'en')->first()->title }}</strong>
+                                                <strong>{{ $page->translations()->where('lang_code', 'uz')->first()->title }}</strong>
                                             </td>
                                             <td><a href="{{ config('app.url').'/'.$page->url }}">{{ config('app.url').'/'.$page->url }}</a></td>
                                             <td>{{ $page->created_at }}</td>
@@ -55,7 +55,7 @@
                                                 <ul>
                                                     @foreach(getLangs() as $lang)
                                                         <li>
-                                                            <img src="{{ $lang->flag }}" width="20px">
+                                                            <img src="{{ asset($lang->flag) }}" width="20px">
                                                             @if ($page->checklang($lang->code))
                                                                 <svg class="me-1" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                     <path d="M15 4.5L6.75 12.75L3 9" stroke="#3AC977" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>

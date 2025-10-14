@@ -19,7 +19,7 @@
 
         <div class="article-meta" data-aos="fade-up" data-aos-delay="200">
             <div class="author">
-                <img src="/assets/img/person/person-m-6.webp" alt="Author" class="author-img">
+                <img src="{{ asset('assets/img/admin.png') }}" alt="Author" class="author-img">
                 <div class="author-info">
                     <h4>{{ $post->user->name }}</h4>
                     <span>Super admin</span>

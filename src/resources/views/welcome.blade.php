@@ -113,7 +113,7 @@
           </div>
         </div>
 
-        <div class="row mt-5">
+        {{-- <div class="row mt-5">
           <div class="col-lg-12">
             <div class="core-values" data-aos="fade-up" data-aos-delay="500">
               <div class="container section-title" data-aos="fade-up">
@@ -162,7 +162,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> --}}
 
       </div>
     </section>
@@ -185,33 +185,33 @@
           @foreach($announcement as $item)
                 <div onclick="location.href='{{ route('showPost', ['id' => $item->id]) }}'" class="col-xl-6 cursor-pointer" data-aos="fade-up" data-aos-delay="100">
                     <article class="post-item d-flex">
-                            <div class="post-img">
-                                <img src="{{ asset('storage/'.$item->image) }}" alt="" class="img-fluid" loading="lazy">
+                        <div class="post-img">
+                            <img src="{{ asset('storage/'.$item->image) }}" alt="" class="img-fluid" loading="lazy">
+                        </div>
+
+                        <div class="post-content flex-grow-1">
+                            @foreach($item->tags as $tag)
+                                <a href="#" class="category">{{ json_decode($tag->name,true)[App::getLocale()] }}</a>
+                            @endforeach
+
+                            <div style="min-height: 130px">
+                                <h2 class="post-title">
+                                    <a href="#">{{ $item->translation(App::getLocale())->title }}</a>
+                                </h2>
+
+                                <p class="post-description">
+                                    {{ $item->translation(App::getLocale())->description }}
+                                </p>
                             </div>
-
-                            <div class="post-content flex-grow-1">
-                                @foreach($item->tags as $tag)
-                                    <a href="#" class="category">{{ json_decode($tag->name,true)[App::getLocale()] }}</a>
-                                @endforeach
-
-                                <div style="min-height: 130px">
-                                    <h2 class="post-title">
-                                        <a href="#">{{ $item->translation(App::getLocale())->title }}</a>
-                                    </h2>
-
-                                    <p class="post-description">
-                                        {{ $item->translation(App::getLocale())->description }}
-                                    </p>
+                            <div class="post-meta">
+                                <div class="post-author">
+                                    <img src="{{ asset('assets/img/admin.png') }}" class="img-fluid">
+                                    <span class="author-name">{{ $item->user->name }}</span>
                                 </div>
-                                <div class="post-meta">
-                                    <div class="post-author">
-                                        <img src="assets/img/person/person-f-12.webp" alt="" class="img-fluid">
-                                        <span class="author-name">{{ $item->user->name }}</span>
-                                    </div>
-                                    <span class="post-date">{{ \Carbon\Carbon::parse($item->created_at)->format('M d, Y') }}</span>
-                                </div>
+                                <span class="post-date">{{ \Carbon\Carbon::parse($item->created_at)->format('M d, Y') }}</span>
                             </div>
-                        </article>
+                        </div>
+                    </article>
                 </div>
           @endforeach
 
