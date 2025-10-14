@@ -15,7 +15,7 @@
         <div class="col-xl-12 col-lg-6">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Create Page <img src="{{ $lang->flag }}" width="20px" style="margin-left: 10px"></h4>
+                    <h4 class="card-title">Create Page <img src="{{ asset($lang->flag) }}" width="20px" style="margin-left: 10px"></h4>
                 </div>
                 <div class="card-body">
                     <div class="basic-form">

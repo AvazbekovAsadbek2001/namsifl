@@ -31,11 +31,11 @@
         <div class="card">
         @csrf
             <div class="card-header">
-                <h4 class="card-title">Create Post</h4>
+                <h4 class="card-title">Create Post <img src="{{ asset($lang->flag) }}" width="20px" style="margin-left: 10px"> </h4>
             </div>
             <div class="card-body">
                 <div class="basic-form">
-                    <input type="hidden" name="lang" value="{{ $lang->code }}" }}>
+                    <input type="hidden" name="lang" value="{{ $lang->code }}">
                     <div class="mb-3">
                         <label class="form-label">Title</label>
                         <input type="text" name="title" class="form-control input-default" placeholder="Post title" required>
@@ -49,72 +49,78 @@
                         <textarea name="content" id="editor1" rows="10" cols="80" required>
                         </textarea>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Images</label>
-                        <div id="multiDropzone" class="dropzone"></div>
-                    </div>
+                    @if (!isset($post))
+                        <div class="mb-3">
+                            <label class="form-label">Images</label>
+                            <div id="multiDropzone" class="dropzone"></div>
+                        </div>
+                    @else
+                        <input type="hidden" name="post" value="{{ $post->id }}">
+                    @endif
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-12 col-lg-3 col-xxl-4">
-        <div class="row">
-            <div class="col-12">
-                <div class="card" style="max-height: 500px;">
+    @if (!isset($post))
+        <div class="col-12 col-lg-3 col-xxl-4">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card" style="max-height: 500px;">
+                        <div class="card-header">
+                            <h4 class="card-title">Categories</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="basic-form">
+                                <table>
+                                    @foreach($categories as $category)
+                                        <tr>
+                                            <td width="30px">
+                                                <input type="checkbox" name="categories[]" id="category-{{ $category->id }}" value="{{ $category->id }}">
+                                            </td>
+                                            <td>{{json_decode($category->name)->en }}</td>
+                                        </tr>
+                                    @endforeach
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="card" style="max-height: 500px;">
                     <div class="card-header">
-                        <h4 class="card-title">Categories</h4>
+                        <h4 class="card-title">Tags</h4>
                     </div>
                     <div class="card-body">
                         <div class="basic-form">
                             <table>
-                                @foreach($categories as $category)
+                                @foreach($tags as $tag)
                                     <tr>
                                         <td width="30px">
-                                            <input type="checkbox" name="categories[]" id="category-{{ $category->id }}" value="{{ $category->id }}">
+                                            <input type="checkbox" name="tags[]" id="tag-{{ $tag->id }}" value="{{ $tag->id }}">
                                         </td>
-                                        <td>{{json_decode($category->name)->en }}</td>
+                                        <td>{{ json_decode($tag->name)->en }}</td>
                                     </tr>
                                 @endforeach
                             </table>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-12">
-                <div class="card" style="max-height: 500px;">
-                <div class="card-header">
-                    <h4 class="card-title">Tags</h4>
                 </div>
-                <div class="card-body">
-                    <div class="basic-form">
-                        <table>
-                            @foreach($tags as $tag)
-                                <tr>
-                                    <td width="30px">
-                                        <input type="checkbox" name="tags[]" id="tag-{{ $tag->id }}" value="{{ $tag->id }}">
-                                    </td>
-                                    <td>{{ json_decode($tag->name)->en }}</td>
-                                </tr>
-                            @endforeach
-                        </table>
-                    </div>
-                </div>
-            </div>
-            </div>
-            <div class="col-12">
-                <div class="card" style="max-height: 500px;">
-                    <div class="card-header">
-                        <h4 class="card-title">Image</h4>
-                    </div>
-                    <div class="card-body">
-                        <div style="width: 200px; margin: auto;">
-                            <div id="singleDropzone" class="dropzone"></div>
+                <div class="col-12">
+                    <div class="card" style="max-height: 500px;">
+                        <div class="card-header">
+                            <h4 class="card-title">Image</h4>
+                        </div>
+                        <div class="card-body">
+                            <div style="width: 200px; margin: auto;">
+                                <div id="singleDropzone" class="dropzone"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    @endif
     <div class="mb-3">
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
@@ -160,10 +166,17 @@
             maxFiles: 1,
             acceptedFiles: "image/*",
             addRemoveLinks: true,
-            dictDefaultMessage: "Profil rasmini bu yerga tashlang yoki tanlang",
-            dictFileTooBig: "Fayl hajmi juda katta (50 MB maksimal)",
-            dictInvalidFileType: "Faqat rasm fayllari qabul qilinadi",
-            dictRemoveFile: "O'chirish",
+            dictDefaultMessage: "Drag and drop or select a profile picture here",
+            dictFileTooBig: "File size is too large (maximum 50 MB)",
+            dictInvalidFileType: "Only image files are accepted",
+            dictRemoveFile: "Delete",
+            previewTemplate: `
+                <div class="dz-preview dz-file-preview" style="display:inline-block; margin:10px;">
+                    <div class="dz-image" style="border-radius:12px; overflow:hidden;">
+                        <img data-dz-thumbnail style="width:120px; height:120px; object-fit:cover; border-radius:12px;" />
+                    </div>
+                </div>
+            `,
             init: function () {
                 this.on("maxfilesexceeded", function (file) {
                     this.removeAllFiles(this.files[0]);
@@ -179,10 +192,23 @@
             maxFilesize: 300,
             acceptedFiles: "image/*",
             addRemoveLinks: true,
-            dictDefaultMessage: "Bir nechta rasmlarni bu yerga tashlang yoki tanlang",
-            dictFileTooBig: "Fayl hajmi juda katta (300 MB maksimal)",
-            dictInvalidFileType: "Faqat rasm fayllari qabul qilinadi",
-            dictRemoveFile: "O'chirish"
+
+            previewsContainer: "#multiDropzone",
+            previewTemplate: `
+                <div class="dz-preview dz-file-preview" style="display:inline-block; margin:10px;">
+                    <div class="dz-image" style="border-radius:12px; overflow:hidden;">
+                        <img data-dz-thumbnail style="width:120px; height:120px; object-fit:cover; border-radius:12px;" />
+                    </div>
+                </div>
+            `,
+
+            dictDefaultMessage: `
+                <i class="bi bi-cloud-arrow-up" style="font-size:2rem;color:#3b82f6;"></i>
+                <p style="margin-top:8px; color:#64748b;">Drag & drop or click to upload multiple images</p>
+            `,
+            dictFileTooBig: "File is too large (max 300 MB)",
+            dictInvalidFileType: "Only image files are allowed",
+            dictRemoveFile: "Delete",
         });
 
         document.querySelector("#postForm").addEventListener("submit", function (e) {
@@ -192,20 +218,15 @@
             const form = this;
             const formData = new FormData(form);
 
-            // CKEditor qiymatini olish
             formData.set('content', CKEDITOR.instances.editor1.getData());
 
-            // MultiDropzone fayllarini qo'shish
             multiDropzone.files.forEach(function (file) {
                 formData.append("images[]", file);
             });
 
-            // SingleDropzone faylini qo'shish
             if (singleDropzone.files.length > 0) {
                 formData.append("featured_image", singleDropzone.files[0]);
             }
-
-            // Fetch orqali yuborish
             fetch(form.action, {
                 method: form.method,
                 body: formData,

@@ -19,7 +19,7 @@
               </div>
             </div>
             <div class="col-lg-6 hero-media" data-aos="zoom-in" data-aos-delay="200">
-              <img src="assets/img/education/showcase-6.webp" alt="Education" class="img-fluid main-image">
+              <img src="{{ asset('assets/img/main.jpg') }}" alt="Education" class="img-fluid main-image">
               <div class="image-overlay">
                 <div class="badge-accredited">
                   <i class="bi bi-patch-check-fill"></i>
@@ -95,7 +95,6 @@
 
     <!-- About Section -->
     <section id="about" class="about section">
-
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row align-items-center g-5">
@@ -109,7 +108,7 @@
 
           <div class="col-lg-6">
             <div class="about-image" data-aos="zoom-in" data-aos-delay="300">
-              <img src="assets/img/education/campus-5.webp" alt="Campus" class="img-fluid rounded">
+              <img src="{{ asset('assets/img/about.jpg') }}" alt="Campus" class="img-fluid rounded">
             </div>
           </div>
         </div>
@@ -243,9 +242,11 @@
                         </div>
                         <div class="event-details">
                             <div class="event-category">
-                                @foreach($item->tags as $tag)
-                                    <span class="badge academic">{{ json_decode($tag->name,true)[App::getLocale()] }}</span>
-                                @endforeach
+                                <div>
+                                  @foreach($item->tags as $tag)
+                                      <span class="badge academic">{{ json_decode($tag->name,true)[App::getLocale()] }}</span>
+                                  @endforeach
+                                </div>
                                 <span class="event-time">{{ \Carbon\Carbon::parse($item->created_at)->format('g:i A') }}</span>
                             </div>
                             <h3>{{ $item->translation(App::getLocale())->title }}</h3>

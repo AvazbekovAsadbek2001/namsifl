@@ -7,6 +7,7 @@
 @section('section')
     <div class="col-xl-12">
         <div class="card dz-card" id="bootstrap-table2">
+            
             <div class="card-header flex-wrap d-flex justify-content-between  border-0">
                 <div style="width: 100%">
                     <h2 class="card-title">
@@ -46,7 +47,7 @@
                                             <td>
                                                 <ul>
                                                     @foreach($post['categories'] as $category)
-                                                        <li>
+                                                        <li class="mb-2">
                                                             {{ $category['title'] }}
                                                         </li>
                                                     @endforeach
@@ -55,7 +56,7 @@
                                             <td>
                                                 <ul>
                                                     @foreach($post['tags'] as $tag)
-                                                        <li>
+                                                        <li class="mb-2">
                                                             {{ $tag['title'] }}
                                                         </li>
                                                     @endforeach
@@ -72,14 +73,16 @@
                                                 <ul>
                                                     @foreach($post['langs'] as $lang)
                                                         <li>
-                                                            <img src="{{ $lang['img'] }}" width="20px">
-                                                            @if ($lang['check'])
-                                                                <svg class="me-1" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path d="M15 4.5L6.75 12.75L3 9" stroke="#3AC977" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                                                </svg>
-                                                            @else
-                                                                <i class="fa-solid fa-xmark text-danger"></i>
-                                                            @endif
+                                                            <a href="{{ route('admin.blog.posts.create', ['lang' => $lang['code'], 'post' => $post['id']]) }}">
+                                                                <img src="{{ asset($lang['img']) }}" width="20px">
+                                                                @if ($lang['check'])
+                                                                    <svg class="me-1" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                        <path d="M15 4.5L6.75 12.75L3 9" stroke="#3AC977" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                    </svg>
+                                                                @else
+                                                                    <i class="fa-solid fa-xmark text-danger"></i>
+                                                                @endif
+                                                            </a>
                                                         </li>
                                                     @endforeach
                                                 </ul>

@@ -16,10 +16,6 @@ class PostController extends Controller
     public function index()
     {
         $data = Post::all();
-//        $translations = PostTranslation::all();
-//        dd($translations);
-//        $post = Post::first();
-//        dd($post->translations->firstWhere('code', 'en'));
         $posts = $data->map(function ($post) {
            return [
                'id' => $post->id,
@@ -28,19 +24,20 @@ class PostController extends Controller
                'categories' => $post->categories->map(function ($category) {
                    return [
                        'id' => $category->id,
-                       'title' => $category->name,
+                       'title' => json_decode($category->name, true)['en'],
                    ];
                }),
                'tags' => $post->tags->map(function ($tag) {
                    return [
                        'id' => $tag->id,
-                       'title' => $tag->name,
+                       'title' => json_decode($tag->name, true)['en'],
                    ];
                }),
                'langs' =>  getLangs()->map(function ($lang) use ($post) {
                    return [
                        'img' => $lang->flag,
                        'check' => $post->checklang($lang->code),
+                       'code' => $lang->code,
                    ];
                }),
                'editor' => $post->user->name,
@@ -55,11 +52,39 @@ class PostController extends Controller
         $categories = Category::all();
         $tags = Tag::all();
         $lang = ($request->lang) ? Lang::where('code', $request->lang)->first() : Lang::where('code', 'en')->first();
+        
+        if ($request->post) {
+            $post = Post::find($request->post);
+            return view('admin.blogs.posts.create', compact('categories', 'tags', 'lang', 'post'));    
+        }
+
         return view('admin.blogs.posts.create', compact('categories', 'tags', 'lang'));
     }
 
     public function store(Request $request)
     {
+        if ($request->has('post')) {
+            $data = $request->validate([
+                'post' => 'required',
+                'title' => 'required',
+                'description' => 'required',
+                'content' => 'required',
+                'lang' => 'string|exists:langs,code',
+            ]);
+
+            $post = Post::find($request->post);
+
+            PostTranslation::create([
+                'post_id' => $post->id,
+                'title' => $data['title'],
+                'description' => $data['description'],
+                'content' => $data['content'],
+                'lang_code' => $data['lang'],
+            ]);
+
+            return redirect()->route('admin.blog.posts.index');
+        }
+
         $data = $request->validate([
             'title' => 'required',
             'description' => 'required',

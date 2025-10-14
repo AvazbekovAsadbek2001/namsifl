@@ -21,23 +21,22 @@
 @section('section')
     <!-- Academics Section -->
     <section id="academics" class="academics section">
-
         <div class="container" data-aos="fade-up" data-aos-delay="100">
-
             <div class="faculty-section">
                 <div class="section-header text-center mb-5" data-aos="fade-up" data-aos-delay="200">
-                    <h3>Rectorate</h3>
+                    <h3>@lang('rectorate.title')</h3>
                 </div>
 
                 <div class="row g-4">
+
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
                         <div class="faculty-card">
                             <div class="faculty-img">
-                                <img src="assets/img/person/person-m-3.webp" alt="Dr. Michael Reynolds" class="img-fluid">
+                                <img src="{{ asset('assets/img/rectorate/rektor.jpg') }}" class="img-fluid">
                             </div>
                             <div class="faculty-content">
-                                <h4>Dr. Michael Reynolds</h4>
-                                <p class="faculty-position">Computer Science</p>
+                                <h4>@lang('rectorate.rektor_name')</h4>
+                                <p class="faculty-position">@lang('rectorate.rektor_position')</p>
                                 <div class="faculty-social">
                                     <a href="#"><i class="bi bi-linkedin"></i></a>
                                     <a href="#"><i class="bi bi-twitter"></i></a>
@@ -50,11 +49,11 @@
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
                         <div class="faculty-card">
                             <div class="faculty-img">
-                                <img src="assets/img/person/person-f-5.webp" alt="Dr. Sarah Johnson" class="img-fluid">
+                                <img src="{{ asset('assets/img/rectorate/yoshlar.jpg') }}" class="img-fluid">
                             </div>
                             <div class="faculty-content">
-                                <h4>Dr. Sarah Johnson</h4>
-                                <p class="faculty-position">Psychology</p>
+                                <h4>@lang('rectorate.yoshlar_name')</h4>
+                                <p class="faculty-position">@lang('rectorate.yoshlar_position')</p>
                                 <div class="faculty-social">
                                     <a href="#"><i class="bi bi-linkedin"></i></a>
                                     <a href="#"><i class="bi bi-twitter"></i></a>
@@ -67,11 +66,11 @@
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
                         <div class="faculty-card">
                             <div class="faculty-img">
-                                <img src="assets/img/person/person-m-7.webp" alt="Dr. Robert Chen" class="img-fluid">
+                                <img src="{{ asset('assets/img/rectorate/oquv.jpg') }}" class="img-fluid">
                             </div>
                             <div class="faculty-content">
-                                <h4>Dr. Robert Chen</h4>
-                                <p class="faculty-position">Business Administration</p>
+                                <h4>@lang('rectorate.oquv_name')</h4>
+                                <p class="faculty-position">@lang('rectorate.oquv_position')</p>
                                 <div class="faculty-social">
                                     <a href="#"><i class="bi bi-linkedin"></i></a>
                                     <a href="#"><i class="bi bi-twitter"></i></a>
@@ -84,11 +83,11 @@
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
                         <div class="faculty-card">
                             <div class="faculty-img">
-                                <img src="assets/img/person/person-f-9.webp" alt="Dr. Emily Davis" class="img-fluid">
+                                <img src="{{ asset('assets/img/rectorate/ilmiy.jpg') }}" class="img-fluid">
                             </div>
                             <div class="faculty-content">
-                                <h4>Dr. Emily Davis</h4>
-                                <p class="faculty-position">Education</p>
+                                <h4>@lang('rectorate.ilmiy_name')</h4>
+                                <p class="faculty-position">@lang('rectorate.ilmiy_position')</p>
                                 <div class="faculty-social">
                                     <a href="#"><i class="bi bi-linkedin"></i></a>
                                     <a href="#"><i class="bi bi-twitter"></i></a>
@@ -97,11 +96,27 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="500">
+                        <div class="faculty-card">
+                            <div class="faculty-img">
+                                <img src="{{ asset('assets/img/rectorate/ishlar.jpg') }}" class="img-fluid">
+                            </div>
+                            <div class="faculty-content">
+                                <h4>@lang('rectorate.ishlar_name')</h4>
+                                <p class="faculty-position">@lang('rectorate.ishlar_position')</p>
+                                <div class="faculty-social">
+                                    <a href="#"><i class="bi bi-linkedin"></i></a>
+                                    <a href="#"><i class="bi bi-twitter"></i></a>
+                                    <a href="#"><i class="bi bi-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-
         </div>
-
     </section>
     <!-- /Academics Section -->
 @endsection
