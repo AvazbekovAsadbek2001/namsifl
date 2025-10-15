@@ -19,7 +19,7 @@ class PostController extends Controller
         $posts = $data->map(function ($post) {
            return [
                'id' => $post->id,
-               'title' => $post->translations->firstWhere('lang_code', 'en')?->title,
+               'title' => $post->translations->firstWhere('lang_code', 'uz')?->title,
                'image' => $post->image,
                'categories' => $post->categories->map(function ($category) {
                    return [

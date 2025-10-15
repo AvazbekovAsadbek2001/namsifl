@@ -39,7 +39,7 @@ class IndexController extends Controller
 
     public function showPage(Request $request){
         $page = Page::where('url', $request->any)->first();
-        if ($page){
+        if ($page && $page->checklang(App::getLocale())) {
             $data = $page->translations->where('lang_code', App::getLocale())->first();
             return view('page', compact('data'));
         } else {

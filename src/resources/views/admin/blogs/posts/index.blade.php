@@ -12,7 +12,7 @@
                 <div style="width: 100%">
                     <h2 class="card-title">
                         Posts
-                        <a href="{{ route('admin.blog.posts.create', ['lang' => 'en']) }}" class="btn btn-info shadow sharp me-1 float-end w-auto"> Add</a>
+                        <a href="{{ route('admin.blog.posts.create', ['lang' => 'uz']) }}" class="btn btn-info shadow sharp me-1 float-end w-auto"> Add</a>
                     </h2>
                 </div>
             </div>

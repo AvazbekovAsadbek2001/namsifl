@@ -55,14 +55,16 @@
                                                 <ul>
                                                     @foreach(getLangs() as $lang)
                                                         <li>
-                                                            <img src="{{ asset($lang->flag) }}" width="20px">
-                                                            @if ($page->checklang($lang->code))
-                                                                <svg class="me-1" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path d="M15 4.5L6.75 12.75L3 9" stroke="#3AC977" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                                                </svg>
-                                                            @else
-                                                                <i class="fa-solid fa-xmark text-danger"></i>
-                                                            @endif
+                                                            <a href="{{ route('admin.pages.create', ['lang' => $lang['code'], 'page' => $page->id]) }}">
+                                                                <img src="{{ asset($lang->flag) }}" width="20px">
+                                                                @if ($page->checklang($lang->code))
+                                                                    <svg class="me-1" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                        <path d="M15 4.5L6.75 12.75L3 9" stroke="#3AC977" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                    </svg>
+                                                                @else
+                                                                    <i class="fa-solid fa-xmark text-danger"></i>
+                                                                @endif
+                                                            </a>
                                                         </li>
                                                     @endforeach
                                                 </ul>

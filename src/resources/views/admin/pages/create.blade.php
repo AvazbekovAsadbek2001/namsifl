@@ -35,13 +35,24 @@
                                 <label class="form-label">Title</label>
                                 <input type="text" name="title" class="form-control input-default" placeholder="Page title" required>
                             </div>
-                            <div class="mb-3">
-                                <label class="form-label">Url</label>
-                                <div class="input-group input-group-sm mb-3">
-                                    <span class="input-group-text">{{ config('app.url').'/' }}</span>
-                                    <input type="text" name="url" class="form-control" required>
+                            @if (!isset($page))
+                                <div class="mb-3">
+                                    <label class="form-label">Url</label>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <span class="input-group-text">{{ config('app.url').'/' }}</span>
+                                        <input type="text" name="url" class="form-control" required>
+                                    </div>
                                 </div>
-                            </div>
+                            @else
+                                <input type="hidden" value="{{ $page->id }}" name="page">
+                                <div class="mb-3">
+                                    <label class="form-label">Page Url</label>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <span class="input-group-text">{{ config('app.url').'/' }}</span>
+                                        <input type="text" class="form-control" required readonly value="{{ $page->url }}">
+                                    </div>
+                                </div>
+                            @endif
                             <div class="mb-3">
                                 <label class="form-label">Description</label>
                                 <textarea class="form-textarea form-control" rows="8" name="description" required></textarea>
