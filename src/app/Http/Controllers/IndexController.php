@@ -20,6 +20,7 @@ class IndexController extends Controller
         })->with(['translations' => function ($query) use ($lang) {
             $query->where('lang_code', $lang);
         }])->limit(6)
+        ->orderBy('created_at', 'desc')
         ->get();
 
         $announcement = Post::whereHas('categories', function ($query) {
@@ -28,7 +29,7 @@ class IndexController extends Controller
             $query->where('lang_code', $lang);
         })->with(['translations' => function ($query) use ($lang) {
             $query->where('lang_code', $lang);
-        }])->limit(4)->get();
+        }])->orderBy('created_at', 'desc')->limit(4)->get();
 
         return view('welcome', compact('news', 'announcement'));
     }

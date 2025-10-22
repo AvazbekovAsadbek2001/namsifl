@@ -26,6 +26,9 @@ return new class extends Migration
             $table->integer('position_id')->unsigned();
             $table->foreign('position_id')->references('id')->on('positions');
 
+            //employee_contents -> biography, work_experience , functional duties , . . .
+            //social_medias -> telegram,email,linkedin,twitter,facabook, instagram, vkontakte, whatsApp  . . . 
+
             $table->timestamps();   
         });
     }
