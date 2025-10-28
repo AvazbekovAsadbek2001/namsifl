@@ -41,7 +41,15 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $employee->name }}</td>
                                             <td>
-                                                <img src="{{ asset('storage/'.$employee->photo) }}" alt="" width="150">
+                                                <img src="{{ asset('storage/'.$employee->photo) }}" alt="" width="100">
+                                            </td>
+                                            <td>{{ json_decode($employee->position->title, true)['uz'] }}</td>
+                                            <td>{{ $employee->schedule_days. " ". $employee->schedule_time }}</td>
+                                            <td>
+                                                <div class="d-flex">
+                                                    <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa fa-pencil"></i></a>
+                                                    <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach

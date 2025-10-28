@@ -1,6 +1,6 @@
 @extends('layout.main')
 @section('title')
-    News
+    {{ json_decode($name, true)[App::getLocale()] }}
 @endsection
 @section('section')
 

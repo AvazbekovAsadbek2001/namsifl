@@ -87,4 +87,8 @@ class IndexController extends Controller
 
         return view('news', compact('posts', 'name'));
     }
+
+    public function employee(Request $request){
+        return view('employee');
+    }
 }

@@ -25,4 +25,6 @@ Route::get('/contact', [\App\Http\Controllers\IndexController::class, 'contact']
 
 Route::get('/category/{id}', [\App\Http\Controllers\IndexController::class, 'post_category'])->name('post_category');
 
+Route::get('employee/{id}', [\App\Http\Controllers\IndexController::class,'employee'])->name('employee');
+
 Route::get('/{any}', [\App\Http\Controllers\IndexController::class, 'showPage'])->name('showPage');

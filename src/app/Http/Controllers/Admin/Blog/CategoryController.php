@@ -22,10 +22,12 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|array',
         ]);
 
-        Category::create($data);
+        Category::create([
+            'name'=> json_encode($data['name']),
+        ]);
 
         return redirect()->route('admin.blog.category.index')->with('success', 'Category created successfully.');
     }

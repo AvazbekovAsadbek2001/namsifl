@@ -36,7 +36,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td >
-                                                <strong>{{ $category->name }}</strong>
+                                                <strong>{{ json_decode($category->name, true)['uz'] }}</strong>
                                             </td>
                                             <td>
                                                 <div class="d-flex">
@@ -65,10 +65,12 @@
                     <div class="basic-form">
                         <form action="{{ route('admin.blog.category.store') }}" method="post">
                             @csrf
-                            <div class="mb-3">
-                                <label class="form-label">Title</label>
-                                <input type="text" name="name" class="form-control input-default" placeholder="Category title" required>
-                            </div>
+                            @foreach (getLangs() as $lang)
+                                <div class="mb-3">
+                                    <label class="form-label">Title ( {{ $lang->code }})</label>
+                                    <input type="text" name="name[{{ $lang->code }}]" class="form-control input-default" required>
+                                </div>
+                            @endforeach
                             <div class="mb-3">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>

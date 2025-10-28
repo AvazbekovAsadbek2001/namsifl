@@ -12,17 +12,22 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        $data = [
+       $data = [
             [
-                'en' => 'new',
-                'ru' => 'новости',
-                'uz' => 'yangilik'
+                'en' => 'News',
+                'ru' => 'Новости',
+                'uz' => 'Yangilik'
             ],
             [
-                'en' => 'announcement',
-                'ru' => 'объявление',
-                'uz' => 'e`lon'
-            ]
+                'en' => 'Announcement',
+                'ru' => 'Объявление',
+                'uz' => 'E`lon'
+            ],
+            [
+                'en' => 'Anti-Corruption',
+                'ru' => 'Борьба с коррупцией',
+                'uz' => 'Korrupsiyaga qarshi kurash'
+            ],
         ];
 
         foreach ($data as $category) {
