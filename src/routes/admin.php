@@ -22,7 +22,7 @@ Route::group(['middleware' => ['check-admin']], function () {
     });
 
     Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
-        Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
+        Route::group(['p>refix' => 'category', 'as' => 'category.'], function () {
             Route::get('/', [\App\Http\Controllers\Admin\Blog\CategoryController::class, 'index'])->name('index');
             Route::post('/store', [\App\Http\Controllers\Admin\Blog\CategoryController::class, 'store'])->name('store');
         });
@@ -39,6 +39,14 @@ Route::group(['middleware' => ['check-admin']], function () {
         });
     });
 
+
+
+    Route::group(['prefix' => 'employee', 'as' => 'employee.'], function () {
+        Route::get('/', [\App\Http\Controllers\Admin\EmployeeController::class, 'index'])->name('index');
+        Route::get('/create', [\App\Http\Controllers\Admin\EmployeeController::class, 'create'])->name('create');
+        Route::post('/store', [\App\Http\Controllers\Admin\EmployeeController::class, 'store'])->name('store');
+    });
+    
     Route::group(['prefix' => 'menu', 'as' => 'menu.'], function () {
         Route::get('/', [\App\Http\Controllers\Admin\MenuController::class, 'index'])->name('index');
     });

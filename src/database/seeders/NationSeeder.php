@@ -28,7 +28,9 @@ class NationSeeder extends Seeder
         ];
 
         foreach ($data as $item) {
-            Nation::create($item);
+            Nation::create([
+                'name' => json_encode($item, true),
+            ]);
         }
     }
 }

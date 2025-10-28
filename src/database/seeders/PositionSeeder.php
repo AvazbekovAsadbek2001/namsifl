@@ -17,7 +17,7 @@ class PositionSeeder extends Seeder
             ['uz' => "Rektor", 'ru' => "Ректор", 'en' => "Rector"],
             ['uz' => "Prorektor", 'ru' => "Проректор", 'en' => "Vice-Rector"],
             ['uz' => "Dekan", 'ru' => "Декан", 'en' => "Dean"],
-            ['uz' => "Vicedekan", 'ru' => "Зам. декана", 'en' => "Vice-Dean"],
+            ['uz' => "Zamdekan", 'ru' => "Зам. декана", 'en' => "Vice-Dean"],
             ['uz' => "Kafedra mudiri", 'ru' => "Заведующий кафедрой", 'en' => "Head of Department"],
             ['uz' => "O‘qituvchi", 'ru' => "Преподаватель", 'en' => "Lecturer"],
             ['uz' => "Dotsent", 'ru' => "Доцент", 'en' => "Associate Professor"],
@@ -36,7 +36,9 @@ class PositionSeeder extends Seeder
         ];
 
         foreach ($positions as $item) {
-            Position::create($item);
+            Position::create([
+                'title' => json_encode($item, true),
+            ]);
         }
 
     }

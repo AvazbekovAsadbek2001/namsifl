@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('positions', function (Blueprint $table) {
-            $table->id();
-            $table->jsonb('title');
-            $table->jsonb('description')->nullable();
+        Schema::create('employee_contents', function (Blueprint $table) {
+            $table->increments('id');
+            $table->enum('type', ['biography', 'work_experience', 'functional_duties'])->default('functional_duties');
+            $table->text('content')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('positions');
+        Schema::dropIfExists('employee_contents');
     }
 };

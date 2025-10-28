@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('positions', function (Blueprint $table) {
+        Schema::create('cafedra_translations', function (Blueprint $table) {
             $table->id();
-            $table->jsonb('title');
-            $table->jsonb('description')->nullable();
+            $table->foreignId('lang_id')->constrained(table: 'langs');
+            $table->foreignId('cafedra_id')->constrained('cafedras')->onDelete('cascade');
+            $table->text('content');
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('positions');
+        Schema::dropIfExists('cafedra_translations');
     }
 };

@@ -16,7 +16,7 @@ RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 # Composer o‘rnatish
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# PHP sozlamalarini o'zgartirish (fayl yuklash hajmini oshirish)
+# PHP sozlamalari
 RUN echo "upload_max_filesize = 500M" > /usr/local/etc/php/conf.d/uploads.ini && \
     echo "post_max_size = 500M" >> /usr/local/etc/php/conf.d/uploads.ini && \
     echo "memory_limit = 1000M" >> /usr/local/etc/php/conf.d/uploads.ini
@@ -24,8 +24,12 @@ RUN echo "upload_max_filesize = 500M" > /usr/local/etc/php/conf.d/uploads.ini &&
 # Ishchi papka
 WORKDIR /var/www/src
 
-# Ruxsatlarni sozlash (storage va cache yoziladigan papkalar uchun)
-RUN chown -R www-data:www-data /var/www/src
-RUN chmod -R 775 /var/www/src/storage /var/www/src/bootstrap/cache
+# Laravel fayllarini konteynerga nusxalash
+COPY . /var/www/src
+
+# Zarur papkalarni yaratish va ruxsat berish
+RUN mkdir -p storage bootstrap/cache && \
+    chown -R www-data:www-data /var/www/src && \
+    chmod -R 775 storage bootstrap/cache
 
 CMD ["php-fpm"]

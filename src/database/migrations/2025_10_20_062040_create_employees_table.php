@@ -14,20 +14,21 @@ return new class extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->data('bithday_data');
-            $table->email('email')->nullable();
-            $table->integer('phone')->nullable();
-            $table->string('schedule_days')->default('Dushanba - Juma');
+            $table->date('birth_date');
+            $table->string('schedule_days')->nullable();
             $table->string('schedule_time')->default('09:00 - 17:00');
             
-            $table->integer('nation_id')->unsigned();
-            $table->foreign('nation_id')->references('id')->on('nations');
-            
-            $table->integer('position_id')->unsigned();
-            $table->foreign('position_id')->references('id')->on('positions');
+            $table->foreignId('nation_id')->constrained('nations');
+            $table->foreignId('position_id')->constrained('positions');
+            $table->string('position_description')->nullable();
 
-            //employee_contents -> biography, work_experience , functional duties , . . .
-            //social_medias -> telegram,email,linkedin,twitter,facabook, instagram, vkontakte, whatsApp  . . . 
+            $table->string('photo');
+            $table->foreignId('faculty_id')->nullable()->constrained('faculties');
+            $table->foreignId('department_id')->nullable()->constrained('departments');
+            $table->foreignId('cafedra_id')->nullable()->constrained('cafedras');
+
+            $table->jsonb('social_medias'); // e.g., telegram,email,phone, linkedin,twitter,facabook,instagram, vkontakte, whatsApp  . . .
+            $table->jsonb('employee_contents'); // biography, work_experience , functional_duties , . . .
 
             $table->timestamps();   
         });

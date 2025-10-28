@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('nations', function (Blueprint $table) {
-            $table->increments('id');
-            $table->json('name');
+            $table->id();
+            $table->jsonb('name');
             $table->timestamps();
         });
     }
