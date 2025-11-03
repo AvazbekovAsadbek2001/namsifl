@@ -25,9 +25,7 @@
                             <table class="table table-responsive-md">
                                 <thead>
                                 <tr>
-                                    <th>
-                                        #
-                                    </th>
+                                    <th>#</th>
                                     <th style="width: 30%"><strong>Name</strong></th>
                                     <th><strong>Phote</strong></th>
                                     <th><strong>Position</strong></th>

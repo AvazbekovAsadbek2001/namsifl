@@ -2,15 +2,29 @@
 @section('title')
    Employee
 @endsection
+@section('css')
+  <style>
+  #rektorAccordion .accordion-button:hover {
+    background-color: #e6f2f8 !important;
+    color: #04415f !important;
+    font-weight: 600;
+  }
+  #rektorAccordion .accordion-button:not(.collapsed) {
+    background-color: #d0ebff !important;
+    color: #04415f !important;
+    font-weight: 600;
+  }
+</style>
+@endsection
 @section('section')
     <!-- Page Title -->
     <div class="page-title light-background">
       <div class="container d-lg-flex justify-content-between align-items-center">
-        <h1 class="mb-2 mb-lg-0">About</h1>
+        <h1 class="mb-2 mb-lg-0">Employee</h1>
         <nav class="breadcrumbs">
           <ol>
             <li><a href="index.html">Home</a></li>
-            <li class="current">About</li>
+            <li class="current">Employee</li>
           </ol>
         </nav>
       </div>
@@ -58,54 +72,90 @@
           </div>
         <div>
 
-        <div class="notice-wrapper">
-          <div class="accordion mt-4 notice-items" id="rektorAccordion">
-              <div class="accordion-item notice-item">
-                <h2 class="accordion-header" id="headingOne">
-                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    🎓 Biografiya
-                  </button>
-                </h2>
-                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#rektorAccordion">
-                  <div class="accordion-body">
-                    Karimov Rivojiddin G‘ulomjonovich — Toshkent davlat yuridik universiteti bitiruvchisi, 
-                    bir necha yillik ilmiy va tashkiliy tajribaga ega. U oliy ta’lim tizimida ko‘plab islohotlar tashabbuskori bo‘lgan.
-                  </div>
-                </div>
-              </div>
+        <!-- Accordion – #04415f rangiga moslashtirilgan -->
+<div class="notice-wrapper mt-4">
+  <div class="accordion border rounded shadow-sm" id="rektorAccordion" style="border-color: #04415f;">
 
-              <div class="accordion-item notice-item">
-                <h2 class="accordion-header" id="headingTwo">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    💼 Faoliyat yo‘nalishlari
-                  </button>
-                </h2>
-                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#rektorAccordion">
-                  <div class="accordion-body">
-                    Ilmiy-tadqiqot ishlari, yoshlar siyosati, xalqaro hamkorlik va universitetning 
-                    innovatsion rivojlanishiga alohida e’tibor qaratadi.
-                  </div>
-                </div>
-              </div>
-
-              <div class="accordion-item notice-item">
-                <h2 class="accordion-header" id="headingThree">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    📋 Qo‘shimcha ma’lumotlar
-                  </button>
-                </h2>
-                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#rektorAccordion">
-                  <div class="accordion-body">
-                    <ul>
-                      <li>Ilmiy darajasi: Yuridik fanlari doktori (PhD)</li>
-                      <li>Lavozimi: Rektor</li>
-                      <li>Tillar: O‘zbek, rus, ingliz</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-          </div>
+    <!-- 1. Biografiya -->
+    <div class="accordion-item border-0">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button fw-semibold collapsed shadow-none border-bottom"
+                type="button" 
+                data-bs-toggle="collapse" 
+                data-bs-target="#collapseOne" 
+                aria-expanded="true" 
+                aria-controls="collapseOne"
+                style="color: #04415f; background-color: #f1f8fb; border-bottom: 1px solid #04415f;">
+          Biografiya
+        </button>
+      </h2>
+      <div id="collapseOne" 
+           class="accordion-collapse collapse show" 
+           aria-labelledby="headingOne" 
+           data-bs-parent="#rektorAccordion">
+        <div class="accordion-body pt-3 pb-4" 
+             style="background-color: #f8fcfe; border-left: 5px solid #04415f; margin-left: 1rem; padding-left: 1.2rem; line-height: 1.7;">
+          Karimov Rivojiddin G‘ulomjonovich — Toshkent davlat yuridik universiteti bitiruvchisi, 
+          bir necha yillik ilmiy va tashkiliy tajribaga ega. U oliy ta’lim tizimida ko‘plab islohotlar tashabbuskori bo‘lgan.
         </div>
+      </div>
+    </div>
+
+    <!-- 2. Faoliyat yo‘nalishlari -->
+    <div class="accordion-item border-0">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button fw-semibold collapsed shadow-none border-bottom"
+                type="button" 
+                data-bs-toggle="collapse" 
+                data-bs-target="#collapseTwo" 
+                aria-expanded="false" 
+                aria-controls="collapseTwo"
+                style="color: #04415f; background-color: #f1f8fb; border-bottom: 1px solid #04415f;">
+          Faoliyat yo‘nalishlari
+        </button>
+      </h2>
+      <div id="collapseTwo" 
+           class="accordion-collapse collapse" 
+           aria-labelledby="headingTwo" 
+           data-bs-parent="#rektorAccordion">
+        <div class="accordion-body pt-3 pb-4" 
+             style="background-color: #f8fcfe; border-left: 5px solid #04415f; margin-left: 1rem; padding-left: 1.2rem; line-height: 1.7;">
+          Ilmiy-tadqiqot ishlari, yoshlar siyosati, xalqaro hamkorlik va universitetning 
+          innovatsion rivojlanishiga alohida e’tibor qaratadi.
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Qo‘shimcha ma’lumotlar -->
+    <div class="accordion-item border-0">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button fw-semibold collapsed shadow-none"
+                type="button" 
+                data-bs-toggle="collapse" 
+                data-bs-target="#collapseThree" 
+                aria-expanded="false" 
+                aria-controls="collapseThree"
+                style="color: #04415f; background-color: #f1f8fb;">
+          Qo‘shimcha ma’lumotlar
+        </button>
+      </h2>
+      <div id="collapseThree" 
+           class="accordion-collapse collapse" 
+           aria-labelledby="headingThree" 
+           data-bs-parent="#rektorAccordion">
+        <div class="accordion-body pt-3 pb-4" 
+             style="background-color: #f8fcfe; border-left: 5px solid #04415f; margin-left: 1rem; padding-left: 1.2rem; line-height: 1.7;">
+          <ul class="mb-0">
+            <li><strong>Ilmiy darajasi:</strong> Yuridik fanlari doktori (PhD)</li>
+            <li><strong>Lavozimi:</strong> Rektor</li>
+            <li><strong>Tillar:</strong> O‘zbek, rus, ingliz</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
       </div>
 
     </section>
