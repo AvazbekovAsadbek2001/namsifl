@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Employee;
 use App\Models\Page;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -89,6 +90,7 @@ class IndexController extends Controller
     }
 
     public function employee(Request $request){
-        return view('employee');
+        $employee = Employee::find($request->id);
+        return view('employee', compact('employee'));
     }
 }

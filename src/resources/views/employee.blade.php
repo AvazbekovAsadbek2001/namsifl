@@ -4,16 +4,16 @@
 @endsection
 @section('css')
   <style>
-  #rektorAccordion .accordion-button:hover {
-    background-color: #e6f2f8 !important;
-    color: #04415f !important;
-    font-weight: 600;
-  }
-  #rektorAccordion .accordion-button:not(.collapsed) {
-    background-color: #d0ebff !important;
-    color: #04415f !important;
-    font-weight: 600;
-  }
+    #rektorAccordion .accordion-button:hover {
+      background-color: #e6f2f8 !important;
+      color: #04415f !important;
+      font-weight: 600;
+    }
+    #rektorAccordion .accordion-button:not(.collapsed) {
+      background-color: #d0ebff !important;
+      color: #04415f !important;
+      font-weight: 600;
+    }
 </style>
 @endsection
 @section('section')
@@ -39,9 +39,11 @@
           <div class="row align-items-center">
              <div class="col-lg-6 order-lg-1" data-aos="fade-up" data-aos-delay="300">
               <div class="intro-content">
-                <span class="subtitle">Rektor</span>
-                <h2 class="title">Karimov Rivojiddin G‘ulomjonovich</h2>
-                {{-- <p class="description">Yoshlar masalalari va ma’naviy-ma’rifiy ishlar bo‘yicha birinchi prorektori</p> --}}
+                <span class="subtitle">{{ json_decode($employee->position->title, true)[App::getLocale()] }}</span>
+                <h2 class="title">{{ $employee->name }}</h2>
+                @if ($employee->position_description != null)
+                  <p class="description">{{ $employee->position_description }}</p>
+                @endif
                 <div class="highlights">
                   <div class="highlight-item">
                     <div class="icon-box">
@@ -49,7 +51,7 @@
                     </div>
                     <div class="content">
                       <h4>Phone number :</h4>
-                      <p> +998912345678</p>
+                      <p>{{ json_decode($employee->social_medias, true)['phone'] }}</p>
                     </div>
                   </div>
                   <div class="highlight-item">
@@ -58,7 +60,7 @@
                     </div>
                     <div class="content">
                       <h4>Email address : </h4>
-                      <p>email@gmail.com</p>
+                      <p>{{ json_decode($employee->social_medias, true)['email'] }}</p>
                     </div>
                   </div>
                 </div>
@@ -66,7 +68,7 @@
              </div>
               <div class="col-lg-6 order-lg-2 mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="200">
                 <div class="intro-image">
-                  <img src="http://localhost:8000/assets/img/person/person-f-13.webp" alt="School Leadership" class="img-fluid rounded-lg" height="250">
+                  <img src="{{ asset('storage/'.$employee->photo) }}" class="img-fluid rounded-lg" style="height: 550px">
                 </div>
               </div>
           </div>
@@ -95,8 +97,7 @@
            data-bs-parent="#rektorAccordion">
         <div class="accordion-body pt-3 pb-4" 
              style="background-color: #f8fcfe; border-left: 5px solid #04415f; margin-left: 1rem; padding-left: 1.2rem; line-height: 1.7;">
-          Karimov Rivojiddin G‘ulomjonovich — Toshkent davlat yuridik universiteti bitiruvchisi, 
-          bir necha yillik ilmiy va tashkiliy tajribaga ega. U oliy ta’lim tizimida ko‘plab islohotlar tashabbuskori bo‘lgan.
+             {!! $employee->contents()->where('type','biography')->first()->content !!}
         </div>
       </div>
     </div>
@@ -111,7 +112,7 @@
                 aria-expanded="false" 
                 aria-controls="collapseTwo"
                 style="color: #04415f; background-color: #f1f8fb; border-bottom: 1px solid #04415f;">
-          Faoliyat yo‘nalishlari
+          Ish tajribasi
         </button>
       </h2>
       <div id="collapseTwo" 
@@ -120,8 +121,7 @@
            data-bs-parent="#rektorAccordion">
         <div class="accordion-body pt-3 pb-4" 
              style="background-color: #f8fcfe; border-left: 5px solid #04415f; margin-left: 1rem; padding-left: 1.2rem; line-height: 1.7;">
-          Ilmiy-tadqiqot ishlari, yoshlar siyosati, xalqaro hamkorlik va universitetning 
-          innovatsion rivojlanishiga alohida e’tibor qaratadi.
+            {!! $employee->contents()->where('type','work_experience')->first()->content !!}
         </div>
       </div>
     </div>
@@ -136,7 +136,7 @@
                 aria-expanded="false" 
                 aria-controls="collapseThree"
                 style="color: #04415f; background-color: #f1f8fb;">
-          Qo‘shimcha ma’lumotlar
+          Asosiy funksional vazifalari
         </button>
       </h2>
       <div id="collapseThree" 
@@ -145,11 +145,7 @@
            data-bs-parent="#rektorAccordion">
         <div class="accordion-body pt-3 pb-4" 
              style="background-color: #f8fcfe; border-left: 5px solid #04415f; margin-left: 1rem; padding-left: 1.2rem; line-height: 1.7;">
-          <ul class="mb-0">
-            <li><strong>Ilmiy darajasi:</strong> Yuridik fanlari doktori (PhD)</li>
-            <li><strong>Lavozimi:</strong> Rektor</li>
-            <li><strong>Tillar:</strong> O‘zbek, rus, ingliz</li>
-          </ul>
+            {!! $employee->contents()->where('type','functional_duties')->first()->content !!}
         </div>
       </div>
     </div>

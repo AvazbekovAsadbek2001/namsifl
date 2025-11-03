@@ -27,7 +27,7 @@ class Employee extends Model
 
     public function contents()
     {
-        return $this->hasMany(EmployeeContent::class);
+        return EmployeeContent::whereIn('id', json_decode($this->employee_contents, true))->get();
     }
 
     public function position(){
