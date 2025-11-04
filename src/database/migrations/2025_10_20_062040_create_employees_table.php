@@ -20,7 +20,7 @@ return new class extends Migration
             
             $table->foreignId('nation_id')->constrained('nations');
             $table->foreignId('position_id')->constrained('positions');
-            $table->string('position_description')->nullable();
+            $table->jsonb('position_description')->nullable();
 
             $table->string('photo');
             $table->foreignId('faculty_id')->nullable()->constrained('faculties');

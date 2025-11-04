@@ -9,5 +9,5 @@ class EmployeeContent extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['content_type', 'content'];
+    protected $fillable = ['type', 'content', 'lang_code'];
 }

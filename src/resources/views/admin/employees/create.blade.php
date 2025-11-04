@@ -59,7 +59,10 @@
 
                             <div class="mb-3">
                                 <label for="photo" class="form-label">Schedule days</label>
-                                <input type="text" name="schedule_days" class="form-control" value="Dushanba - Juma">
+                                <select name="schedule_days" class="form-control">
+                                    <option value="Dushanba - Juma">Dushanba - Juma</option>
+                                    <option value="Dushanba - Shanba">Dushanba - Shanba</option>
+                                </select>
                             </div>
 
                             <div class="mb-3">

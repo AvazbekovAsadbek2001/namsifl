@@ -15,6 +15,9 @@ return new class extends Migration
             $table->increments('id');
             $table->enum('type', ['biography', 'work_experience', 'functional_duties'])->default('functional_duties');
             $table->text('content')->nullable();
+
+            $table->string('lang_code')->default('uz');
+            $table->foreign('lang_code')->references('code')->on('langs')->onDelete('cascade');
             $table->timestamps();
         });
     }

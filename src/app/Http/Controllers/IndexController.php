@@ -36,7 +36,10 @@ class IndexController extends Controller
     }
 
     public function rectorate(){
-        return view('rectorate');
+        $employees = Employee::whereIn('position_id', [1, 2])
+            ->orderByRaw("FIELD(position_id, 1, 2)")
+            ->get();
+        return view('rectorate', compact('employees'));
     }
 
     public function showPage(Request $request){
@@ -75,7 +78,8 @@ class IndexController extends Controller
 
     public function post_category(Request $request){
         $lang = App::getLocale();
-        $name = Category::find($request->id)->name;
+        $name = Category::find($request->id)?->name;
+        if (!$name) return abort(404);
         $id = $request->id;
 
         $posts = Post::whereHas('categories', function ($query) use ( $id ) {
@@ -91,6 +95,11 @@ class IndexController extends Controller
 
     public function employee(Request $request){
         $employee = Employee::find($request->id);
-        return view('employee', compact('employee'));
+
+        if ($employee) {
+            return view('employee', compact('employee'));
+        } else {
+            return abort(404);
+        }
     }
 }

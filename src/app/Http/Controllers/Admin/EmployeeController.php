@@ -11,6 +11,7 @@ use App\Models\Lang;
 use App\Models\Nation;
 use App\Models\Position;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class EmployeeController extends Controller
 {
@@ -77,14 +78,17 @@ class EmployeeController extends Controller
         $contents = collect([
             EmployeeContent::create([
                 'type' => 'biography',
+                'lang_code' => App::getLocale(),
                 'content' => $data['biography'] ?? null,
             ]),
             EmployeeContent::create([
                 'type' => 'work_experience',
+                'lang_code' => App::getLocale(),
                 'content' => $data['work_experience'] ?? null,
             ]),
             EmployeeContent::create([
                 'type' => 'functional_duties',
+                'lang_code' => App::getLocale(),
                 'content' => $data['functional_duties'] ?? null,
             ]),
         ]);

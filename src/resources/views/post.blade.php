@@ -11,7 +11,7 @@
     <div class="article-header">
         <div class="meta-categories" data-aos="fade-up">
             @foreach($post->tags as $tag)
-                <a href="javascript(0)" class="category">{{ json_decode($tag->name, true)[App::getLocale()] }}</a>
+                <a href="javascript:void(0)" class="category">{{ json_decode($tag->name, true)[App::getLocale()] }}</a>
             @endforeach
         </div>
 

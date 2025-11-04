@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'employee' => 'Xodim',
     'call' => 'Qo‘ng‘iroq',
     'email' => 'Elektron pochta',
     'corruption' => 'Korrupsiyaga qarshi kurash',

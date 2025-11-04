@@ -3,53 +3,94 @@
     {{ json_decode($name, true)[App::getLocale()] }}
 @endsection
 @section('section')
-
     <!-- Page Title -->
     <div class="page-title light-background">
       <div class="container d-lg-flex justify-content-between align-items-center">
         <h1 class="mb-2 mb-lg-0 first-letter-uppercase">{{ json_decode($name, true)[App::getLocale()] }}</h1>
         <nav class="breadcrumbs">
           <ol>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html">@lang('contact.home')</a></li>
             <li class="current first-letter-uppercase">{{ json_decode($name, true)[App::getLocale()] }}</li>
           </ol>
         </nav>
       </div>
     </div>
     <!-- End Page Title -->
-    
+     @if (json_decode($name, true)['uz'] == "Korrupsiyaga qarshi kurash")
+      <section id="leadership" class="leadership section">
+
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+          <div class="intro-wrapper">
+            <div class="row align-items-center">
+              <div class="col-lg-6 order-lg-1" data-aos="fade-up" data-aos-delay="300">
+                <div class="intro-content">
+                  <span class="subtitle">{{ __('news.leadership.department') }}</span>
+                  <h2 class="title">{{ __('news.leadership.head_name') }}</h2>
+                  <div class="highlights">
+                    <div class="highlight-item">
+                      <div class="icon-box">
+                        <i class="bi bi-telephone-fill"></i>
+                      </div>
+                      <div class="content">
+                        <h4>{{ __('news.leadership.phone') }} :</h4>
+                        <p>+99 (897) 270-00-60</p>
+                      </div>
+                    </div>
+                    <div class="highlight-item">
+                      <div class="icon-box">
+                        <i class="bi bi-envelope-fill"></i>
+                      </div>
+                      <div class="content">
+                        <h4>{{ __('news.leadership.email') }} : </h4>
+                        <p> alisher.namsifl@gmail.com</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                <div class="col-lg-6 order-lg-2 mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="200">
+                  <div class="intro-image">
+                    <img src="{{ asset('assets/img/rectorate/korrupsiya.jpg') }}" class="img-fluid rounded-lg">
+                  </div>
+                </div>
+            </div>
+          <div>
+        </div>
+      </section>
+
+      <div class="container section-title" data-aos="fade-up">
+        <h2>{{ __('news.news_title') }}</h2>
+      </div>
+     @endif
     <!-- News Posts Section -->
     <section id="news-posts" class="news-posts section">
 
       <div class="container">
-
         <div class="row gy-4">   
             @foreach ($posts as $post)
-                 <div class="col-xl-4 col-md-6 cursor-pointer" data-aos="fade-up" data-aos-delay="100" onclick="location.href='{{ route('showPost', ['id' => $post->id]) }}'">
+                <div class="col-xl-4 col-md-6 cursor-pointer" data-aos="fade-up" data-aos-delay="100" onclick="location.href='{{ route('showPost', ['id' => $post->id]) }}'">
                     <article>
+                      <div class="post-img">
+                          <img src="{{ asset('storage/'.$post->image) }}" class="img-fluid">
+                      </div>
+                      <p class="post-category">{{ $post->translation(App::getLocale())->title }}</p>
 
-                    <div class="post-img">
-                        <img src="{{ asset('storage/'.$post->image) }}" class="img-fluid">
-                    </div>
-                    <p class="post-category">{{ $post->translation(App::getLocale())->title }}</p>
+                      <h2 class="title">
+                          <a href="blog-details.html">
+                              {{ $post->translation(App::getLocale())->description }}
+                          </a>
+                      </h2>
 
-                    <h2 class="title">
-                        <a href="blog-details.html">
-                            {{ $post->translation(App::getLocale())->description }}
-                        </a>
-                    </h2>
-
-                    <div class="d-flex align-items-center">
-                        <img src="{{ asset('assets/img/admin.png') }}" alt="" class="img-fluid post-author-img flex-shrink-0">
-                        <div class="post-meta">
-                        <p class="post-author">{{ $post->user->name }}</p>
-                        <p class="post-date">
-                            <time datetime="2022-01-01">{{ \Carbon\Carbon::parse($post->created_at)->format('M d, Y') }}</time>
-                        </p>
-                        </div>
-                    </div>
-
-                    </article>
+                      <div class="d-flex align-items-center">
+                          <img src="{{ asset('assets/img/admin.png') }}" alt="" class="img-fluid post-author-img flex-shrink-0">
+                          <div class="post-meta">
+                          <p class="post-author">{{ $post->user->name }}</p>
+                          <p class="post-date">
+                              <time datetime="2022-01-01">{{ \Carbon\Carbon::parse($post->created_at)->format('M d, Y') }}</time>
+                          </p>
+                          </div>
+                      </div>
+                  </article>
                 </div>        
             @endforeach
 
@@ -70,14 +111,14 @@
           <li class="disabled">
             <a href="#" aria-label="Previous page">
               <i class="bi bi-arrow-left"></i>
-              <span class="d-none d-sm-inline">Previous</span>
+              <span class="d-none d-sm-inline">{{ __('news.pagination.previous') }}</span>
             </a>
           </li>
         @else
           <li>
             <a href="{{ $posts->previousPageUrl() }}" aria-label="Previous page">
               <i class="bi bi-arrow-left"></i>
-              <span class="d-none d-sm-inline">Previous</span>
+              <span class="d-none d-sm-inline">{{ __('news.pagination.next') }}</span>
             </a>
           </li>
         @endif
@@ -100,14 +141,14 @@
         @if ($posts->hasMorePages())
           <li>
             <a href="{{ $posts->nextPageUrl() }}" aria-label="Next page">
-              <span class="d-none d-sm-inline">Next</span>
+              <span class="d-none d-sm-inline">{{ __('news.pagination.next') }}</span>
               <i class="bi bi-arrow-right"></i>
             </a>
           </li>
         @else
           <li class="disabled">
             <a href="#" aria-label="Next page">
-              <span class="d-none d-sm-inline">Next</span>
+              <span class="d-none d-sm-inline">{{ __('news.pagination.next') }}</span>
               <i class="bi bi-arrow-right"></i>
             </a>
           </li>

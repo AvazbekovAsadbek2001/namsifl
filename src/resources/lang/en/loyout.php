@@ -1,5 +1,6 @@
 <?php
 return [
+    'employee' => 'Employee',
     'call' => 'Call',
     'email' => 'Email',
     'corruption' => 'Fight against corruption',
