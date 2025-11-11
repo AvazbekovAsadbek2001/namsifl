@@ -16,7 +16,9 @@
       </div>
     </div>
     <!-- End Page Title -->
-     @if (json_decode($name, true)['uz'] == "Korrupsiyaga qarshi kurash")
+     
+    
+    @if (json_decode($name, true)['uz'] == "Korrupsiyaga qarshi kurash")
       <section id="leadership" class="leadership section">
 
         <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -57,15 +59,134 @@
           <div>
         </div>
       </section>
+    @endif
 
-      <div class="container section-title" data-aos="fade-up">
-        <h2>{{ __('news.news_title') }}</h2>
-      </div>
-     @endif
+    @if (json_decode($name, true)['uz'] == "Kelajakka qadam")
+      <!-- Events Section -->
+      <section id="events" class="events section">
+
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+          <h2>Video qo‘llanmalar</h2>
+        </div>
+        <!-- End Section Title -->
+
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+          <div class="row g-4">
+
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+              <div class="event-item ">
+                <div class="event-image" style="height: auto">
+                  <iframe 
+                    title="YouTube video player" 
+                    src="https://www.youtube.com/embed/YMmKSRfGGfY?si=Q19sd9Onw5zEyvwM"
+                    frameborder="0" 
+                    allowfullscreen="allowfullscreen"
+                    width="100%"
+                    height="250">
+                  </iframe>
+
+                </div>
+                <div class="event-details">
+                  <h3>Kelajakka qadam</h3>
+                  <p>Kelajakka qadam orqali yoshlarga yaratilayotgan imkoniyatlar, biznes g‘oyalarning moliyalashtirilishi va bitiruvchilarning hayotidagi batafsil lavhalar endi videoda.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+              <div class="event-item">
+                <div class="event-image" style="height: auto">
+                   <iframe 
+                    title="YouTube video player" 
+                    src="https://www.youtube.com/embed/5oNRk-Olxck"
+                    frameborder="0" 
+                    allowfullscreen="allowfullscreen"
+                    width="100%"
+                    height="250">
+                  </iframe>
+                </div>
+                <div class="event-details">
+                  <h3>Kelajakka qadam | Talaba Expo - 2025</h3>
+                  <p>“Kelajakka Qadam” dasturi doirasida bitiruvchi yoshlar oʻz biznes loyihalarini taqdim etdi. Bu ilhomli daqiqalar Oʻzbekiston 24 telekanalida yoritildi!</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+              <div class="event-item">
+                <div class="event-image" style="height: auto">
+                   <iframe 
+                    title="YouTube video player" 
+                    src="https://www.youtube.com/embed/YMmKSRfGGfY?si=Q19sd9Onw5zEyvwM"
+                    frameborder="0" 
+                    allowfullscreen="allowfullscreen"
+                    width="100%"
+                    height="250">
+                  </iframe>
+                </div>
+                <div class="event-details">
+                  <h3>Kelajakka qadam</h3>
+                  <p>Kelajakka qadam orqali yoshlarga yaratilayotgan imkoniyatlar, biznes g‘oyalarning moliyalashtirilishi va bitiruvchilarning hayotidagi batafsil lavhalar endi videoda.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    <!-- /Events Section -->
+
+    <!-- About Section -->
+      <section id="about" class="about section p-1">
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+          <div class="row mt-5">
+            <div class="col-lg-12">
+              <div class="core-values" data-aos="fade-up" data-aos-delay="500">
+                 <div class="container section-title" data-aos="fade-up">
+                  <h2>Kredit xizmatlari</h2>
+                  <p> Biznes g‘oya bor, lekin mablag‘ yo‘qmi ? “KELAJAKKA QADAM” bu muammoni yechadi!</p>
+                </div>
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                  <div class="col">
+                    <div class="value-card">
+                      <h4 class="fw-bold">Kelajakka birinchi qadam</h4>
+                      <p>Ijtimoiy soliq to'lab,o'zini-o'zi band qilgan bitiruvchilar uchun</p>
+                    </div>
+                  </div>
+
+                  <div class="col">
+                    <div class="value-card">
+                      <h4 class="fw-bold">Kelajak uchun start</h4>
+                      <p>Yakka tartibdagi tadbirkorlar yoki yuridik shaxs tashkil etgan bitiruvchilar uchun</p>
+                    </div>
+                  </div>
+
+                  <div class="col">
+                    <div class="value-card">
+                      <h4 class="fw-bold">Yorqin kelajak sari</h4>
+                      <p>Yakka tartibdagi tadbirkorlar yoki yuridik shaxs tashkil etgan bitiruvchilar uchun</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    <!-- /About Section -->
+    @endif
+
     <!-- News Posts Section -->
     <section id="news-posts" class="news-posts section">
 
       <div class="container">
+        @if (json_decode($name, true)['en'] != "News" && json_decode($name, true)['en'] != "Announcement")
+        <div class="container section-title" data-aos="fade-up">
+          <h2>{{ __('news.news_title') }}</h2>
+        </div>
+        @endif
         <div class="row gy-4">   
             @foreach ($posts as $post)
                 <div class="col-xl-4 col-md-6 cursor-pointer" data-aos="fade-up" data-aos-delay="100" onclick="location.href='{{ route('showPost', ['id' => $post->id]) }}'">
@@ -85,10 +206,10 @@
                       <div class="d-flex align-items-center">
                           <img src="{{ asset('assets/img/admin.png') }}" alt="" class="img-fluid post-author-img flex-shrink-0">
                           <div class="post-meta">
-                          <p class="post-author">{{ $post->user->name }}</p>
-                          <p class="post-date">
-                              <time datetime="2022-01-01">{{ \Carbon\Carbon::parse($post->created_at)->format('M d, Y') }}</time>
-                          </p>
+                            <p class="post-author">{{ $post->user->name }}</p>
+                            <p class="post-date">
+                                <time datetime="2022-01-01">{{ \Carbon\Carbon::parse($post->created_at)->format('M d, Y') }}</time>
+                            </p>
                           </div>
                       </div>
                   </article>

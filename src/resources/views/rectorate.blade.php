@@ -28,92 +28,34 @@
                 </div>
 
                 <div class="row g-4">
-
-                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="faculty-card">
-                            <div class="faculty-img">
-                                <img src="{{ asset('assets/img/rectorate/rektor.jpg') }}" class="img-fluid">
-                            </div>
-                            <div class="faculty-content">
-                                <h4>@lang('rectorate.rektor_name')</h4>
-                                <p class="faculty-position">@lang('rectorate.rektor_position')</p>
-                                <div class="faculty-social">
-                                    <a href="#"><i class="bi bi-linkedin"></i></a>
-                                    <a href="#"><i class="bi bi-twitter"></i></a>
-                                    <a href="#"><i class="bi bi-envelope"></i></a>
+                    @foreach ($employees as $item)
+                        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="faculty-card" style="cursor: pointer" onclick="window.location.href='{{ route('employee', ['id' => $item->id]) }}'">
+                                <div class="faculty-img">
+                                    <img src="{{ asset('storage/'.$item->photo) }}" class="img-fluid">
+                                </div>
+                                <div class="faculty-content">
+                                    <h4>{{ $item->name }}</h4>
+                                    <p class="faculty-position">
+                                        {{ json_decode($item->position->title, true)[App::getLocale()] }}
+                                    </p>
+                                    <div class="faculty-social">
+                                        @foreach (json_decode($item->social_medias, true) as $key => $media)
+                                            @switch($key)
+                                                @case('email')
+                                                    <a href="mailto:{{ $media }}"><i class="bi bi-envelope"></i></a>
+                                                    @break
+                                                @case('phone')
+                                                    <a href="tel:{{ $media }}"><i class="bi bi-telephone"></i></a>
+                                                    @break
+                                                @default
+                                            @endswitch
+                                        @endforeach
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="faculty-card">
-                            <div class="faculty-img">
-                                <img src="{{ asset('assets/img/rectorate/yoshlar.jpg') }}" class="img-fluid">
-                            </div>
-                            <div class="faculty-content">
-                                <h4>@lang('rectorate.yoshlar_name')</h4>
-                                <p class="faculty-position">@lang('rectorate.yoshlar_position')</p>
-                                <div class="faculty-social">
-                                    <a href="#"><i class="bi bi-linkedin"></i></a>
-                                    <a href="#"><i class="bi bi-twitter"></i></a>
-                                    <a href="#"><i class="bi bi-envelope"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                        <div class="faculty-card">
-                            <div class="faculty-img">
-                                <img src="{{ asset('assets/img/rectorate/oquv.jpg') }}" class="img-fluid">
-                            </div>
-                            <div class="faculty-content">
-                                <h4>@lang('rectorate.oquv_name')</h4>
-                                <p class="faculty-position">@lang('rectorate.oquv_position')</p>
-                                <div class="faculty-social">
-                                    <a href="#"><i class="bi bi-linkedin"></i></a>
-                                    <a href="#"><i class="bi bi-twitter"></i></a>
-                                    <a href="#"><i class="bi bi-envelope"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="faculty-card">
-                            <div class="faculty-img">
-                                <img src="{{ asset('assets/img/rectorate/ilmiy.jpg') }}" class="img-fluid">
-                            </div>
-                            <div class="faculty-content">
-                                <h4>@lang('rectorate.ilmiy_name')</h4>
-                                <p class="faculty-position">@lang('rectorate.ilmiy_position')</p>
-                                <div class="faculty-social">
-                                    <a href="#"><i class="bi bi-linkedin"></i></a>
-                                    <a href="#"><i class="bi bi-twitter"></i></a>
-                                    <a href="#"><i class="bi bi-envelope"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="500">
-                        <div class="faculty-card">
-                            <div class="faculty-img">
-                                <img src="{{ asset('assets/img/rectorate/ishlar.jpg') }}" class="img-fluid">
-                            </div>
-                            <div class="faculty-content">
-                                <h4>@lang('rectorate.ishlar_name')</h4>
-                                <p class="faculty-position">@lang('rectorate.ishlar_position')</p>
-                                <div class="faculty-social">
-                                    <a href="#"><i class="bi bi-linkedin"></i></a>
-                                    <a href="#"><i class="bi bi-twitter"></i></a>
-                                    <a href="#"><i class="bi bi-envelope"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                    @endforeach
                 </div>
             </div>
         </div>
