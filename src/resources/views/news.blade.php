@@ -73,13 +73,14 @@
                       <div class="post-img">
                           <img src="{{ asset('storage/'.$post->image) }}" class="img-fluid">
                       </div>
-                      <p class="post-category">{{ $post->translation(App::getLocale())->title }}</p>
-
+                      
                       <h2 class="title">
-                          <a href="blog-details.html">
-                              {{ $post->translation(App::getLocale())->description }}
+                          <a href="javascript::void(0)">
+                              {{ $post->translation(App::getLocale())->title }}
                           </a>
                       </h2>
+                      
+                      <p class="post-category">{{ $post->translation(App::getLocale())->description }}</p>
 
                       <div class="d-flex align-items-center">
                           <img src="{{ asset('assets/img/admin.png') }}" alt="" class="img-fluid post-author-img flex-shrink-0">
@@ -118,7 +119,7 @@
           <li>
             <a href="{{ $posts->previousPageUrl() }}" aria-label="Previous page">
               <i class="bi bi-arrow-left"></i>
-              <span class="d-none d-sm-inline">{{ __('news.pagination.next') }}</span>
+              <span class="d-none d-sm-inline">{{ __('news.pagination.previous') }}</span>
             </a>
           </li>
         @endif

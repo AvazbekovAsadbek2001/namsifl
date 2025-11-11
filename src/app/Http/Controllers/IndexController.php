@@ -88,7 +88,7 @@ class IndexController extends Controller
             $query->where('lang_code', $lang);
         })->with(['translations' => function ($query) use ($lang) {
             $query->where('lang_code', $lang);
-        }])->paginate(6);
+        }])->orderByDesc('id')->paginate(6);
 
         return view('news', compact('posts', 'name'));
     }

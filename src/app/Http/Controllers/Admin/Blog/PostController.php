@@ -15,7 +15,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $data = Post::all();
+        $data = Post::orderByDesc('id')->paginate(10);
         $posts = $data->map(function ($post) {
            return [
                'id' => $post->id,
