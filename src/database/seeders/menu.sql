@@ -6,15 +6,15 @@ INSERT INTO menus (id, title, url, parent_id, "order", created_at, updated_at) V
 (5, '{"uz":"Rahbariyat","en":"Rectorate","ru":"Руководство"}', '/rectorate', 1, 4, NOW(), NOW()),
 (6, '{"uz":"Fakultetlar","en":"Faculties","ru":"Факультеты"}', '#', 1, 5, NOW(), NOW()),
 (7, '{"uz":"Kafedralar","en":"Departments","ru":"Кафедры"}', '#', 1, 6, NOW(), NOW()),
-(8, '{"uz":"Markaz va bo\'limlar","en":"Centers and Divisions","ru":"Центры и отделы"}', '#', 1, 7, NOW(), NOW()),
+(8, '{"uz":"Markaz va bo''limlar","en":"Centers and Divisions","ru":"Центры и отделы"}', '#', 1, 7, NOW(), NOW()),
 
 (9, '{"uz":"Faoliyat","en":"Activities","ru":"Деятельность"}', '#', NULL, 2, NOW(), NOW()),
 (10, '{"uz":"Ilmiy faoliyat","en":"Scientific Activity","ru":"Научная деятельность"}', '#', 9, 1, NOW(), NOW()),
 (11, '{"uz":"Institut Kengashi faoliyati","en":"Institute Council Activities","ru":"Деятельность Совета Института"}', '#', 9, 2, NOW(), NOW()),
-(12, '{"uz":"Ma\'daniy-ma\'rifiy","en":"Cultural Education","ru":"Культурно-просветительная"}', '#', 9, 3, NOW(), NOW()),
+(12, '{"uz":"Ma''daniy-ma''rifiy","en":"Cultural Education","ru":"Культурно-просветительная"}', '#', 9, 3, NOW(), NOW()),
 (13, '{"uz":"Moliyaviy faoliyat","en":"Financial Activities","ru":"Финансовая деятельность"}', '#', 9, 4, NOW(), NOW()),
 (14, '{"uz":"Malaka oshirish","en":"Professional Development","ru":"Повышение квалификации"}', '#', 9, 5, NOW(), NOW()),
-(15, '{"uz":"Ekologik ta\'lim","en":"Environmental Education","ru":"Экологическое образование"}', '#', 9, 6, NOW(), NOW()),
+(15, '{"uz":"Ekologik ta''lim","en":"Environmental Education","ru":"Экологическое образование"}', '#', 9, 6, NOW(), NOW()),
 (16, '{"uz":"Institut gazetasi","en":"Institute Newspaper","ru":"Газета института"}', '#', 9, 7, NOW(), NOW()),
 
 (17, '{"uz":"Abituriyent","en":"Applicant","ru":"Абитуриент"}', '#', NULL, 3, NOW(), NOW()),
@@ -22,15 +22,15 @@ INSERT INTO menus (id, title, url, parent_id, "order", created_at, updated_at) V
 (19, '{"uz":"Magistratura","en":"Master","ru":"Магистратура"}', '#', 17, 2, NOW(), NOW()),
 (20, '{"uz":"Chet el fuqarolari","en":"Foreign Nationals","ru":"Иностранные граждане"}', '#', 17, 3, NOW(), NOW()),
 (21, '{"uz":"Ikkinchi mutaxasislik","en":"Second Speciality","ru":"Вторая специальность"}', '#', 17, 4, NOW(), NOW()),
-(22, '{"uz":"Qo\'shma ta\'lim dasturi","en":"Joint Education Program","ru":"Совместная образовательная программа"}', '#', 17, 5, NOW(), NOW()),
+(22, '{"uz":"Qo''shma ta''lim dasturi","en":"Joint Education Program","ru":"Совместная образовательная программа"}', '#', 17, 5, NOW(), NOW()),
 (23, '{"uz":"Qabul","en":"Admission","ru":"Прием"}', '#', 17, 6, NOW(), NOW()),
 
 (24, '{"uz":"Talaba","en":"Student","ru":"Студент"}', '#', NULL, 4, NOW(), NOW()),
 (25, '{"uz":"Bakalavriat","en":"Bachelor","ru":"Бакалавриат"}', '#', 24, 1, NOW(), NOW()),
 (26, '{"uz":"Magistratura","en":"Master","ru":"Магистратура"}', '#', 24, 2, NOW(), NOW()),
-(27, '{"uz":"Sirtqi ta\'lim","en":"Part-time Education","ru":"Заочное обучение"}', '#', 24, 3, NOW(), NOW()),
-(28, '{"uz":"Xorijiy ta\'lim","en":"Foreign Education","ru":"Иностранное обучение"}', '#', 24, 4, NOW(), NOW()),
-(29, '{"uz":"O\'qishni ko\'chirish/tiklash","en":"Transfer/Restore","ru":"Перевод/Восстановление"}', '#', 24, 5, NOW(), NOW()),
+(27, '{"uz":"Sirtqi ta''lim","en":"Part-time Education","ru":"Заочное обучение"}', '#', 24, 3, NOW(), NOW()),
+(28, '{"uz":"Xorijiy ta''lim","en":"Foreign Education","ru":"Иностранное обучение"}', '#', 24, 4, NOW(), NOW()),
+(29, '{"uz":"O''qishni ko''chirish/tiklash","en":"Transfer/Restore","ru":"Перевод/Восстановление"}', '#', 24, 5, NOW(), NOW()),
 
 (30, '{"uz":"Hujjatlar","en":"Documents","ru":"Документы"}', '#', NULL, 5, NOW(), NOW()),
 (31, '{"uz":"Prezident qaror va farmonlari","en":"Presidential Decisions","ru":"Указы Президента"}', '#', 30, 1, NOW(), NOW()),
@@ -42,6 +42,6 @@ INSERT INTO menus (id, title, url, parent_id, "order", created_at, updated_at) V
 
 (37, '{"uz":"Axborot xizmati","en":"Information Service","ru":"Информационная служба"}', '#', NULL, 6, NOW(), NOW()),
 (38, '{"uz":"Yangiliklar","en":"News","ru":"Новости"}', '/category/1', 37, 1, NOW(), NOW()),
-(39, '{"uz":"E\'lonlar","en":"Announcements","ru":"Объявления"}', '/category/2', 37, 2, NOW(), NOW()),
+(39, '{"uz":"E''lonlar","en":"Announcements","ru":"Объявления"}', '/category/2', 37, 2, NOW(), NOW()),
 
-(40, '{"uz":"Bog\'lanish","en":"Contact","ru":"Контакты"}', '/contact', NULL, 7, NOW(), NOW());
+(40, '{"uz":"Bog''lanish","en":"Contact","ru":"Контакты"}', '/contact', NULL, 7, NOW(), NOW());
