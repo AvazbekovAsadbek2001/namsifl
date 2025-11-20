@@ -1,10 +1,10 @@
-INSERT INTO `menus` (`id`, `title`, `url`, `parent_id`, `order`, `created_at`, `updated_at`) VALUES
+INSERT INTO menus (id, title, url, parent_id, "order", created_at, updated_at) VALUES
 (1, '{"uz":"Institut tuzilmasi","en":"Institute Structure","ru":"Структура института"}', '#', NULL, 1, NOW(), NOW()),
 (2, '{"uz":"Institut haqida","en":"About Institute","ru":"Об институте"}', '#', 1, 1, NOW(), NOW()),
 (3, '{"uz":"Institut tuzilmasi","en":"Institute Structure","ru":"Структура института"}', '#', 1, 2, NOW(), NOW()),
 (4, '{"uz":"Institut rekvizitlari","en":"Institute Requisites","ru":"Реквизиты института"}', '#', 1, 3, NOW(), NOW()),
 (5, '{"uz":"Rahbariyat","en":"Rectorate","ru":"Руководство"}', '/rectorate', 1, 4, NOW(), NOW()),
-(6, '{"uz":"Fakultitetlar","en":"Faculties","ru":"Факультеты"}', '#', 1, 5, NOW(), NOW()),
+(6, '{"uz":"Fakultetlar","en":"Faculties","ru":"Факультеты"}', '#', 1, 5, NOW(), NOW()),
 (7, '{"uz":"Kafedralar","en":"Departments","ru":"Кафедры"}', '#', 1, 6, NOW(), NOW()),
 (8, '{"uz":"Markaz va bo\'limlar","en":"Centers and Divisions","ru":"Центры и отделы"}', '#', 1, 7, NOW(), NOW()),
 
