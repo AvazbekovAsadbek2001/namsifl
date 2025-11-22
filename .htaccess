@@ -1,0 +1,22 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Laravel public papkasiga yo'naltirish
+    RewriteRule ^(.*)$ src/public/$1 [L]
+
+    # Agar public/index.php to'g'ridan-to'g'ri ochilayotgan bo'lsa
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ src/public/index.php [L]
+</IfModule>
+
+# PHP fayllarni tashqaridan bloklash (xavfsizlik)
+<FilesMatch "\.php$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+<Files "index.php">
+    Order Allow,Deny
+    Allow from all
+</Files>

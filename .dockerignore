@@ -1,0 +1,6 @@
+src/node_modules
+src/vendor
+src/.env
+src/storage/*.key
+src/public/storage
+src/!.gitkeep
