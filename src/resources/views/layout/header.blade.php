@@ -1,7 +1,7 @@
-<nav class="py-2" style="background: #04415f; color: white;">
+<nav class="py-2 navbar-header">
     <div class="container">
         <div class="row align-items-center justify-content-center justify-content-md-start text-center text-md-start">
-            <div class="col-auto mb-2 mb-md-0" style="border-right: 1px solid white; padding: 0 15px;">
+            <div class="col-auto mb-2 mb-md-0" >
                 <i class="bi bi-telephone-fill me-2"></i>
                 <strong class="fs-6 fw-normal lh-base">@lang('loyout.call') :</strong>
                 <a href="tel:+998694421167" class="text-white text-decoration-none fs-6 fw-normal lh-base">+998 (69) 442 11 67</a>
@@ -11,7 +11,7 @@
                 <strong class="fs-6 fw-normal lh-base">@lang('loyout.email'):</strong>
                 <a href="mailto:info@namsifl.uz" class="text-white text-decoration-none fs-6 fw-normal lh-base">info@namsifl.uz</a>
             </div>
-            <div class="col-auto mb-2 mb-md-0 ms-md-auto" style="border-right: 1px solid white; padding: 0 15px;">
+            <div class="col-auto mb-2 mb-md-0 ms-md-auto">
                 <a href="{{ route('post_category', ['id' => 3]) }}" class="text-white fs-6 fw-normal lh-base">@lang('loyout.corruption')</a>
             </div>
             <div class="col-auto">
@@ -42,7 +42,7 @@
         <a href="/" class="d-flex align-items-center me-auto">
             <!-- Uncomment the line below if you also wish to use an image logo -->
             <img src="{{ asset('assets/img/logo.png') }}" alt="" width="70">
-            <b style="margin-left:10px; font-family: 'Poppins'">Namangan davlat<br> chet tillar instituti</b>
+            <b class="ms-2 mw-75 poppins">Namangan davlat<br> chet tillar instituti</b>
         </a>
 
         @include('layout.menu')

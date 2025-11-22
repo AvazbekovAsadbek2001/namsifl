@@ -37,7 +37,7 @@ class IndexController extends Controller
 
     public function rectorate(){
         $employees = Employee::whereIn('position_id', [1, 2])
-            ->orderByRaw("FIELD(position_id, 1, 2)")
+            ->orderBy('position_id', 'asc')
             ->get();
         return view('rectorate', compact('employees'));
     }

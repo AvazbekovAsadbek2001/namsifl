@@ -79,13 +79,13 @@
             <div class="event-info">
               <h3> @lang('welcome.upcoming-event-title') </h3>
             </div>
-            <div class="event-action" style="margin-right: 20px">
+            <div class="event-action mx-2">
               <a href="http://www.youtube.com/@NamSIFL" class="btn-event"><i class="bi bi-youtube"></i></a>
             </div>
-            <div class="event-action" style="margin-right: 20px">
+            <div class="event-action mx-2">
                <a href="https://t.me/ibratnamdchti" class="btn-event"><i class="bi bi-telegram"></i></a>
             </div>
-            <div class="event-action" style="margin-right: 20px">
+            <div class="event-action mx-2">
                <a href="https://www.facebook.com/NSIFL?mibextid=ZbWKwL" class="btn-event"><i class="bi bi-facebook"></i></a>
             </div>
           </div>
@@ -331,5 +331,5 @@
                 card.classList.remove('active');
             });
         });
-    </script
+    </script>
 @endsection
