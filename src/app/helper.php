@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\App;
+
 function getLangs(){
     return \App\Models\Lang::all();
 }
@@ -16,5 +18,12 @@ function getMenu(){
         ->get();
 
     return $menus;
+}
 
+function getCountNewMessages($type){
+    if ($type > 0){
+        return \App\Models\Message::where('type', $type)->where('status', 'new')->count();
+    } else {
+        return \App\Models\Message::where('status', 'new')->count();
+    }
 }

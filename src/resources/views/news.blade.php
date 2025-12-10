@@ -286,8 +286,9 @@
                 <h3>Habar berish</h3>
                 <p>Agar atrofingizda giyohvandlik bilan bog‘liq xavf sezsangiz, bu yerda anonim tarzda xabar qoldirishingiz mumkin. Maqsad — giyohvandlikdan holi, sog‘lom muhit yaratish.</p>
 
-                <form action="#" method="post" class="php-email-form">
+                <form action="{{ route('sendMessage') }}" method="post" class="php-email-form">
                   @csrf
+                  <input type="hidden" name="type" value="2">
                   <div class="form-group mt-3">
                       <textarea name="message" class="form-control" rows="5" required></textarea>
                   </div>

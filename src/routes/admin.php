@@ -39,8 +39,6 @@ Route::group(['middleware' => ['check-admin']], function () {
         });
     });
 
-
-
     Route::group(['prefix' => 'employee', 'as' => 'employee.'], function () {
         Route::get('/', [\App\Http\Controllers\Admin\EmployeeController::class, 'index'])->name('index');
         Route::get('/create', [\App\Http\Controllers\Admin\EmployeeController::class, 'create'])->name('create');
@@ -50,6 +48,8 @@ Route::group(['middleware' => ['check-admin']], function () {
     Route::group(['prefix' => 'menu', 'as' => 'menu.'], function () {
         Route::get('/', [\App\Http\Controllers\Admin\MenuController::class, 'index'])->name('index');
     });
+
+    Route::get('/message/{id}', [\App\Http\Controllers\Admin\MessageController::class, 'index'])->name('message');
 
     Route::post('/file-upload', [\App\Http\Controllers\Admin\FileController::class, 'uploadFile'])->name('file-upload');
 
