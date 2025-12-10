@@ -21,7 +21,7 @@
     <!-- Content -->
     <div class="browse-job login-style3">
         <!-- Coming Soon -->
-        <div class="bg-img-fix overflow-hidden" style="background:#fff url({{asset('admin/images/background/bg6.jpg')}}); height: 100vh;">
+        <div class="bg-img-fix overflow-hidden vh-100">
             <div class="row gx-0">
                 <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12 vh-100 bg-white ">
                     <div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: 653px;" tabindex="0">
@@ -125,7 +125,7 @@
                             </div>
                         </div>
                         <div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_vertical" style="display: block;">
-                            <div class="mCSB_draggerContainer">
+                             <div class="mCSB_draggerContainer">
                                 <div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 0px; display: block; height: 652px; max-height: 643px; top: 0px;">
                                     <div class="mCSB_dragger_bar" style="line-height: 0px;"></div><div class="mCSB_draggerRail"></div></div></div>
                         </div>

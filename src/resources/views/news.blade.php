@@ -177,7 +177,6 @@
       </section>
     <!-- /About Section -->
     @endif
-
     <!-- News Posts Section -->
     <section id="news-posts" class="news-posts section">
 
@@ -223,61 +222,83 @@
 
     </section>
     <!-- /News Posts Section -->
-
-   <section id="pagination-2" class="pagination-2 section">
-  <div class="container">
-    <nav class="d-flex justify-content-center" aria-label="Page navigation">
-      <ul>
-        {{-- Previous button --}}
-        @if ($posts->onFirstPage())
-          <li class="disabled">
-            <a href="#" aria-label="Previous page">
-              <i class="bi bi-arrow-left"></i>
-              <span class="d-none d-sm-inline">{{ __('news.pagination.previous') }}</span>
-            </a>
-          </li>
-        @else
-          <li>
-            <a href="{{ $posts->previousPageUrl() }}" aria-label="Previous page">
-              <i class="bi bi-arrow-left"></i>
-              <span class="d-none d-sm-inline">{{ __('news.pagination.previous') }}</span>
-            </a>
-          </li>
-        @endif
-
-        {{-- Page numbers --}}
-        @foreach ($posts->getUrlRange(1, $posts->lastPage()) as $page => $url)
-          @if ($page == $posts->currentPage())
-            <li><a href="#" class="active">{{ $page }}</a></li>
-          @elseif ($page > 2 && $page < $posts->lastPage() - 1)
-            {{-- optional: ellipsis logic --}}
-            @if ($page == 3)
-              <li class="ellipsis">...</li>
+    <section id="pagination-2" class="pagination-2 section">
+      <div class="container">
+        <nav class="d-flex justify-content-center" aria-label="Page navigation">
+          <ul>
+            {{-- Previous button --}}
+            @if ($posts->onFirstPage())
+              <li class="disabled">
+                <a href="#" aria-label="Previous page">
+                  <i class="bi bi-arrow-left"></i>
+                  <span class="d-none d-sm-inline">{{ __('news.pagination.previous') }}</span>
+                </a>
+              </li>
+            @else
+              <li>
+                <a href="{{ $posts->previousPageUrl() }}" aria-label="Previous page">
+                  <i class="bi bi-arrow-left"></i>
+                  <span class="d-none d-sm-inline">{{ __('news.pagination.previous') }}</span>
+                </a>
+              </li>
             @endif
-          @else
-            <li><a href="{{ $url }}">{{ $page }}</a></li>
-          @endif
-        @endforeach
 
-        {{-- Next button --}}
-        @if ($posts->hasMorePages())
-          <li>
-            <a href="{{ $posts->nextPageUrl() }}" aria-label="Next page">
-              <span class="d-none d-sm-inline">{{ __('news.pagination.next') }}</span>
-              <i class="bi bi-arrow-right"></i>
-            </a>
-          </li>
-        @else
-          <li class="disabled">
-            <a href="#" aria-label="Next page">
-              <span class="d-none d-sm-inline">{{ __('news.pagination.next') }}</span>
-              <i class="bi bi-arrow-right"></i>
-            </a>
-          </li>
-        @endif
-      </ul>
-    </nav>
-  </div>
-</section>
+            {{-- Page numbers --}}
+            @foreach ($posts->getUrlRange(1, $posts->lastPage()) as $page => $url)
+              @if ($page == $posts->currentPage())
+                <li><a href="#" class="active">{{ $page }}</a></li>
+              @elseif ($page > 2 && $page < $posts->lastPage() - 1)
+                {{-- optional: ellipsis logic --}}
+                @if ($page == 3)
+                  <li class="ellipsis">...</li>
+                @endif
+              @else
+                <li><a href="{{ $url }}">{{ $page }}</a></li>
+              @endif
+            @endforeach
+
+            {{-- Next button --}}
+            @if ($posts->hasMorePages())
+              <li>
+                <a href="{{ $posts->nextPageUrl() }}" aria-label="Next page">
+                  <span class="d-none d-sm-inline">{{ __('news.pagination.next') }}</span>
+                  <i class="bi bi-arrow-right"></i>
+                </a>
+              </li>
+            @else
+              <li class="disabled">
+                <a href="#" aria-label="Next page">
+                  <span class="d-none d-sm-inline">{{ __('news.pagination.next') }}</span>
+                  <i class="bi bi-arrow-right"></i>
+                </a>
+              </li>
+            @endif
+          </ul>
+        </nav>
+      </div>
+    </section>
+
+    @if (json_decode($name, true)['uz'] == "Stop narko")
+      <section id="contact" class="contact section">
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <div class="contact-content">
+              <div class="contact-form-container" data-aos="fade-up" data-aos-delay="400">
+                <h3>Habar berish</h3>
+                <p>Agar atrofingizda giyohvandlik bilan bog‘liq xavf sezsangiz, bu yerda anonim tarzda xabar qoldirishingiz mumkin. Maqsad — giyohvandlikdan holi, sog‘lom muhit yaratish.</p>
+
+                <form action="#" method="post" class="php-email-form">
+                  @csrf
+                  <div class="form-group mt-3">
+                      <textarea name="message" class="form-control" rows="5" required></textarea>
+                  </div>
+                  <div class="form-submit mt-2">
+                      <button type="submit">@lang('contact.send_message')</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+        </div>
+      </section>
+    @endif
 
 @endsection

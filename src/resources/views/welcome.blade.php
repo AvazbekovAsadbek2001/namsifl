@@ -319,17 +319,5 @@
     <!-- /Campus Facilities Section -->
 @endsection
 @section('script')
-    <script>
-        const cards = document.querySelectorAll('.feature-card');
-
-        cards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.classList.add('active');
-            });
-
-            card.addEventListener('mouseleave', () => {
-                card.classList.remove('active');
-            });
-        });
-    </script>
+    <script src="{{ asset('assets/js/welcome.js') }}"></script>
 @endsection
