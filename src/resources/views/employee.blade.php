@@ -42,7 +42,9 @@
                 <span class="subtitle">{{ json_decode($employee->position->title, true)[App::getLocale()] }}</span>
                 <h2 class="title">{{ $employee->name }}</h2>
                 @if ($employee->position_description != null)
-                  <p class="description">{{ $employee->position_description }}</p>
+                  <p class="description">
+                    {{ json_decode($employee->position_description, true)[App::getLocale()] }}
+                  </p>
                 @endif
                 <div class="highlights">
                   <div class="highlight-item">
@@ -92,7 +94,7 @@
         </button>
       </h2>
       <div id="collapseOne" 
-           class="accordion-collapse collapse show" 
+           class="accordion-collapse collapse show text-break" 
            aria-labelledby="headingOne" 
            data-bs-parent="#rektorAccordion">
         <div class="accordion-body pt-3 pb-4" 
@@ -116,7 +118,7 @@
         </button>
       </h2>
       <div id="collapseTwo" 
-           class="accordion-collapse collapse" 
+           class="accordion-collapse collapse text-break" 
            aria-labelledby="headingTwo" 
            data-bs-parent="#rektorAccordion">
         <div class="accordion-body pt-3 pb-4" 
@@ -140,7 +142,7 @@
         </button>
       </h2>
       <div id="collapseThree" 
-           class="accordion-collapse collapse" 
+           class="accordion-collapse collapse text-break" 
            aria-labelledby="headingThree" 
            data-bs-parent="#rektorAccordion">
         <div class="accordion-body pt-3 pb-4" 

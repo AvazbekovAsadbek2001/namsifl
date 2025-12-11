@@ -93,6 +93,10 @@ class EmployeeController extends Controller
             ]),
         ]);
 
+        $data['position_description'] = json_encode([
+            App::getLocale() => $data['position_description']
+        ]);
+
         $data['employee_contents'] = json_encode($contents->pluck('id')->toArray());
 
         Employee::create($data);

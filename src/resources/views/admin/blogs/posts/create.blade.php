@@ -20,8 +20,6 @@
             font-weight: 500;
             color: #6c757d;
         }
-
-
     </style>
 @endsection
 @section('section')
