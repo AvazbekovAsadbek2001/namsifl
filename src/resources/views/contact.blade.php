@@ -15,16 +15,18 @@
             </nav>
         </div>
     </div>
+    @if (session('success'))
+        <div class="alert alert-success">
+           <center>
+            {{ session('success') }}
+           </center>
+        </div>
+    @endif
 
     <!-- Contact Section -->
     <section id="contact" class="contact section">
         <div class="container" data-aos="fade-up" data-aos-delay="100">
             <div class="contact-main-wrapper">
-                @if (session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                @endif
                 <div class="map-wrapper">
                     <iframe style="border:0; width:100%; height:100%;" allowfullscreen="" loading="lazy"
                             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1821.013137245764!2d71.509231!3d41.006738!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x15fb92619a203113!2sNamangan%20State%20Institute%20of%20Foreign%20Languages!5e0!3m2!1suz!2sus!4v1670705393104!5m2!1suz!2sus">

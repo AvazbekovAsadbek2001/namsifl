@@ -16,7 +16,6 @@
       </div>
     </div>
     <!-- End Page Title -->
-     
     
     @if (json_decode($name, true)['uz'] == "Korrupsiyaga qarshi kurash")
       <section id="leadership" class="leadership section">
@@ -181,6 +180,11 @@
     <section id="news-posts" class="news-posts section">
 
       <div class="container">
+        @if (session('success'))
+          <div class="alert alert-primary" role="alert">
+            Habaringiz jo'natildi
+          </div>
+        @endif
         @if (json_decode($name, true)['en'] != "News" && json_decode($name, true)['en'] != "Announcement")
         <div class="container section-title" data-aos="fade-up">
           <h2>{{ __('news.news_title') }}</h2>

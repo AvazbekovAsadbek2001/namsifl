@@ -28,6 +28,7 @@
         <!-- Preloader -->
         <div id="preloader"></div>
 
+        <!-- Scripts -->
         @yield('script')
         @include('layout.scripts')
     </body>
