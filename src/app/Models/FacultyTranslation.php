@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class FacultyTranslation extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        "content",
+        "faculty_id",
+        "lang_id",
+    ];
 }

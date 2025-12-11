@@ -62,9 +62,9 @@
                 </a>
 
                 <ul aria-expanded="false">
-                    <li><a href="index.html">Faculties</a></li>
-                    <li><a href="index-2.html">Departments</a></li>
-                    <li><a href="index-3.html">Cafedra</a></li>
+                    <li><a href="{{ route('admin.structure.faculties.index') }}">Faculties</a></li>
+                    <li><a href="{{ route('admin.structure.departments.index') }}">Departments</a></li>
+                    <li><a href="{{ route('admin.structure.cafedra.index') }}">Cafedra</a></li>
                 </ul>
             </li>
             <li>

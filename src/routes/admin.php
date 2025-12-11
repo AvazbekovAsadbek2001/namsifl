@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\StructureController;
 use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/login');
@@ -22,7 +23,7 @@ Route::group(['middleware' => ['check-admin']], function () {
     });
 
     Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
-        Route::group(['p>refix' => 'category', 'as' => 'category.'], function () {
+        Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
             Route::get('/', [\App\Http\Controllers\Admin\Blog\CategoryController::class, 'index'])->name('index');
             Route::post('/store', [\App\Http\Controllers\Admin\Blog\CategoryController::class, 'store'])->name('store');
         });
@@ -47,6 +48,25 @@ Route::group(['middleware' => ['check-admin']], function () {
     
     Route::group(['prefix' => 'menu', 'as' => 'menu.'], function () {
         Route::get('/', [\App\Http\Controllers\Admin\MenuController::class, 'index'])->name('index');
+    });
+
+    Route::group(['prefix'=> 'structure', 'as'=> 'structure.'], function () {
+        
+        Route::group(['prefix'=> 'faculties', 'as'=> 'faculties.'], function () {
+            Route::get('/', [StructureController::class,'indexFaculties'])->name('index');
+            Route::get('/create', [StructureController::class,'createFaculty'])->name('create');
+            Route::post('/store', [StructureController::class,'storeFaculty'])->name('store');
+        });
+
+        Route::group(['prefix'=> 'departments', 'as'=> 'departments.'], function () {
+            Route::get('/', [StructureController::class,'indexDepartments'])->name('index');
+            Route::post('/store', [StructureController::class,'storeDepartment'])->name('store');
+        });
+
+        Route::group(['prefix'=> 'cafedra', 'as'=> 'cafedra.'], function () {
+            Route::get('/', [StructureController::class,'indexCafedra'])->name('index');
+            Route::post('/store', [StructureController::class,'storeCafedra'])->name('store');
+        });
     });
 
     Route::get('/message/{id}', [\App\Http\Controllers\Admin\MessageController::class, 'index'])->name('message');
