@@ -104,7 +104,7 @@ class IndexController extends Controller
 
     public function faculty(){
         $structures = Faculty::all();
-        $name = "Faculties";
+        $name = "Fakultetlar";
         return view('structures', compact('structures', 'name'));
     }
 }

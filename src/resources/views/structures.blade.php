@@ -19,24 +19,31 @@
     </div>
 @endsection
 @section('section')
-    <section id="academics" class="academics section">
+    <section id="news-posts" class="news-posts section pb-0">
+        <div class="container section-title aos-init aos-animate pb-0" data-aos="fade-up">
+            <h2>{{ $name }}</h2>
+        </div>
+    </section>
 
+    <section id="academics" class="academics section">
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="row mb-5">
           <div class="col-lg" data-aos="fade-left" data-aos-delay="300">
             <div class="row key-metrics g-4">
                 @foreach ($structures as $item)
-                    <div class="col-6">
-                        <div class="metric-card">
-                        <h2>{{ json_decode($item->name, true)[App::getLocale()] }}</h2>
+                    @if (isset(json_decode($item->name, true)[App::getLocale()]))
+                        <div class="col-6">
+                            <div class="metric-card">
+                            <h2>{{ json_decode($item->name, true)[App::getLocale()] }}</h2>
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 @endforeach
             </div>
           </div>
         </div>
       </div>
-
+    </section>
 @endsection
 @section('script')
 

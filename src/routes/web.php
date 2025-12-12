@@ -27,7 +27,7 @@ Route::get('/category/{id}', [\App\Http\Controllers\IndexController::class, 'pos
 
 Route::get('employee/{id}', [\App\Http\Controllers\IndexController::class,'employee'])->name('employee');
 
-Route::get('/faculties', [\App\Http\Controllers\IndexController::class, 'faculty'])->name('faculty');
+Route::get('/faculties', [\App\Http\Controllers\IndexController::class, 'faculty'])->name('faculties');
 
 Route::post('/message/send', [\App\Http\Controllers\MessageController::class, 'sendMessage'])->name('sendMessage');
 

@@ -28,7 +28,9 @@ class StructureController extends Controller
             App::getLocale() => $data['name'],
         ]);
 
-        $data['icon'] = $request->file('icon')->store('faculties/icons','public');
+        if (isset($data['icon'])){
+            $data['icon'] = $request->file('icon')->store('faculties/icons','public');
+        }
 
         $faculty = Faculty::create($data);
 
