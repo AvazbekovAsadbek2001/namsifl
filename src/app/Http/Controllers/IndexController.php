@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Employee;
+use App\Models\Faculty;
 use App\Models\Page;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -34,7 +35,6 @@ class IndexController extends Controller
 
         return view('welcome', compact('news', 'announcement'));
     }
-
     public function rectorate(){
         $employees = Employee::whereIn('position_id', [1, 2])
             ->orderBy('position_id', 'asc')
@@ -92,7 +92,6 @@ class IndexController extends Controller
 
         return view('news', compact('posts', 'name'));
     }
-
     public function employee(Request $request){
         $employee = Employee::find($request->id);
 
@@ -101,5 +100,11 @@ class IndexController extends Controller
         } else {
             return abort(404);
         }
+    }
+
+    public function faculty(){
+        $structures = Faculty::all();
+        $name = "Faculties";
+        return view('structures', compact('structures', 'name'));
     }
 }

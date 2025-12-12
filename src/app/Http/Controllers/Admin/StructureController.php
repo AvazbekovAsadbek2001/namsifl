@@ -7,11 +7,13 @@ use App\Models\Faculty;
 use App\Models\FacultyTranslation;
 use App\Models\Lang;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class StructureController extends Controller
 {
     public function indexFaculties(){
-        return view("admin.structure.faculties.index");
+        $faculties = Faculty::all();
+        return view("admin.structure.faculties.index", compact("faculties"));
     }
 
     public function storeFaculty(Request $request){
@@ -23,8 +25,11 @@ class StructureController extends Controller
         ]);
 
         $data['name'] = json_encode([
-            'name' => $data['name'],
+            App::getLocale() => $data['name'],
         ]);
+
+        $data['icon'] = $request->file('icon')->store('faculties/icons','public');
+
         $faculty = Faculty::create($data);
 
         $lang = Lang::where('code', $data['lang'])->first();

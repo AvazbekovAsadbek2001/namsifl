@@ -31,9 +31,21 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @foreach($employees as $employee)
-                                       
-                                    @endforeach --}}
+                                    @foreach($faculties as $item)
+                                       <tr>
+                                             <td>{{ $loop->iteration }}</td>
+                                             <td>{{ json_decode($item->name, true)[App::getLocale()] }}</td>
+                                             <td>
+                                                @if ($item->icon)
+                                                    <img src="{{ asset('storage/'.$item->icon) }}" alt="" width="100">
+                                                @endif
+                                             </td>
+                                             <td>
+                                                  <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa fa-pencil"></i></a>
+                                                <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+                                             </td>
+                                       </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
