@@ -9,7 +9,7 @@
         <h1 class="mb-2 mb-lg-0 first-letter-uppercase">{{ json_decode($name, true)[App::getLocale()] }}</h1>
         <nav class="breadcrumbs">
           <ol>
-            <li><a href="index.html">@lang('contact.home')</a></li>
+            <li><a href="{{ route('index') }}">@lang('contact.home')</a></li>
             <li class="current first-letter-uppercase">{{ json_decode($name, true)[App::getLocale()] }}</li>
           </ol>
         </nav>

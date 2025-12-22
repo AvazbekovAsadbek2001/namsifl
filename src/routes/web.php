@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\IndexController::class, 'index']);
+Route::get('/', [\App\Http\Controllers\IndexController::class, 'index'])->name('index');
 
 Route::get('/rectorate', [\App\Http\Controllers\IndexController::class, 'rectorate'])->name('rectorate');
 
@@ -31,4 +31,4 @@ Route::get('/faculties', [\App\Http\Controllers\IndexController::class, 'faculty
 
 Route::post('/message/send', [\App\Http\Controllers\MessageController::class, 'sendMessage'])->name('sendMessage');
 
-Route::get('/{any}', [\App\Http\Controllers\IndexController::class, 'showPage'])->name('showPage');
+Route::get('/{any}', [\App\Http\Controllers\IndexController::class, 'showPage'])->where('any', '^(?!admin).*')->name('showPage');
