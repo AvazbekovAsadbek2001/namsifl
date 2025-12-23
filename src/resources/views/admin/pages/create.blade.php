@@ -31,16 +31,36 @@
                         <form action="{{ route('admin.pages.store') }}" method="post">
                             @csrf
                             <input type="hidden" name="lang" value="{{ $lang->code }}">
+                            @if (isset($page))
+                                <input type="hidden" name="page" value="{{ $page->id }}">
+                            @endif
                             <div class="mb-3">
                                 <label class="form-label">Title</label>
-                                <input type="text" name="title" class="form-control input-default" placeholder="Page title" required>
+                                <input 
+                                    type="text" 
+                                    name="title" 
+                                    class="form-control input-default" 
+                                    @if (isset($page))
+                                        value = {{ $page->translations->where('lang_code', $lang->code)[0]->title }}
+                                    @else
+                                        placeholder="Page title"
+                                    @endif
+                                    required>
                             </div>
                             @if (!isset($page))
                                 <div class="mb-3">
                                     <label class="form-label">Url</label>
                                     <div class="input-group input-group-sm mb-3">
                                         <span class="input-group-text">{{ config('app.url').'/' }}</span>
-                                        <input type="text" name="url" class="form-control" required>
+                                        <input 
+                                            type="text" 
+                                            name="url" 
+                                            class="form-control" 
+                                            required
+                                            @if (isset($page))
+                                                value="{{ $page->url }}"
+                                            @endif
+                                            >
                                     </div>
                                 </div>
                             @else
@@ -49,19 +69,21 @@
                                     <label class="form-label">Page Url</label>
                                     <div class="input-group input-group-sm mb-3">
                                         <span class="input-group-text">{{ config('app.url').'/' }}</span>
-                                        <input type="text" class="form-control" required readonly value="{{ $page->url }}">
+                                        <input type="text" class="form-control" readonly required value="{{ $page->url }}">
                                     </div>
                                 </div>
                             @endif
                             <div class="mb-3">
                                 <label class="form-label">Description</label>
-                                <textarea class="form-textarea form-control" rows="8" name="description" required></textarea>
+                                <textarea 
+                                    class="form-textarea form-control" 
+                                    rows="5" 
+                                    name="description" 
+                                    required>@if (isset($page)){{ $page->translations->where('lang_code', $lang->code)[0]->description }} @endif</textarea>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Content</label>
-                                <textarea name="content" id="editor1" rows="10" cols="80" required>
-
-                                </textarea>
+                                <textarea name="content" id="editor1" rows="10" cols="80" required>@if (isset($page)){{ $page->translations->where('lang_code', $lang->code)[0]->content }} @endif</textarea>
                             </div>
                             <div class="mb-3">
                                 <button type="submit" class="btn btn-primary">Submit</button>

@@ -35,6 +35,16 @@ class PageController extends Controller
             ]);
 
             $page = Page::find($data['page']);
+
+            PageTranslation::where('page_id', $page->id)
+                ->first()
+                ->update([
+                    'page_id' => $page->id,
+                    'lang_code' => $data['lang'],
+                    'title' => $data['title'],
+                    'description' => $data['description'],
+                    'content' => $data['content'],
+                ]);
         } else {
             $data = $request->validate([
                 'title' => 'required',
@@ -45,16 +55,15 @@ class PageController extends Controller
             ]);
 
             $page = Page::create(['url' => $data['url']]);
+
+            PageTranslation::create([
+                'page_id' => $page->id,
+                'lang_code' => $data['lang'],
+                'title' => $data['title'],
+                'description' => $data['description'],
+                'content' => $data['content'],
+            ]);
         }
-
-        PageTranslation::create([
-            'page_id' => $page->id,
-            'lang_code' => $data['lang'],
-            'title' => $data['title'],
-            'description' => $data['description'],
-            'content' => $data['content'],
-        ]);
-
         return redirect()->route('admin.pages.index');
     }
 }
