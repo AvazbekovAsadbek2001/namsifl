@@ -36,15 +36,17 @@ class PageController extends Controller
 
             $page = Page::find($data['page']);
 
-            PageTranslation::where('page_id', $page->id)
-                ->first()
-                ->update([
-                    'page_id' => $page->id,
+            PageTranslation::updateOrCreate(
+                [
+                    'page_id'   => $page->id,
                     'lang_code' => $data['lang'],
-                    'title' => $data['title'],
+                ],
+                [
+                    'title'       => $data['title'],
                     'description' => $data['description'],
-                    'content' => $data['content'],
-                ]);
+                    'content'     => $data['content'],
+                ]
+            );
         } else {
             $data = $request->validate([
                 'title' => 'required',

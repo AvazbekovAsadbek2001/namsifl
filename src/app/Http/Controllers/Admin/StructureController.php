@@ -49,4 +49,20 @@ class StructureController extends Controller
         $lang = ($request->lang) ? Lang::where('code', $request->lang)->first() : Lang::where('code', 'en')->first();
         return view("admin.structure.faculties.create", compact("lang"));
     }
+
+    public function indexDepartments(){
+        //
+    }
+
+    public function storeDepartment(Request $request){
+        //
+    }
+
+    public function indexCafedra(){
+        //
+    }
+
+    public function storeCafedra(Request $request){
+        //
+    }
 }

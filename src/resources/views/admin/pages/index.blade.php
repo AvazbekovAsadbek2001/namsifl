@@ -71,8 +71,13 @@
                                             </td>
                                             <td>
                                                 <div class="d-flex">
+                                                    @if (isset($page))
                                                     <a href="{{ route('admin.pages.create', ['lang' => 'uz', 'page' => $page->id]) }}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa fa-pencil"></i></a>
                                                     <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+                                                    @else
+                                                    <a href="{{ route('admin.pages.create', ['lang' => 'uz', 'page' => $page->id]) }}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa fa-pencil"></i></a>
+                                                    <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+                                                    @endif
                                                 </div>
                                             </td>
                                         </tr>

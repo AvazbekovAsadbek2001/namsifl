@@ -107,4 +107,14 @@ class IndexController extends Controller
         $name = "Fakultetlar";
         return view('structures', compact('structures', 'name'));
     }
+
+    public function faculty_detail(Request $request){
+        $faculty = Faculty::find($request->id);
+
+        if ($faculty) {
+            return view('structure_detail', compact('faculty'));
+        } else {
+            return abort(404);
+        }
+    }
 }

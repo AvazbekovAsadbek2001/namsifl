@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('faculty_translations', function (Blueprint $table) {
+        Schema::create('structure_translations', function (Blueprint $table) {
             $table->id();
+            $table->enum('type', ['faculty', 'department', 'cafedra']);
+            $table->integer('structure_id');
             $table->foreignId('lang_id')->constrained('langs');
-            $table->foreignId('faculty_id')->constrained('faculties')->onDelete('cascade');
             $table->text('content');
             $table->timestamps();
         });
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('faculty_translations');
+        Schema::dropIfExists('structure_translations');
     }
 };

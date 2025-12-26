@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('cafedras', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('faculty_id')->constrained('faculties');
             $table->jsonb('title');
             $table->string('icon')->nullable();
             $table->timestamps();

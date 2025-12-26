@@ -40,8 +40,8 @@
                                     type="text" 
                                     name="title" 
                                     class="form-control input-default" 
-                                    @if (isset($page))
-                                        value = {{ $page->translations->where('lang_code', $lang->code)[0]->title }}
+                                    @if (isset($page) && $page->checklang($lang->code))
+                                        value = {{ $page->translations->where('lang_code', $lang->code)->first()->title }}
                                     @else
                                         placeholder="Page title"
                                     @endif
@@ -57,9 +57,6 @@
                                             name="url" 
                                             class="form-control" 
                                             required
-                                            @if (isset($page))
-                                                value="{{ $page->url }}"
-                                            @endif
                                             >
                                     </div>
                                 </div>
@@ -79,11 +76,11 @@
                                     class="form-textarea form-control" 
                                     rows="5" 
                                     name="description" 
-                                    required>@if (isset($page)){{ $page->translations->where('lang_code', $lang->code)[0]->description }} @endif</textarea>
+                                    required>@if (isset($page) && $page->checklang($lang->code)){{ $page->translations->where('lang_code', $lang->code)->first()->description }} @endif</textarea>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Content</label>
-                                <textarea name="content" id="editor1" rows="10" cols="80" required>@if (isset($page)){{ $page->translations->where('lang_code', $lang->code)[0]->content }} @endif</textarea>
+                                <textarea name="content" id="editor1" rows="10" cols="80" required>@if (isset($page) && isset($page->translations->where('lang_code', $lang->code)->first()->content)){{ $page->translations->where('lang_code', $lang->code)->first()->content }} @endif</textarea>
                             </div>
                             <div class="mb-3">
                                 <button type="submit" class="btn btn-primary">Submit</button>
