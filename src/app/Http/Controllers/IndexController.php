@@ -112,7 +112,7 @@ class IndexController extends Controller
         $faculty = Faculty::find($request->id);
 
         if ($faculty) {
-            return view('structure_detail', compact('faculty'));
+            return view('structure.faculty', compact('faculty'));
         } else {
             return abort(404);
         }

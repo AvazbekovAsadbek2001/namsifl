@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Faculty;
 use App\Models\FacultyTranslation;
 use App\Models\Lang;
+use App\Models\StructureTranslation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
@@ -24,8 +25,10 @@ class StructureController extends Controller
             'content' => 'required' 
         ]);
 
+        $lang = Lang::where('code', $data['lang'])->first();
+
         $data['name'] = json_encode([
-            App::getLocale() => $data['name'],
+            $lang->code => $data['name'],
         ]);
 
         if (isset($data['icon'])){
@@ -34,12 +37,11 @@ class StructureController extends Controller
 
         $faculty = Faculty::create($data);
 
-        $lang = Lang::where('code', $data['lang'])->first();
-
-        FacultyTranslation::create([
-            'content' => $data['content'],
+        StructureTranslation::create([
+            'type' => 'faculty',
+            'structure_id' => $faculty->id,
             'lang_id' => $lang->id,
-            'faculty_id' => $faculty->id
+            'content' => $data['content']
         ]);
 
         return redirect()->route('admin.structure.faculties.index')->with('success','');
