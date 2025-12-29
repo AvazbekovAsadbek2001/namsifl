@@ -11,11 +11,13 @@ class Faculty extends Model
 
     protected $fillable = ['name', 'icon'];
 
-    public function translate($lang_code):Model|StructureTranslation   
+    public function content($lang_code)  
     {
+        $lang = Lang::where('code', $lang_code)->first();
         return StructureTranslation::where('type', 'faculty')
             ->where('structure_id', $this->id)
-            ->where('lang_id', $lang_code)
-            ->first();
+            ->where('lang_id', $lang->id)
+            ->first()
+            ->content;
     }
 }

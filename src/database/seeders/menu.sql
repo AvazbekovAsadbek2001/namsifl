@@ -1,4 +1,4 @@
-INSERT INTO menus (id, title, url, parent_id, "order", created_at, updated_at) VALUES
+INSERT INTO menus (id, title, url, parent_id, `order`, created_at, updated_at) VALUES
 (1, '{"uz":"Institut tuzilmasi","en":"Institute Structure","ru":"Структура института"}', '#', NULL, 1, NOW(), NOW()),
 (2, '{"uz":"Institut haqida","en":"About Institute","ru":"Об институте"}', '#', 1, 1, NOW(), NOW()),
 (3, '{"uz":"Institut tuzilmasi","en":"Institute Structure","ru":"Структура института"}', '#', 1, 2, NOW(), NOW()),
