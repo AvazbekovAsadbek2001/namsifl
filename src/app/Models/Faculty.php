@@ -20,4 +20,9 @@ class Faculty extends Model
             ->first()
             ->content;
     }
+
+    public function cafedras()
+    {
+        return $this->hasMany(Cafedra::class);
+    }
 }

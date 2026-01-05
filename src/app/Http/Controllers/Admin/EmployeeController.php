@@ -30,8 +30,7 @@ class EmployeeController extends Controller
 
         $faculties = Faculty::all();
         $departments = Department::all();
-        $cafedras = Department::all();
-        return view('admin.employees.create', compact('lang', 'nations', 'positions', 'faculties', 'departments', 'cafedras'));
+        return view('admin.employees.create', compact('lang', 'nations', 'positions', 'faculties', 'departments'));
     }
 
     public function store(Request $request)

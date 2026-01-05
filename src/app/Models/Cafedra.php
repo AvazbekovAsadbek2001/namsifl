@@ -9,5 +9,10 @@ class Cafedra extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'icon'];
+    protected $fillable = ['title', 'icon', 'faculty_id'];
+
+    public function faculty()
+    {
+        return $this->belongsTo(Faculty::class);
+    }
 }

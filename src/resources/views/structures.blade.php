@@ -25,24 +25,32 @@
         </div>
     </section>
 
-    <section id="academics" class="academics section">
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row mb-5">
-          <div class="col-lg" data-aos="fade-left" data-aos-delay="300">
-            <div class="row key-metrics g-4">
-                @foreach ($structures as $item)
-                    @if (isset(json_decode($item->name, true)[App::getLocale()]))
-                        <div class="col-6">
-                            <div class="metric-card">
-                            <h2>{{ json_decode($item->name, true)[App::getLocale()] }}</h2>
+    <section id="campus-facilities" class="campus-facilities section">
+
+     <div class="container aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+
+        <!-- Facilities Categories Grid -->
+        <div class="facilities-grid aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+
+            @foreach ($structures as $item)
+                @if (isset(json_decode($item->name, true)[App::getLocale()]))
+                    <a href="{{ route('faculty_detail', [$item->id]) }}" class="category-card academic aos-init aos-animate" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="card-content mt-5">
+                            <div class="facility-image">
+                                <center>
+                                    <img src="{{ asset('storage/'.$item->icon) }}" width="auto" height="100px" alt="facility">
+                                </center>
                             </div>
                         </div>
-                    @endif
-                @endforeach
-            </div>
-          </div>
+                        <div class="card-header m-2">
+                            <h3>{{ json_decode($item->name, true)[App::getLocale()] }}</h3>
+                        </div>
+                    </>
+                @endif
+            @endforeach
         </div>
-      </div>
+    </div>
+
     </section>
 @endsection
 @section('script')

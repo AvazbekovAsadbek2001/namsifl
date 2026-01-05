@@ -29,12 +29,9 @@
                 <h3>Kafedralar ro'yxati</h3>
                 <nav>
                   <ul>
-                    <li><a href="#introduction">Introduction</a></li>
-                    <li><a href="#skeuomorphism">The Skeuomorphic Era</a></li>
-                    <li><a href="#flat-design">Flat Design Revolution</a></li>
-                    <li><a href="#material-design">Material Design</a></li>
-                    <li><a href="#neumorphism">Rise of Neumorphism</a></li>
-                    <li><a href="#future">Future Trends</a></li>
+                    @foreach($faculty->cafedras as $cafedra)
+                      <li><a href="#">{{ json_decode($cafedra->title, true)[App::getLocale()] }}</a></li>
+                    @endforeach
                   </ul>
                 </nav>
               </aside>
@@ -60,29 +57,29 @@
             </div>
             <div class="col-lg-6 order-lg-1" data-aos="fade-up" data-aos-delay="300">
               <div class="intro-content">
-                <span class="subtitle">Fakultet dekani</span>
-                <h2 class="title">Inspiring Leaders Shaping Tomorrow's Generation</h2>
-                <div class="highlights">
-                  <div class="highlight-item">
-                    <div class="icon-box">
-                      <i class="bi bi-mortarboard-fill"></i>
+                  <span class="subtitle">Fakultet dekani</span>
+                  <h2 class="title">Ikramov Alisher Shukrullayevich</h2>
+                  <div class="highlights">
+                    <div class="highlight-item">
+                      <div class="icon-box">
+                        <i class="bi bi-telephone-fill"></i>
+                      </div>
+                      <div class="content">
+                        <h4>Telefon raqam :</h4>
+                        <p>+99 (897)&nbsp;270-00-60</p>
+                      </div>
                     </div>
-                    <div class="content">
-                      <h4>Expert Faculty</h4>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                  </div>
-                  <div class="highlight-item">
-                    <div class="icon-box">
-                      <i class="bi bi-graph-up-arrow"></i>
-                    </div>
-                    <div class="content">
-                      <h4>Academic Excellence</h4>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <div class="highlight-item">
+                      <div class="icon-box">
+                        <i class="bi bi-envelope-fill"></i>
+                      </div>
+                      <div class="content">
+                        <h4>Email manzil : </h4>
+                        <p> alisher.namsifl@gmail.com</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
             </div>
           </div>
         </div>

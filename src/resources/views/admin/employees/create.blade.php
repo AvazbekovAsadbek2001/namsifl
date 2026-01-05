@@ -100,21 +100,26 @@
                             <div class="mb-3">
                                 <label class="form-label">Faculty</label>
                                 <select name="faculty_id" class="form-control">
-                                    <option value=""> Not selected</option>
-                                </select>
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label">Department</label>
-                                <select name="department_id" class="form-control">
-                                    <option value=""> Not selected</option>
+                                    @foreach ($faculties as $faculty)
+                                        <option value="{{ $faculty->id }}">{{ json_decode($faculty->name, true)['uz'] }}</option>
+                                    @endforeach
                                 </select>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Cafedra</label>
                                 <select name="cafedra_id" class="form-control">
-                                    <option value="">Not selected</option>
+                                    <option value="">Fakultetni tanlang . . .</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Department</label>
+                                <select name="department_id" class="form-control">
+                                    @foreach ($departments as $department)
+                                        <option value="{{ $department->id }}">{{ json_decode($department->name, true)['uz'] }}</option>
+                                
+                                    @endforeach
                                 </select>
                             </div>
 
@@ -170,11 +175,33 @@
         removeButtons: 'Subscript,Superscript,Save,NewPage,Preview,Print,Templates,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Flash,Smiley,PageBreak,Iframe,Anchor,Language,BidiLtr,BidiRtl',
     };
 
-
     ['biography', 'work_experience', 'functional_duties'].forEach(id => {
         if (document.getElementById(id)) {
             CKEDITOR.replace(id, editorConfig);
         }
     });
+
+    document.querySelector('select[name="faculty_id"]').addEventListener('change', function () {
+    const facultyId = this.value;
+    const cafedraSelect = document.querySelector('select[name="cafedra_id"]');
+
+    if (!facultyId) {
+        cafedraSelect.innerHTML = '<option value="">Avval fakultetni tanlang</option>';
+        return;
+    }
+
+    fetch("/admin/cafedra-by-faculty/" + facultyId)
+        .then(response => response.json())
+        .then(data => {
+            let options = '<option value="0">Select cafedra</option>';
+
+            data.forEach(cafedra => {
+                const title = JSON.parse(cafedra.title);
+                options += `<option value="${cafedra.id}">${title.uz}</option>`;
+            });
+            cafedraSelect.innerHTML = options;
+        })
+        .catch(error => console.error(error));
+});
 </script>
 @endsection
