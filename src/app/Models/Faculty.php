@@ -25,4 +25,18 @@ class Faculty extends Model
     {
         return $this->hasMany(Cafedra::class);
     }
+
+    public function dean(){
+        $dean = Employee::where('faculty_id' , $this->id)
+            ->where('position_id', 3)
+            ->first();
+        return $dean;
+    }
+
+    public function employees() {
+        $employees = Employee::where('faculty_id', $this->id)
+            ->where('position_id', '!=', 3)
+            ->get();
+        return $employees;
+    }
 }

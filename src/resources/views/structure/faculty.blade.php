@@ -43,268 +43,79 @@
 
             <div class="article-footer" data-aos="fade-up"></div>
           </article>
-
-          <div class="intro-wrapper">
+        @if (!empty($faculty->dean()))
+             <div class="intro-wrapper">
           <div class="row align-items-center">
             <div class="col-lg-6 order-lg-2 mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="200">
               <div class="intro-image">
-                <img src="assets/img/education/teacher-5.webp" alt="School Leadership" class="img-fluid rounded-lg">
-                <div class="experience-badge">
-                  <span class="years">35+</span>
-                  <span class="text">Years of Educational Excellence</span>
-                </div>
+                <img src="{{ asset('storage/'.$faculty->dean()->photo) }}" alt="School Leadership" class="img-fluid rounded-lg" style="height: 550px">
               </div>
             </div>
             <div class="col-lg-6 order-lg-1" data-aos="fade-up" data-aos-delay="300">
               <div class="intro-content">
                   <span class="subtitle">Fakultet dekani</span>
-                  <h2 class="title">Ikramov Alisher Shukrullayevich</h2>
-                  <div class="highlights">
-                    <div class="highlight-item">
-                      <div class="icon-box">
-                        <i class="bi bi-telephone-fill"></i>
-                      </div>
-                      <div class="content">
-                        <h4>Telefon raqam :</h4>
-                        <p>+99 (897)&nbsp;270-00-60</p>
-                      </div>
+                  <h2 class="title">{{ $faculty->dean()->name }}</h2>
+                   <div class="highlights">
+                  <div class="highlight-item">
+                    <div class="icon-box">
+                      <i class="bi bi-telephone-fill"></i>
                     </div>
-                    <div class="highlight-item">
-                      <div class="icon-box">
-                        <i class="bi bi-envelope-fill"></i>
-                      </div>
-                      <div class="content">
-                        <h4>Email manzil : </h4>
-                        <p> alisher.namsifl@gmail.com</p>
-                      </div>
+                    <div class="content">
+                      <h4>Phone number :</h4>
+                      <p>{{ json_decode($faculty->dean()->social_medias, true)['phone'] }}</p>
                     </div>
                   </div>
+                  <div class="highlight-item">
+                    <div class="icon-box">
+                      <i class="bi bi-envelope-fill"></i>
+                    </div>
+                    <div class="content">
+                      <h4>Email address : </h4>
+                      <p>{{ json_decode($faculty->dean()->social_medias, true)['email'] }}</p>
+                    </div>
+                  </div>
+                  <a href="{{ route('employee', ['id' => $faculty->dean()->id]) }}" class="btn-event-details">Batafsil <i class="bi bi-arrow-right"></i></a>
+                </div>
                 </div>
             </div>
           </div>
         </div>
-
+        @endif
         <div class="leadership-section" data-aos="fade-up">
           <div class="section-header text-center">
             <h4 class="title">Fakultet xodimlari</h2>
           </div>
 
           <div class="row g-4">
-            <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-              <div class="team-card">
-                <div class="card-inner">
-                  <div class="card-front">
-                    <div class="member-image">
-                      <img src="assets/img/person/person-m-4.webp" alt="Principal" class="img-fluid">
+            @foreach ($faculty->employees() as $employee)
+              <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="team-card">
+                  <div class="card-inner">
+                    <div class="card-front">
+                      <div class="member-image">
+                        <img src="{{ asset('storage/'.$employee->photo) }}" class="img-fluid">
+                      </div>
+                      <div class="member-info">
+                        <h4>{{ $employee->name }}</h4>
+                        <p>{{ json_decode($employee->position->title, true)[App::getLocale()] }}</p>
+                      </div>
                     </div>
-                    <div class="member-info">
-                      <h4>Dr. Robert Williams</h4>
-                      <p>Principal</p>
-                    </div>
-                  </div>
-                  <div class="card-back">
-                    <h4>Dr. Robert Williams</h4>
-                    <p class="position">Principal</p>
-                    <p class="bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam auctor euismod
-                      lobortis.</p>
-                    <div class="social-links">
-                      <a href="#"><i class="bi bi-linkedin"></i></a>
-                      <a href="#"><i class="bi bi-twitter-x"></i></a>
-                      <a href="#"><i class="bi bi-envelope"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-              <div class="team-card">
-                <div class="card-inner">
-                  <div class="card-front">
-                    <div class="member-image">
-                      <img src="assets/img/person/person-f-6.webp" alt="Vice Principal" class="img-fluid">
-                    </div>
-                    <div class="member-info">
-                      <h4>Dr. Jennifer Parker</h4>
-                      <p>Vice Principal</p>
-                    </div>
-                  </div>
-                  <div class="card-back">
-                    <h4>Dr. Jennifer Parker</h4>
-                    <p class="position">Vice Principal</p>
-                    <p class="bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam auctor euismod
-                      lobortis.</p>
-                    <div class="social-links">
-                      <a href="#"><i class="bi bi-linkedin"></i></a>
-                      <a href="#"><i class="bi bi-twitter-x"></i></a>
-                      <a href="#"><i class="bi bi-envelope"></i></a>
+                    <div class="card-back">
+                      <h4>{{ $employee->name }}</h4>
+                      <p class="position">{{ json_decode($employee->position->title, true)[App::getLocale()] }}</p>
+                      @if ($employee->position_description != null)
+                        <p class="bio">
+                          {{ json_decode($employee->position_description, true)[App::getLocale()] }}
+                        </p>
+                      @endif
+                      <div>
+                        <a href="{{ route('employee', ['id' => $employee->id]) }}">Batafsil</a>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-
-            <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-              <div class="team-card">
-                <div class="card-inner">
-                  <div class="card-front">
-                    <div class="member-image">
-                      <img src="assets/img/person/person-m-9.webp" alt="Academic Dean" class="img-fluid">
-                    </div>
-                    <div class="member-info">
-                      <h4>Prof. Michael Stevens</h4>
-                      <p>Academic Dean</p>
-                    </div>
-                  </div>
-                  <div class="card-back">
-                    <h4>Prof. Michael Stevens</h4>
-                    <p class="position">Academic Dean</p>
-                    <p class="bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam auctor euismod
-                      lobortis.</p>
-                    <div class="social-links">
-                      <a href="#"><i class="bi bi-linkedin"></i></a>
-                      <a href="#"><i class="bi bi-twitter-x"></i></a>
-                      <a href="#"><i class="bi bi-envelope"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-              <div class="team-card">
-                <div class="card-inner">
-                  <div class="card-front">
-                    <div class="member-image">
-                      <img src="assets/img/person/person-f-5.webp" alt="Student Affairs" class="img-fluid">
-                    </div>
-                    <div class="member-info">
-                      <h4>Dr. Angela Martinez</h4>
-                      <p>Student Affairs</p>
-                    </div>
-                  </div>
-                  <div class="card-back">
-                    <h4>Dr. Angela Martinez</h4>
-                    <p class="position">Student Affairs</p>
-                    <p class="bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam auctor euismod
-                      lobortis.</p>
-                    <div class="social-links">
-                      <a href="#"><i class="bi bi-linkedin"></i></a>
-                      <a href="#"><i class="bi bi-twitter-x"></i></a>
-                      <a href="#"><i class="bi bi-envelope"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-              <div class="team-card">
-                <div class="card-inner">
-                  <div class="card-front">
-                    <div class="member-image">
-                      <img src="assets/img/person/person-f-7.webp" alt="Admissions Director" class="img-fluid">
-                    </div>
-                    <div class="member-info">
-                      <h4>Sophia Rodriguez</h4>
-                      <p>Admissions Director</p>
-                    </div>
-                  </div>
-                  <div class="card-back">
-                    <h4>Sophia Rodriguez</h4>
-                    <p class="position">Admissions Director</p>
-                    <p class="bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam auctor euismod
-                      lobortis.</p>
-                    <div class="social-links">
-                      <a href="#"><i class="bi bi-linkedin"></i></a>
-                      <a href="#"><i class="bi bi-twitter-x"></i></a>
-                      <a href="#"><i class="bi bi-envelope"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-              <div class="team-card">
-                <div class="card-inner">
-                  <div class="card-front">
-                    <div class="member-image">
-                      <img src="assets/img/person/person-m-8.webp" alt="Technology Director" class="img-fluid">
-                    </div>
-                    <div class="member-info">
-                      <h4>James Thompson</h4>
-                      <p>Technology Director</p>
-                    </div>
-                  </div>
-                  <div class="card-back">
-                    <h4>James Thompson</h4>
-                    <p class="position">Technology Director</p>
-                    <p class="bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam auctor euismod
-                      lobortis.</p>
-                    <div class="social-links">
-                      <a href="#"><i class="bi bi-linkedin"></i></a>
-                      <a href="#"><i class="bi bi-twitter-x"></i></a>
-                      <a href="#"><i class="bi bi-envelope"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-              <div class="team-card">
-                <div class="card-inner">
-                  <div class="card-front">
-                    <div class="member-image">
-                      <img src="assets/img/person/person-m-3.webp" alt="Athletics Director" class="img-fluid">
-                    </div>
-                    <div class="member-info">
-                      <h4>Daniel Wilson</h4>
-                      <p>Athletics Director</p>
-                    </div>
-                  </div>
-                  <div class="card-back">
-                    <h4>Daniel Wilson</h4>
-                    <p class="position">Athletics Director</p>
-                    <p class="bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam auctor euismod
-                      lobortis.</p>
-                    <div class="social-links">
-                      <a href="#"><i class="bi bi-linkedin"></i></a>
-                      <a href="#"><i class="bi bi-twitter-x"></i></a>
-                      <a href="#"><i class="bi bi-envelope"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-              <div class="team-card">
-                <div class="card-inner">
-                  <div class="card-front">
-                    <div class="member-image">
-                      <img src="assets/img/person/person-f-4.webp" alt="Counseling Head" class="img-fluid">
-                    </div>
-                    <div class="member-info">
-                      <h4>Dr. Emily Chen</h4>
-                      <p>Counseling Head</p>
-                    </div>
-                  </div>
-                  <div class="card-back">
-                    <h4>Dr. Emily Chen</h4>
-                    <p class="position">Counseling Head</p>
-                    <p class="bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam auctor euismod
-                      lobortis.</p>
-                    <div class="social-links">
-                      <a href="#"><i class="bi bi-linkedin"></i></a>
-                      <a href="#"><i class="bi bi-twitter-x"></i></a>
-                      <a href="#"><i class="bi bi-envelope"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            @endforeach
           </div>
         </div>
       </div>

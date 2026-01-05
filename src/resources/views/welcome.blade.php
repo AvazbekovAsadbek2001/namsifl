@@ -14,8 +14,8 @@
               <h1> @lang('welcome.otm_name')</h1>
 
               <div class="action-buttons">
-                    <a href="#" class="btn-primary"> @lang('welcome.call_center')</a>
-                <a href="#" class="btn-secondary"> @lang('welcome.virtual_travel') </a>
+                  <a href="{{ route('contact') }}" class="btn-primary"> @lang('welcome.call_center')</a>
+                  <a href="#" class="btn-secondary"> @lang('welcome.virtual_travel') </a>
               </div>
             </div>
             <div class="col-lg-6 hero-media" data-aos="zoom-in" data-aos-delay="200">
@@ -34,7 +34,8 @@
       <div class="feature-cards-wrapper" data-aos="fade-up" data-aos-delay="300">
         <div class="container">
           <div class="row gy-4">
-            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            
+            <a href="https://hemis.namsifl.uz" class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
               <div class="feature-card">
                 <div class="feature-icon">
                   <i class="bi bi-book-fill"></i>
@@ -44,9 +45,9 @@
                   <p> @lang('welcome.hemis_otm_desc') </p>
                 </div>
               </div>
-            </div>
+            </a>
 
-            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <a href="https://student.namsifl.uz" class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
               <div class="feature-card">
                 <div class="feature-icon">
                   <i class="bi bi-laptop-fill"></i>
@@ -56,9 +57,9 @@
                   <p> @lang('welcome.hemis_student_desc') </p>
                 </div>
               </div>
-            </div>
+            </a>
 
-            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+            <a href="https://e-library.namsifl.uz" class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
               <div class="feature-card">
                 <div class="feature-icon">
                   <i class="bi bi-people-fill"></i>
@@ -68,7 +69,7 @@
                   <p> @lang('welcome.unilibrary_desc')</p>
                 </div>
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>
@@ -102,7 +103,7 @@
             <div class="about-content" data-aos="fade-up" data-aos-delay="200">
               <h2> @lang('welcome.about-title') </h2>
               <p> @lang('welcome.about-desc')</p>
-                <a href="#" class="service-link">@lang('welcome.more') <i class="bi bi-arrow-right"></i></a>
+                <a href="/info" class="service-link">@lang('welcome.more') <i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
 
@@ -283,7 +284,7 @@
                 <div class="category-card academic" data-aos="zoom-in" data-aos-delay="100">
                     <div class="card-content mt-3">
                         <div class="facility-image">
-                            <img src="{{ asset('assets/img/Symbols/bayroq.jpg') }}" class="img-fluid">
+                            <img src="{{ asset('assets/img/Symbols/bayroq.jpg') }}" class="img-fluid" width="100%">
                         </div>
                     </div>
                     <div class="card-header p-1">
@@ -294,7 +295,7 @@
                 <div class="category-card academic" data-aos="zoom-in" data-aos-delay="100">
                     <div class="card-content mt-3">
                         <div class="facility-image">
-                            <img src="{{ asset('assets/img/Symbols/madhiya.jpg') }}" class="img-fluid">
+                            <img src="{{ asset('assets/img/Symbols/madhiya.jpg') }}" class="img-fluid" width="100%">
                         </div>
                     </div>
                     <div class="card-header p-1">
@@ -305,7 +306,7 @@
                 <div class="category-card academic" data-aos="zoom-in" data-aos-delay="100">
                     <div class="card-content mt-3">
                         <div class="facility-image">
-                            <img src="{{ asset('assets/img/Symbols/gerb.jpg') }}" class="img-fluid">
+                            <img src="{{ asset('assets/img/Symbols/gerb.jpg') }}" class="img-fluid" width="100%">
                         </div>
                     </div>
                     <div class="card-header p-1 mb-3">

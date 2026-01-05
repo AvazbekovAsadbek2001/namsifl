@@ -52,7 +52,7 @@ class EmployeeController extends Controller
 
             'faculty_id' => 'nullable|exists:faculties,id',
             'department_id' => 'nullable|exists:departments,id',
-            'cafedra_id' => 'nullable|exists:departments,id',
+            'cafedra_id' => 'nullable|exists:cafedra,id',
 
             'biography' => 'nullable',
             'work_experience' => 'nullable',

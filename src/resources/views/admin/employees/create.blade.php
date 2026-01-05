@@ -118,7 +118,6 @@
                                 <select name="department_id" class="form-control">
                                     @foreach ($departments as $department)
                                         <option value="{{ $department->id }}">{{ json_decode($department->name, true)['uz'] }}</option>
-                                
                                     @endforeach
                                 </select>
                             </div>
@@ -193,7 +192,7 @@
     fetch("/admin/cafedra-by-faculty/" + facultyId)
         .then(response => response.json())
         .then(data => {
-            let options = '<option value="0">Select cafedra</option>';
+            let options = '<option value="">Select cafedra</option>';
 
             data.forEach(cafedra => {
                 const title = JSON.parse(cafedra.title);
