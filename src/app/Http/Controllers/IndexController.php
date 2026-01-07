@@ -117,4 +117,14 @@ class IndexController extends Controller
             return abort(404);
         }
     }
+
+    public function cafedra_detail(Request $request){
+        $cafedra = \App\Models\Cafedra::find($request->id);
+
+        if ($cafedra) {
+            return view('structure.cafedra', compact('cafedra'));
+        } else {
+            return abort(404);
+        }
+    }
 }

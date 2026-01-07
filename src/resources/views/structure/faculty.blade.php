@@ -30,7 +30,7 @@
                 <nav>
                   <ul>
                     @foreach($faculty->cafedras as $cafedra)
-                      <li><a href="#">{{ json_decode($cafedra->title, true)[App::getLocale()] }}</a></li>
+                      <li><a href="{{ route('cafedra_detail', ['id' => $cafedra->id]) }}">{{ json_decode($cafedra->title, true)[App::getLocale()] }}</a></li>
                     @endforeach
                   </ul>
                 </nav>

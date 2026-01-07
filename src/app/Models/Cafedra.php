@@ -15,4 +15,12 @@ class Cafedra extends Model
     {
         return $this->belongsTo(Faculty::class);
     }
+
+    public function content($lang)
+    {
+        $content = StructureTranslation::where('type', 'cafedra')
+            ->where('structure_id', $this->id)
+            ->first()?->content;
+        return $content;
+    }
 }
