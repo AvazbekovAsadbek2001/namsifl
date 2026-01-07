@@ -118,6 +118,20 @@ class IndexController extends Controller
         }
     }
 
+    public function department(){
+        abort(404);
+    }
+
+    public function department_detail(Request $request){
+        $department = \App\Models\Department::find($request->id);
+
+        if ($department) {
+            return view('structure.department', compact('cafedra'));
+        } else {
+            return abort(404);
+        }
+    }
+
     public function cafedra_detail(Request $request){
         $cafedra = \App\Models\Cafedra::find($request->id);
 

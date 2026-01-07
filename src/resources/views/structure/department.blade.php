@@ -1,17 +1,17 @@
 {{-- @dd($cafedra) --}}
 @extends('layout.main')
 @section('title')
-   {{ json_decode($cafedra->title, true)[App::getLocale()] }}
+   {{ json_decode($department->title, true)[App::getLocale()] }}
 @endsection
 @section('section')
     <div class="page-title light-background">
       <div class="container d-lg-flex justify-content-between align-items-center">
-        <h1 class="mb-2 mb-lg-0"> {{ json_decode($cafedra->title, true)[App::getLocale()] }}</h1>
+        <h1 class="mb-2 mb-lg-0"> {{ json_decode($department->title, true)[App::getLocale()] }}</h1>
         <nav class="breadcrumbs">
           <ol>
             <li><a href="{{ route('index') }}">@lang('contact.home')</a></li>
             <li><a href="{{ route('faculties') }}"> @lang('structure.faculties') </a></li>
-            <li class="current"> {{ json_decode($cafedra->title, true)[App::getLocale()] }}</li>
+            <li class="current"> {{ json_decode($department->title, true)[App::getLocale()] }}</li>
           </ol>
         </nav>
       </div>
@@ -22,12 +22,12 @@
           <article class="article">
             <div class="article-header">
                 <h1 class="title" data-aos="fade-up" data-aos-delay="100">
-                  {{ json_decode($cafedra->title, true)[App::getLocale()] }}
+                  {{ json_decode($department->title, true)[App::getLocale()] }}
                 </h1>
             </div>
 
             <div class="article-content">
-                    {!! $cafedra->content(App::getLocale()) !!}
+                    {!! $department->content(App::getLocale()) !!}
                 </div>
 
             <div class="article-footer" data-aos="fade-up">
@@ -35,13 +35,13 @@
             </div>
           </article>
         <div class="leadership-section" data-aos="fade-up">
-          <div class="section-header text-center">
+          {{-- <div class="section-header text-center">
             <h4 class="title">Kafedra hodimlari</h2>
           </div>
 
           <div class="section-header text-center">
             <h4 class="title">Kafedra o'qituvchilari</h2>
-          </div>
+          </div> --}}
 
           {{-- <div class="row g-4">
             @foreach ($cafedra->employees() as $employee)

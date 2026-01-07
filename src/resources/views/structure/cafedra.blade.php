@@ -10,7 +10,7 @@
         <nav class="breadcrumbs">
           <ol>
             <li><a href="{{ route('index') }}">@lang('contact.home')</a></li>
-            <li><a href="{{ route('faculties') }}"> @lang('structure.faculties') </a></li>
+            <li><a href="{{ route('cafedras') }}"> Kafedralar </a></li>
             <li class="current"> {{ json_decode($cafedra->title, true)[App::getLocale()] }}</li>
           </ol>
         </nav>
@@ -35,13 +35,13 @@
             </div>
           </article>
         <div class="leadership-section" data-aos="fade-up">
-          <div class="section-header text-center">
+          {{-- <div class="section-header text-center">
             <h4 class="title">Kafedra hodimlari</h2>
           </div>
 
           <div class="section-header text-center">
             <h4 class="title">Kafedra o'qituvchilari</h2>
-          </div>
+          </div> --}}
 
           {{-- <div class="row g-4">
             @foreach ($cafedra->employees() as $employee)
