@@ -1,5 +1,5 @@
 @extends('layout.main')
-@section('title')
+@section('titl  e')
     {{ json_decode($name, true)[App::getLocale()] }}
 @endsection
 @section('section')
@@ -16,7 +16,7 @@
       </div>
     </div>
     <!-- End Page Title -->
-    
+
     @if (json_decode($name, true)['uz'] == "Korrupsiyaga qarshi kurash")
       <section id="leadership" class="leadership section">
 
@@ -77,10 +77,10 @@
             <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
               <div class="event-item ">
                 <div class="event-image" style="height: auto">
-                  <iframe 
-                    title="YouTube video player" 
+                  <iframe
+                    title="YouTube video player"
                     src="https://www.youtube.com/embed/YMmKSRfGGfY?si=Q19sd9Onw5zEyvwM"
-                    frameborder="0" 
+                    frameborder="0"
                     allowfullscreen="allowfullscreen"
                     width="100%"
                     height="250">
@@ -97,10 +97,10 @@
             <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
               <div class="event-item">
                 <div class="event-image" style="height: auto">
-                   <iframe 
-                    title="YouTube video player" 
+                   <iframe
+                    title="YouTube video player"
                     src="https://www.youtube.com/embed/5oNRk-Olxck"
-                    frameborder="0" 
+                    frameborder="0"
                     allowfullscreen="allowfullscreen"
                     width="100%"
                     height="250">
@@ -116,10 +116,10 @@
             <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
               <div class="event-item">
                 <div class="event-image" style="height: auto">
-                   <iframe 
-                    title="YouTube video player" 
+                   <iframe
+                    title="YouTube video player"
                     src="https://www.youtube.com/embed/YMmKSRfGGfY?si=Q19sd9Onw5zEyvwM"
-                    frameborder="0" 
+                    frameborder="0"
                     allowfullscreen="allowfullscreen"
                     width="100%"
                     height="250">
@@ -135,46 +135,49 @@
         </div>
 
       </section>
-    <!-- /Events Section -->
+        <!-- /Events Section -->
 
-    <!-- About Section -->
-      <section id="about" class="about section p-1">
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-          <div class="row mt-5">
-            <div class="col-lg-12">
-              <div class="core-values" data-aos="fade-up" data-aos-delay="500">
-                 <div class="container section-title" data-aos="fade-up">
-                  <h2>Kredit xizmatlari</h2>
-                  <p> Biznes g‘oya bor, lekin mablag‘ yo‘qmi ? “KELAJAKKA QADAM” bu muammoni yechadi!</p>
+        <!-- About Section -->
+        <section id="about" class="about section p-1">
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <div class="row mt-5">
+                <div class="col-lg-12">
+                <div class="core-values" data-aos="fade-up" data-aos-delay="500">
+                    <div class="container section-title" data-aos="fade-up">
+                    <h2>Kredit xizmatlari</h2>
+                    <p> Biznes g‘oya bor, lekin mablag‘ yo‘qmi ? “KELAJAKKA QADAM” bu muammoni yechadi!</p>
+                    </div>
+                    <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col">
+                        <div class="value-card">
+                        <h4 class="fw-bold">Kelajakka birinchi qadam</h4>
+                        <p>Ijtimoiy soliq to'lab,o'zini-o'zi band qilgan bitiruvchilar uchun</p>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="value-card">
+                        <h4 class="fw-bold">Kelajak uchun start</h4>
+                        <p>Yakka tartibdagi tadbirkorlar yoki yuridik shaxs tashkil etgan bitiruvchilar uchun</p>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="value-card">
+                        <h4 class="fw-bold">Yorqin kelajak sari</h4>
+                        <p>Yakka tartibdagi tadbirkorlar yoki yuridik shaxs tashkil etgan bitiruvchilar uchun</p>
+                        </div>
+                    </div>
+                    </div>
                 </div>
-                <div class="row row-cols-1 row-cols-md-3 g-4">
-                  <div class="col">
-                    <div class="value-card">
-                      <h4 class="fw-bold">Kelajakka birinchi qadam</h4>
-                      <p>Ijtimoiy soliq to'lab,o'zini-o'zi band qilgan bitiruvchilar uchun</p>
-                    </div>
-                  </div>
-
-                  <div class="col">
-                    <div class="value-card">
-                      <h4 class="fw-bold">Kelajak uchun start</h4>
-                      <p>Yakka tartibdagi tadbirkorlar yoki yuridik shaxs tashkil etgan bitiruvchilar uchun</p>
-                    </div>
-                  </div>
-
-                  <div class="col">
-                    <div class="value-card">
-                      <h4 class="fw-bold">Yorqin kelajak sari</h4>
-                      <p>Yakka tartibdagi tadbirkorlar yoki yuridik shaxs tashkil etgan bitiruvchilar uchun</p>
-                    </div>
-                  </div>
                 </div>
-              </div>
             </div>
-          </div>
-        </div>
-      </section>
-    <!-- /About Section -->
+            </div>
+        </section>
+        <!-- /About Section -->
+    @endif
+
+    @if (json_decode($name, true)['uz'] == "Kelajakka qadam")
     @endif
     <!-- News Posts Section -->
     <section id="news-posts" class="news-posts section">
@@ -185,41 +188,74 @@
             Habaringiz jo'natildi
           </div>
         @endif
-        @if (json_decode($name, true)['en'] != "News" && json_decode($name, true)['en'] != "Announcement")
-        <div class="container section-title" data-aos="fade-up">
-          <h2>{{ __('news.news_title') }}</h2>
-        </div>
+        @if (json_decode($name, true)['en'] != "News" && json_decode($name, true)['en'] != "Announcement" && json_decode($name, true)['en'] != "Information Resource Center")
+            <div class="container section-title" data-aos="fade-up">
+            <h2>{{ __('news.news_title') }}</h2>
+            </div>
+        @elseif(json_decode($name, true)['en'] == "Information Resource Center")
+            <div class="container section-title" data-aos="fade-up">
+                <h2>O'quv uslubiy majmua</h2>
+            </div>
         @endif
-        <div class="row gy-4">   
-            @foreach ($posts as $post)
-                <div class="col-xl-4 col-md-6 cursor-pointer" data-aos="fade-up" data-aos-delay="100" onclick="location.href='{{ route('showPost', ['id' => $post->id]) }}'">
-                    <article>
-                      <div class="post-img">
-                          <img src="{{ asset('storage/'.$post->image) }}" class="img-fluid">
-                      </div>
-                      
-                      <h2 class="title">
-                          <a href="javascript::void(0)">
-                              {{ $post->translation(App::getLocale())->title }}
-                          </a>
-                      </h2>
-                      
-                      <p class="post-category">{{ $post->translation(App::getLocale())->description }}</p>
+        @if (json_decode($name, true)['en'] != "Information Resource Center")
+            <div class="row gy-4">
+                @foreach ($posts as $post)
+                    <div class="col-xl-4 col-md-6 cursor-pointer" data-aos="fade-up" data-aos-delay="100" onclick="location.href='{{ route('showPost', ['id' => $post->id]) }}'">
+                        <article>
+                        <div class="post-img">
+                            <img src="{{ asset('storage/'.$post->image) }}" class="img-fluid">
+                        </div>
 
-                      <div class="d-flex align-items-center">
-                          <img src="{{ asset('assets/img/admin.png') }}" alt="" class="img-fluid post-author-img flex-shrink-0">
-                          <div class="post-meta">
-                            <p class="post-author">{{ $post->user->name }}</p>
-                            <p class="post-date">
-                                <time datetime="2022-01-01">{{ \Carbon\Carbon::parse($post->created_at)->format('M d, Y') }}</time>
-                            </p>
-                          </div>
-                      </div>
-                  </article>
-                </div>        
-            @endforeach
+                        <h2 class="title">
+                            <a href="javascript::void(0)">
+                                {{ $post->translation(App::getLocale())->title }}
+                            </a>
+                        </h2>
 
-        </div>
+                        <p class="post-category">{{ $post->translation(App::getLocale())->description }}</p>
+
+                        <div class="d-flex align-items-center">
+                            <img src="{{ asset('assets/img/admin.png') }}" alt="" class="img-fluid post-author-img flex-shrink-0">
+                            <div class="post-meta">
+                                <p class="post-author">{{ $post->user->name }}</p>
+                                <p class="post-date">
+                                    <time datetime="2022-01-01">{{ \Carbon\Carbon::parse($post->created_at)->format('M d, Y') }}</time>
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+                    </div>
+                @endforeach
+
+            </div>
+        @else
+            <!-- Alumni Section -->
+  <section id="alumni" class="alumni section">
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+      <div class="row mb-5">
+        @foreach ($posts as $post)
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="alumni-card">
+                <div class="alumni-image">
+                <img src="{{ asset('storage/'.$post->image) }}" class="img-fluid">
+                </div>
+                <div class="alumni-content">
+                <h4> {{ $post->translation(App::getLocale())->title }}</h4>
+                <p class="alumni-class"></p>
+                <p class="alumni-position"></p>
+                <a href="{{ $post->translation(App::getLocale())->description }}" class="read-more">Yuklab olish <i class="bi bi-arrow-right"></i></a>
+                </div>
+            </div>
+            </div>
+        @endforeach
+      </div>
+
+    </div>
+
+  </section>
+<!-- /Alumni Section -->
+        @endif
         <!-- End recent posts list -->
 
       </div>
