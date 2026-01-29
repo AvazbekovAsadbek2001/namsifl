@@ -29,7 +29,7 @@ class BookController extends Controller
         }
 
         if ($request->hasFile('file')) {
-            $path = $request->file('cover_image')->store('books/files', 'public');
+            $path = $request->file('file')->store('books/files', 'public');
             $data['file'] = '/storage/' . $path;
         }
 

@@ -1,6 +1,6 @@
 @extends('layout.main')
 @section('title')
-
+    Axborot resurs markazi
 @endsection
 @section('section')
      <div class="page-title light-background">
