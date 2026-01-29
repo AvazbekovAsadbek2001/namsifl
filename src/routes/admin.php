@@ -45,13 +45,20 @@ Route::group(['middleware' => ['check-admin']], function () {
         Route::get('/create', [\App\Http\Controllers\Admin\EmployeeController::class, 'create'])->name('create');
         Route::post('/store', [\App\Http\Controllers\Admin\EmployeeController::class, 'store'])->name('store');
     });
-    
+
+    Route::group(['prefix' => 'book', 'as' => 'book.'], function () {
+        Route::get('/', [\App\Http\Controllers\Admin\BookController::class, 'index'])->name('index');
+        Route::get('/create', [\App\Http\Controllers\Admin\BookController::class,'create'])->name('create');
+        Route::post('/store', [\App\Http\Controllers\Admin\BookController::class,'store'])->name('store');
+    });
+
     Route::group(['prefix' => 'menu', 'as' => 'menu.'], function () {
         Route::get('/', [\App\Http\Controllers\Admin\MenuController::class, 'index'])->name('index');
+
     });
 
     Route::group(['prefix'=> 'structure', 'as'=> 'structure.'], function () {
-        
+
         Route::group(['prefix'=> 'faculties', 'as'=> 'faculties.'], function () {
             Route::get('/', [StructureController::class,'indexFaculties'])->name('index');
             Route::get('/create', [StructureController::class,'createFaculty'])->name('create');

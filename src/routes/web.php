@@ -38,4 +38,7 @@ Route::get('/cafedra/{id}', [\App\Http\Controllers\IndexController::class, 'cafe
 
 Route::post('/message/send', [\App\Http\Controllers\MessageController::class, 'sendMessage'])->name('sendMessage');
 
+Route::get('/books', [\App\Http\Controllers\BookController::class, 'index'])->name('books.index');
+Route::get('/book/{id}', [\App\Http\Controllers\BookController::class, 'show'])->name('books.show');
+
 Route::get('/{any}', [\App\Http\Controllers\IndexController::class, 'showPage'])->where('any', '^(?!admin).*')->name('showPage');

@@ -83,6 +83,16 @@
                 </a>
             </li>
             <li>
+                <a href="{{ route('admin.book.index')}}" aria-expanded="false">
+                    <div class="menu-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#90959F" viewBox="0 0 24 24">
+                            <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke="#90959F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        </svg>
+                    </div>
+                    <span class="nav-text">Books</span>
+                </a>
+            </li>
+            <li>
                 <a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
                     <div class="menu-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -91,8 +101,8 @@
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M8.08002 6.64999V6.65999C7.64902 6.65999 7.30002 7.00999 7.30002 7.43999C7.30002 7.86999 7.64902 8.21999 8.08002 8.21999H11.069C11.5 8.21999 11.85 7.86999 11.85 7.42899C11.85 6.99999 11.5 6.64999 11.069 6.64999H8.08002ZM15.92 12.74H8.08002C7.64902 12.74 7.30002 12.39 7.30002 11.96C7.30002 11.53 7.64902 11.179 8.08002 11.179H15.92C16.35 11.179 16.7 11.53 16.7 11.96C16.7 12.39 16.35 12.74 15.92 12.74ZM15.92 17.31H8.08002C7.78002 17.35 7.49002 17.2 7.33002 16.95C7.17002 16.69 7.17002 16.36 7.33002 16.11C7.49002 15.85 7.78002 15.71 8.08002 15.74H15.92C16.319 15.78 16.62 16.12 16.62 16.53C16.62 16.929 16.319 17.27 15.92 17.31Z" fill="white"></path>
                             </g>
                         </svg>
-                    </div>	
-                    <span class="nav-text">Message 
+                    </div>
+                    <span class="nav-text">Message
                         @if(getCountNewMessages(0) > 0)
                             <span class="badge badge-danger badge-xs ms-1">{{ getCountNewMessages(0) }}</span>
                         @endif
@@ -100,7 +110,7 @@
 				</a>
                 <ul aria-expanded="false" class="mm-collapse left">
                     <li>
-                        <a href="{{ route('admin.message', ['id' => 1]) }}">Contact 
+                        <a href="{{ route('admin.message', ['id' => 1]) }}">Contact
                             @if(getCountNewMessages(1) > 0)
                                 <span class="badge badge-danger badge-xs ms-1">{{ getCountNewMessages(1) }}</span>
                             @endif
