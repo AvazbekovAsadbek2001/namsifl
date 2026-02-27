@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Blog\PostController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\StructureController;
 use Illuminate\Support\Facades\Route;
@@ -37,6 +38,7 @@ Route::group(['middleware' => ['check-admin']], function () {
             Route::get('/', [\App\Http\Controllers\Admin\Blog\PostController::class, 'index'])->name('index');
             Route::get('/create', [\App\Http\Controllers\Admin\Blog\PostController::class, 'create'])->name('create');
             Route::post('/store', [\App\Http\Controllers\Admin\Blog\PostController::class, 'store'])->name('store');
+            Route::get('delete/{id}', [PostController::class, 'delete'])->name('delete');
         });
     });
 

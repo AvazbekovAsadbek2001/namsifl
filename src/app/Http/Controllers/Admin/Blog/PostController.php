@@ -52,10 +52,10 @@ class PostController extends Controller
         $categories = Category::all();
         $tags = Tag::all();
         $lang = ($request->lang) ? Lang::where('code', $request->lang)->first() : Lang::where('code', 'en')->first();
-        
+
         if ($request->post) {
             $post = Post::find($request->post);
-            return view('admin.blogs.posts.create', compact('categories', 'tags', 'lang', 'post'));    
+            return view('admin.blogs.posts.create', compact('categories', 'tags', 'lang', 'post'));
         }
 
         return view('admin.blogs.posts.create', compact('categories', 'tags', 'lang'));
@@ -126,5 +126,13 @@ class PostController extends Controller
         return response()->json([
             'success' => true,
         ]);
+    }
+
+    public function delete(Request $request)
+    {
+        $id = $request->id;
+        $post = Post::find($id);
+        $post->delete();
+        return redirect()->back();
     }
 }

@@ -7,7 +7,7 @@
 @section('section')
     <div class="col-xl-12">
         <div class="card dz-card" id="bootstrap-table2">
-            
+
             <div class="card-header flex-wrap d-flex justify-content-between  border-0">
                 <div style="width: 100%">
                     <h2 class="card-title">
@@ -90,7 +90,7 @@
                                             </td>
                                             <td>
                                                 <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa fa-pencil"></i></a>
-                                                <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+                                                <a href="{{ route('admin.blog.posts.delete', ['id' => $post['id']]) }}" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach
