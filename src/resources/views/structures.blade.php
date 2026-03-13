@@ -33,19 +33,30 @@
         <div class="facilities-grid aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
 
             @foreach ($structures as $item)
-                @if (isset(json_decode($item->name, true)[App::getLocale()]))
-                    <a href="{{ route('faculty_detail', [$item->id]) }}" class="category-card academic aos-init aos-animate" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="card-content mt-5">
-                            <div class="facility-image">
-                                <center>
-                                    <img src="{{ asset('storage/'.$item->icon) }}" width="auto" height="100px" alt="facility">
-                                </center>
+                @if ($name == "Fakultetlar")
+                    @if (isset(json_decode($item->name, true)[App::getLocale()]))
+                        <a href="{{ route('faculty_detail', [$item->id]) }}" class="category-card academic aos-init aos-animate" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="card-content mt-5">
+                                <div class="facility-image">
+                                    <center>
+                                        <img src="{{ asset('storage/'.$item->icon) }}" width="auto" height="100px" alt="facility">
+                                    </center>
+                                </div>
                             </div>
-                        </div>
+                            <div class="card-header m-2">
+                                <h3>{{ json_decode($item->name, true)[App::getLocale()] }}</h3>
+                            </div>
+                        </>
+                    @endif
+                @elseif ($name == "Markazlar va bo'limlar")
+                    @if (isset(json_decode($item->name, true)[App::getLocale()]))
+                        <a href="{{ route('department_detail', [$item->id]) }}" class="category-card academic aos-init aos-animate" data-aos="zoom-in" data-aos-delay="100">
+
                         <div class="card-header m-2">
                             <h3>{{ json_decode($item->name, true)[App::getLocale()] }}</h3>
                         </div>
                     </>
+                    @endif
                 @endif
             @endforeach
         </div>

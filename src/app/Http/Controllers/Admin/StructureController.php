@@ -24,7 +24,7 @@ class StructureController extends Controller
             "lang" => 'required',
             "name" => 'string|required',
             'icon' => 'nullable|image|mimes:jpeg,jpg,png,webp,gif',
-            'content' => 'required' 
+            'content' => 'required'
         ]);
 
         $lang = Lang::where('code', $data['lang'])->first();
@@ -65,7 +65,33 @@ class StructureController extends Controller
     }
 
     public function storeDepartment(Request $request){
-        dd($request->all());
+        $data = $request->validate([
+            "lang" => 'required',
+            "name" => 'string|required',
+            'icon' => 'nullable|image|mimes:jpeg,jpg,png,webp,gif',
+            'content' => 'required'
+        ]);
+
+        $lang = Lang::where('code', $data['lang'])->first();
+
+        $data['name'] = json_encode([
+            $lang->code => $data['name'],
+        ]);
+
+        if (isset($data['icon'])){
+            $data['icon'] = $request->file('icon')->store('department/icons','public');
+        }
+
+        $department = Department::create($data);
+
+        StructureTranslation::create([
+            'type' => 'faculty',
+            'structure_id' => $department->id,
+            'lang_id' => $lang->id,
+            'content' => $data['content']
+        ]);
+
+        return redirect()->route('admin.structure.departments.index')->with('success','');
     }
 
     public function indexCafedra(){
