@@ -37,7 +37,7 @@
                                 <div class="faculty-content">
                                     <h4>{{ $item->name }}</h4>
                                     <p class="faculty-position">
-                                        {{ json_decode($item->position->title, true)[App::getLocale()] }}
+                                        {{ json_decode($item->position_description, true)[App::getLocale()] }}
                                     </p>
                                     <div class="faculty-social">
                                         @foreach (json_decode($item->social_medias, true) as $key => $media)
