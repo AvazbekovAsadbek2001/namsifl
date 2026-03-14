@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Department;
 use App\Models\Employee;
 use App\Models\Faculty;
 use App\Models\Page;
@@ -83,7 +84,7 @@ class IndexController extends Controller
         $id = $request->id;
 
         $posts = Post::whereHas('categories', function ($query) use ( $id ) {
-            $query->where('categories.id', $id);    
+            $query->where('categories.id', $id);
         })->whereHas('translations', function ($query) use ($lang) {
             $query->where('lang_code', $lang);
         })->with(['translations' => function ($query) use ($lang) {
@@ -103,42 +104,56 @@ class IndexController extends Controller
     }
 
     public function faculty(){
-        $structures = Faculty::all();
+        $employees = Employee::where('position_id', 3)
+            ->orderBy('position_id', 'asc')
+            ->get();
         $name = "Fakultetlar";
-        return view('structures', compact('structures', 'name'));
+        return view('structures', compact('employees', 'name'));
     }
 
-    public function faculty_detail(Request $request){
-        $faculty = Faculty::find($request->id);
-
-        if ($faculty) {
-            return view('structure.faculty', compact('faculty'));
-        } else {
-            return abort(404);
-        }
+    public function cafedra(){
+        $employees = Employee::where('position_id', 5)
+            ->orderBy('position_id', 'asc')
+            ->get();
+        $name = "Kafedralar";
+        return view('structures', compact('employees', 'name'));
     }
+
+    // public function faculty_detail(Request $request){
+    //     $faculty = Faculty::find($request->id);
+
+    //     if ($faculty) {
+    //         return view('structure.faculty', compact('faculty'));
+    //     } else {
+    //         return abort(404);
+    //     }
+    // }
 
     public function department(){
-        abort(404);
+        $employees = Employee::where('position_id', 20)
+            ->orderBy('position_id', 'asc')
+            ->get();
+        $name = "Bo'lim va markazlar";
+        return view('structures', compact('employees', 'name'));
     }
 
-    public function department_detail(Request $request){
-        $department = \App\Models\Department::find($request->id);
+    // public function department_detail(Request $request){
+    //     $department = \App\Models\Department::find($request->id);
 
-        if ($department) {
-            return view('structure.department', compact('cafedra'));
-        } else {
-            return abort(404);
-        }
-    }
+    //     if ($department) {
+    //         return view('structure.department', compact('department'));
+    //     } else {
+    //         return abort(404);
+    //     }
+    // }
 
-    public function cafedra_detail(Request $request){
-        $cafedra = \App\Models\Cafedra::find($request->id);
+    // public function cafedra_detail(Request $request){
+    //     $cafedra = \App\Models\Cafedra::find($request->id);
 
-        if ($cafedra) {
-            return view('structure.cafedra', compact('cafedra'));
-        } else {
-            return abort(404);
-        }
-    }
+    //     if ($cafedra) {
+    //         return view('structure.cafedra', compact('cafedra'));
+    //     } else {
+    //         return abort(404);
+    //     }
+    // }
 }
